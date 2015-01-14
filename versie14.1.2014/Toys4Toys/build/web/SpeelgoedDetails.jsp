@@ -20,10 +20,10 @@
     </head>
     <body>
 
-        <div class="topban"></div>
+
         <div id="logo"><h1>Toys4Toys</h1>
             <h4>Makkelijk ruilen van speelgoed, kleren, boeken voor kinderen </h4></div>
-        <div class="topban"></div>
+
         <nav>
             <ul>
                 <li><a href="Index.jsp">Home</a></li>

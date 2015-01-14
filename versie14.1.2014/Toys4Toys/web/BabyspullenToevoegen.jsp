@@ -10,26 +10,34 @@
         <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Crafty+Girls' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+
+        <script>
+            function isNumberKey(evt) {
+                var charCode = (evt.which) ? evt.which : evt.keyCode;
+                if (charCode > 31 && (charCode < 48 || charCode > 57))
+                    return false;
+                return true;
+            }
+        </script>
     </head>
     <body>
-        <div class="topban"></div>
+
         <div id="logo"><h1>Toys4Toys</h1>
             <h4>Makkelijk ruilen van speelgoed, kleren, boeken voor kinderen </h4></div>
 
-        <div class="topban">
 
-            <nav>
-                <ul>
-                    <li><a href="Index.jsp">Home</a></li>
-                    <li><a href="CatBoekSelecteren">Boeken</a></li>
-                    <li><a href="CatBabySelecteren">Baby Spullen</a></li>
-                    <li><a href="CatKlerenSelecteren">Kleren</a></li>
-                    <li><a href="CatSpeelgoedSelecteren">Speelgoed</a></li>  
-                    <li><a href="Login.jsp">Advertentie toevoegen</a></li>   
-                    <li><a href="Login.jsp">Log in</a></li>                   
-                </ul>
-            </nav>  
-        </div>
+        <nav>
+            <ul>
+                <li><a href="Index.jsp">Home</a></li>
+                <li><a href="CatBoekSelecteren">Boeken</a></li>
+                <li><a href="CatBabySelecteren">Baby Spullen</a></li>
+                <li><a href="CatKlerenSelecteren">Kleren</a></li>
+                <li><a href="CatSpeelgoedSelecteren">Speelgoed</a></li>  
+                <li><a href="Login.jsp">Advertentie toevoegen</a></li>   
+                <li><a href="Login.jsp">Log in</a></li>                   
+            </ul>
+        </nav>  
+
 
         <div id="wrapper">
             <h1>Babyspulletjes toevoegen</h1>
@@ -51,7 +59,8 @@
                         </tr>
                         <tr>
                             <td>Leeftijd (vanaf): </td>
-                            <td><input type="text"  name="Leeftijd" ></td>
+                            <<td><input type="text"  name="Leeftijd" size=20 maxlength=2 onkeypress='return isNumberKey(event)'></td> 
+
                         </tr>
                         <tr>
                             <td>Categorie:</td>
