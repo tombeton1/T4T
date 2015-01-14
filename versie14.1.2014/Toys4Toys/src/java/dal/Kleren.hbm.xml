@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 17-dec-2014 14:52:25 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="dal.Kleren" table="kleren" catalog="toys4toysdb" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="Id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="persoon" class="dal.Persoon" fetch="select">
+            <column name="PersoonID" not-null="true" />
+        </many-to-one>
+        <property name="geslacht" type="java.lang.Boolean">
+            <column name="Geslacht" />
+        </property>
+        <property name="maat" type="string">
+            <column name="Maat" />
+        </property>
+        <property name="soortKleding" type="string">
+            <column name="SoortKleding" />
+        </property>
+        <property name="seizoen" type="string">
+            <column name="Seizoen" />
+        </property>
+        <property name="omschrijving" type="string">
+            <column name="Omschrijving" length="1000" />
+        </property>
+        <property name="klerenFoto" type="binary">
+            <column name="KlerenFoto" />
+        </property>
+        <set name="advertenties" table="advertentie" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="KlerenId" />
+            </key>
+            <one-to-many class="dal.Advertentie" />
+        </set>
+    </class>
+</hibernate-mapping>

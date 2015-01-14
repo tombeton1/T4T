@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 17-dec-2014 14:52:25 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="dal.Persoon" table="persoon" catalog="toys4toysdb" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="Id" />
+            <generator class="identity" />
+        </id>
+        <property name="voornaam" type="string">
+            <column name="Voornaam" />
+        </property>
+        <property name="familienaam" type="string">
+            <column name="Familienaam" />
+        </property>
+        <property name="aanspreekTitel" type="string">
+            <column name="AanspreekTitel" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="Email" />
+        </property>
+        <property name="woonPlaats" type="string">
+            <column name="WoonPlaats" not-null="true" />
+        </property>
+        <property name="userName" type="string">
+            <column name="UserName" />
+        </property>
+        <property name="passWord" type="string">
+            <column name="PassWord" />
+        </property>
+        <set name="klerens" table="kleren" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PersoonID" not-null="true" />
+            </key>
+            <one-to-many class="dal.Kleren" />
+        </set>
+        <set name="advertenties" table="advertentie" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="SpeelgoedId" />
+            </key>
+            <one-to-many class="dal.Advertentie" />
+        </set>
+        <set name="boekens" table="boeken" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PersoonID" not-null="true" />
+            </key>
+            <one-to-many class="dal.Boeken" />
+        </set>
+        <set name="speelgoeds" table="speelgoed" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PersoonID" not-null="true" />
+            </key>
+            <one-to-many class="dal.Speelgoed" />
+        </set>
+        <set name="babyspullens" table="babyspullen" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="PersoonID" not-null="true" />
+            </key>
+            <one-to-many class="dal.Babyspullen" />
+        </set>
+    </class>
+</hibernate-mapping>

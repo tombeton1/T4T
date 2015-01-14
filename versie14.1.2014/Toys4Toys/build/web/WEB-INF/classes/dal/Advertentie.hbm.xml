@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 17-dec-2014 14:52:25 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="dal.Advertentie" table="advertentie" catalog="toys4toysdb" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="Id" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="babyspullen" class="dal.Babyspullen" fetch="select">
+            <column name="BabyspullenId" />
+        </many-to-one>
+        <many-to-one name="boeken" class="dal.Boeken" fetch="select">
+            <column name="BoekenId" />
+        </many-to-one>
+        <many-to-one name="kleren" class="dal.Kleren" fetch="select">
+            <column name="KlerenId" />
+        </many-to-one>
+        <many-to-one name="persoon" class="dal.Persoon" fetch="select">
+            <column name="SpeelgoedId" />
+        </many-to-one>
+        <property name="insertedOn" type="timestamp">
+            <column name="InsertedOn" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>
