@@ -28,7 +28,7 @@
                     <li><a href="Login.jsp">Log in</a></li>                   
                 </ul>
             </nav>  
-        </div>
+        
 
         <div id="wrapper">
             <h1>Kledij toevoegen</h1>
@@ -54,7 +54,7 @@
                         <tr>
                             <td>Seizoen:</td>
                             <td>
-                                <select>
+                                <select name="Seizoen">
                                     <option value="Winter" name="Seizoen">Winter</option>
                                     <option value="Herfst" name="Seizoen">Herfst</option>
                                     <option value="Lente" name="Seizoen">Lente</option>

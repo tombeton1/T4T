@@ -54,7 +54,7 @@
                         <tr>
                             <td>Categorie:</td>
                             <td>
-                                <select>
+                                <select name="Categorie">
                                     <option value="Baby" name="Categorie">Baby</option>
                                     <option value="Peuter" name="Categorie">Peuter</option>
                                     <option value="Kleuter" name="Categorie">Kleuter</option>

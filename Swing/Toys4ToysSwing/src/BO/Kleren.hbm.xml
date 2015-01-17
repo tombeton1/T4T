@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-jan-2015 10:24:43 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="toys4toysdb" name="BO.Kleren" optimistic-lock="version" table="kleren">
+    <id name="id" type="java.lang.Integer">
+      <column name="Id"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="BO.Persoon" fetch="select" name="persoon">
+      <column name="PersoonID" not-null="true"/>
+    </many-to-one>
+    <property name="geslacht" type="java.lang.Boolean">
+      <column name="Geslacht"/>
+    </property>
+    <property name="maat" type="string">
+      <column name="Maat"/>
+    </property>
+    <property name="soortKleding" type="string">
+      <column name="SoortKleding"/>
+    </property>
+    <property name="seizoen" type="string">
+      <column name="Seizoen"/>
+    </property>
+    <property name="omschrijving" type="string">
+      <column length="1000" name="Omschrijving"/>
+    </property>
+    <property name="klerenFoto" type="binary">
+      <column name="KlerenFoto"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="advertenties" table="advertentie">
+      <key>
+        <column name="KlerenId"/>
+      </key>
+      <one-to-many class="BO.Advertentie"/>
+    </set>
+  </class>
+</hibernate-mapping>

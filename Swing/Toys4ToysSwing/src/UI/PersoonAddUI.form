@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblPassWord" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblWoonplaats" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblUserName" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblEmail" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblFamilieNaam" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblVoornaam" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblAanspreekTitel" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="txtUserName" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtWoonplaats" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPassWord" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtEmail" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtFamilieNaam" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtVoornaam" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtAanspreekTitel" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="539" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblAanspreekTitel" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtAanspreekTitel" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblVoornaam" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtVoornaam" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblFamilieNaam" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtFamilieNaam" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblEmail" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtEmail" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblWoonplaats" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtWoonplaats" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblUserName" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtUserName" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblPassWord" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPassWord" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="106" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="lblAanspreekTitel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Aanspreek Titel:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblVoornaam">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Voornaam:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblFamilieNaam">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Familienaam"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblEmail">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="E-mail:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblWoonplaats">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="WoonPlaats:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblUserName">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Gebruiker naam:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblPassWord">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Wachtwoord:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtAanspreekTitel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jTextField1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtVoornaam">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jTextField1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtFamilieNaam">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jTextField1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtEmail">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jTextField1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtWoonplaats">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jTextField1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtUserName">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jTextField1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtPassWord">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jTextField1"/>
+      </Properties>
+    </Component>
+  </SubComponents>
+</Form>

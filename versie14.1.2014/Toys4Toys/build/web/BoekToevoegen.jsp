@@ -28,7 +28,7 @@
                     <li><a href="Login.jsp">Log in</a></li>                   
                 </ul>
             </nav>  
-        </div>
+        
 
         <div id="wrapper">
             <h1>Boek toevoegen</h1>
@@ -50,7 +50,7 @@
                         <tr>
                             <td>Categorie:</td>
                             <td>
-                                <select>
+                                <select name="Categorie">
                                     <option value="PrentenBoeken" name="Categorie">Prentenboeken</option>
                                     <option value="VoorleesBoeken" name="Categorie">Voorleesboeken</option>
                                     <option value="Baby_peuterboekjes" name="Categorie">Baby & peuterboekjes</option>

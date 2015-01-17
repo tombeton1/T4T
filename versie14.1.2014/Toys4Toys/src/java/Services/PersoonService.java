@@ -80,4 +80,6 @@ public class PersoonService {
        Query q = s.createQuery("from Persoon");
        return (ArrayList<Persoon>)q.list();
     }
+    
+    
 }

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-jan-2015 10:24:43 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="toys4toysdb" name="BO.Persoon" optimistic-lock="version" table="persoon">
+    <id name="id" type="java.lang.Integer">
+      <column name="Id"/>
+      <generator class="identity"/>
+    </id>
+    <property name="voornaam" type="string">
+      <column name="Voornaam"/>
+    </property>
+    <property name="familienaam" type="string">
+      <column name="Familienaam"/>
+    </property>
+    <property name="aanspreekTitel" type="string">
+      <column name="AanspreekTitel" not-null="true"/>
+    </property>
+    <property name="email" type="string">
+      <column name="Email"/>
+    </property>
+    <property name="woonPlaats" type="string">
+      <column name="WoonPlaats" not-null="true"/>
+    </property>
+    <property name="userName" type="string">
+      <column name="UserName" not-null="true" unique="true"/>
+    </property>
+    <property name="passWord" type="string">
+      <column name="PassWord" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="klerens" table="kleren">
+      <key>
+        <column name="PersoonID" not-null="true"/>
+      </key>
+      <one-to-many class="BO.Kleren"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="advertenties" table="advertentie">
+      <key>
+        <column name="SpeelgoedId"/>
+      </key>
+      <one-to-many class="BO.Advertentie"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="boekens" table="boeken">
+      <key>
+        <column name="PersoonID" not-null="true"/>
+      </key>
+      <one-to-many class="BO.Boeken"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="speelgoeds" table="speelgoed">
+      <key>
+        <column name="PersoonID" not-null="true"/>
+      </key>
+      <one-to-many class="BO.Speelgoed"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="babyspullens" table="babyspullen">
+      <key>
+        <column name="PersoonID" not-null="true"/>
+      </key>
+      <one-to-many class="BO.Babyspullen"/>
+    </set>
+  </class>
+</hibernate-mapping>

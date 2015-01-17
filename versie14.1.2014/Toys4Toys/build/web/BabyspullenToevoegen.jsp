@@ -65,7 +65,7 @@
                         <tr>
                             <td>Categorie:</td>
                             <td>
-                                <select>
+                                <select name="Categorie">
                                     <option value="Autostoeltjes" name="Categorie">Autostoeltjes en veiligheidszitjes</option>
                                     <option value="Kindermeubelen" name="Categorie">Kindermeubelen</option>
                                     <option value="Kinderwagens" name="Categorie">Kinderwagens en combinaties</option>
