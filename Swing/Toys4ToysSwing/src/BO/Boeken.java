@@ -25,7 +25,10 @@ public class Boeken  implements java.io.Serializable {
     }
     
 
-
+ @Override
+    public String toString(){
+        return getTitel()+" "+ getAuteur()+" "+getUitgeverij();
+    }
 	
     public Boeken(Persoon persoon) {
         this.persoon = persoon;
@@ -40,10 +43,7 @@ public class Boeken  implements java.io.Serializable {
        this.boekenFoto = boekenFoto;
        this.advertenties = advertenties;
     }
-    @Override
-    public String toString(){
-        return titel + " ||"+auteur+ " ||"+uitgeverij+ " ||"+categorie+ " ||"+omschrijving;
-    }
+   
    
     public Integer getId() {
         return this.id;

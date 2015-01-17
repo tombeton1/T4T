@@ -20,7 +20,11 @@ public class Speelgoed  implements java.io.Serializable {
 
     public Speelgoed() {
     }
+ @Override
+    public String toString() {
+        return getTitel() + " " + getLeeftijd().toString() + " " + getCategorie();
 
+    }
 	
     public Speelgoed(Persoon persoon) {
         this.persoon = persoon;

@@ -61,8 +61,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         txtVoornaam2 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         lstPersonen = new javax.swing.JList();
-        btnSelect = new javax.swing.JButton();
-        txtEditGebruiker = new javax.swing.JButton();
+        btnSelectBaby = new javax.swing.JButton();
         lblAanspreekTitel = new javax.swing.JLabel();
         txtTitel = new javax.swing.JTextField();
         lblVoornaam = new javax.swing.JLabel();
@@ -78,7 +77,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         lblPassWord = new javax.swing.JLabel();
         txtPassWord = new javax.swing.JTextField();
         btnDelete = new javax.swing.JButton();
-        txtEditGebruiker1 = new javax.swing.JButton();
+        btnEditGebruiker = new javax.swing.JButton();
         btnAddGebruiker = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -103,7 +102,10 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         SelectFile = new javax.swing.JButton();
         lblAanspreekTitel5 = new javax.swing.JLabel();
         cbxGeslacht = new javax.swing.JComboBox();
-        jLabel2 = new javax.swing.JLabel();
+        btnSelectPeroon = new javax.swing.JButton();
+        btnSelectSpeelgoed = new javax.swing.JButton();
+        btnSelectBoek = new javax.swing.JButton();
+        btnSelectKleren = new javax.swing.JButton();
 
         btnDelete2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnDelete2.setText("Delete");
@@ -170,35 +172,20 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         lstPersonen.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lstPersonen.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(lstPersonen);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(37, 103, 251, 320);
 
-        btnSelect.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnSelect.setText("Select");
-        btnSelect.addActionListener(new java.awt.event.ActionListener() {
+        btnSelectBaby.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnSelectBaby.setText("Select");
+        btnSelectBaby.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSelectActionPerformed(evt);
+                btnSelectBabyActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSelect);
-        btnSelect.setBounds(37, 453, 79, 31);
-
-        txtEditGebruiker.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtEditGebruiker.setText("Edit");
-        txtEditGebruiker.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEditGebruikerActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtEditGebruiker);
-        txtEditGebruiker.setBounds(172, 453, 63, 31);
+        getContentPane().add(btnSelectBaby);
+        btnSelectBaby.setBounds(730, 440, 79, 31);
 
         lblAanspreekTitel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblAanspreekTitel.setText("Geslacht:");
@@ -273,15 +260,15 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(btnDelete);
         btnDelete.setBounds(30, 840, 90, 31);
 
-        txtEditGebruiker1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtEditGebruiker1.setText("Edit");
-        txtEditGebruiker1.addActionListener(new java.awt.event.ActionListener() {
+        btnEditGebruiker.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnEditGebruiker.setText("Edit");
+        btnEditGebruiker.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEditGebruiker1ActionPerformed(evt);
+                btnEditGebruikerActionPerformed(evt);
             }
         });
-        getContentPane().add(txtEditGebruiker1);
-        txtEditGebruiker1.setBounds(140, 840, 107, 31);
+        getContentPane().add(btnEditGebruiker);
+        btnEditGebruiker.setBounds(140, 840, 107, 31);
 
         btnAddGebruiker.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnAddGebruiker.setText("Verwijder foto");
@@ -309,22 +296,12 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         jLabel4.setBounds(310, 30, 90, 60);
 
         lstBoeken.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lstBoeken.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane4.setViewportView(lstBoeken);
 
         getContentPane().add(jScrollPane4);
         jScrollPane4.setBounds(310, 110, 290, 320);
 
         lstBabySpullen.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lstBabySpullen.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane5.setViewportView(lstBabySpullen);
 
         getContentPane().add(jScrollPane5);
@@ -336,11 +313,6 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         jLabel5.setBounds(960, 30, 220, 60);
 
         lstKleren.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lstKleren.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane6.setViewportView(lstKleren);
 
         getContentPane().add(jScrollPane6);
@@ -352,11 +324,6 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         jLabel6.setBounds(1290, 30, 220, 60);
 
         lstSpeelgoed.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lstSpeelgoed.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane7.setViewportView(lstSpeelgoed);
 
         getContentPane().add(jScrollPane7);
@@ -418,10 +385,45 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(cbxGeslacht);
         cbxGeslacht.setBounds(940, 722, 120, 30);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/vector1.jpg"))); // NOI18N
-        jLabel2.setFocusable(false);
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 0, 1620, 890);
+        btnSelectPeroon.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnSelectPeroon.setText("Select");
+        btnSelectPeroon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSelectPeroonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSelectPeroon);
+        btnSelectPeroon.setBounds(120, 440, 79, 31);
+
+        btnSelectSpeelgoed.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnSelectSpeelgoed.setText("Select");
+        btnSelectSpeelgoed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSelectSpeelgoedActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSelectSpeelgoed);
+        btnSelectSpeelgoed.setBounds(1400, 440, 79, 31);
+
+        btnSelectBoek.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnSelectBoek.setText("Select");
+        btnSelectBoek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSelectBoekActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSelectBoek);
+        btnSelectBoek.setBounds(410, 440, 79, 31);
+
+        btnSelectKleren.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnSelectKleren.setText("Select");
+        btnSelectKleren.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSelectKlerenActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSelectKleren);
+        btnSelectKleren.setBounds(1080, 440, 79, 31);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -455,33 +457,10 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         lstSpeelgoed.setListData(sp.SelecteerSpeelgoed(selectPersoon.getId()).toArray());
 
     }
-    private void btnSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectActionPerformed
+    private void btnSelectBabyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectBabyActionPerformed
 
-        selectPersoon = (Persoon) lstPersonen.getSelectedValue();
-
-        if (selectPersoon != null) {
-            Persoon Persoon = selectPersoon;
-            txtTitel.setText(selectPersoon.getAanspreekTitel());
-            txtVoornaam.setText(selectPersoon.getVoornaam());
-            txtFamilieNaam.setText(selectPersoon.getFamilienaam());
-            txtEmail.setText(selectPersoon.getEmail());
-            txtWoonplaats.setText(selectPersoon.getWoonPlaats());
-            txtUserName.setText(selectPersoon.getUserName());
-            txtPassWord.setText(selectPersoon.getPassWord());
-
-        }
-        BoekListOpvullen();
-        BabyListOpvullen();
-        KlerenListOpvullen();
-        SpeelgoedListOpvullen();
-    }//GEN-LAST:event_btnSelectActionPerformed
-
-    private void txtEditGebruikerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEditGebruikerActionPerformed
-        if (selectPersoon != null) {
-            PersoonService.PersoonUpdate(selectPersoon.getId());
-        }
-        ListboxOpvullen();
-    }//GEN-LAST:event_txtEditGebruikerActionPerformed
+        
+    }//GEN-LAST:event_btnSelectBabyActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         Persoon persoon = new Persoon();
@@ -495,12 +474,12 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         ListboxOpvullen();
     }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void txtEditGebruiker1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEditGebruiker1ActionPerformed
+    private void btnEditGebruikerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditGebruikerActionPerformed
         if (selectPersoon != null) {
             PersoonService.PersoonUpdate(selectPersoon.getId());
         }
         ListboxOpvullen();
-    }//GEN-LAST:event_txtEditGebruiker1ActionPerformed
+    }//GEN-LAST:event_btnEditGebruikerActionPerformed
 
     private void btnAddGebruikerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddGebruikerActionPerformed
         Persoon p = new Persoon();
@@ -558,6 +537,38 @@ public class BeheerderUI1 extends javax.swing.JFrame {
 
     }//GEN-LAST:event_cbxGeslachtActionPerformed
 
+    private void btnSelectSpeelgoedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectSpeelgoedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSelectSpeelgoedActionPerformed
+
+    private void btnSelectBoekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectBoekActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSelectBoekActionPerformed
+
+    private void btnSelectKlerenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectKlerenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSelectKlerenActionPerformed
+
+    private void btnSelectPeroonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectPeroonActionPerformed
+       selectPersoon = (Persoon) lstPersonen.getSelectedValue();
+
+        if (selectPersoon != null) {
+            Persoon Persoon = selectPersoon;
+            txtTitel.setText(selectPersoon.getAanspreekTitel());
+            txtVoornaam.setText(selectPersoon.getVoornaam());
+            txtFamilieNaam.setText(selectPersoon.getFamilienaam());
+            txtEmail.setText(selectPersoon.getEmail());
+            txtWoonplaats.setText(selectPersoon.getWoonPlaats());
+            txtUserName.setText(selectPersoon.getUserName());
+            txtPassWord.setText(selectPersoon.getPassWord());
+
+        }
+        BoekListOpvullen();
+        BabyListOpvullen();
+        KlerenListOpvullen();
+        SpeelgoedListOpvullen();
+    }//GEN-LAST:event_btnSelectPeroonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -599,10 +610,14 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     private javax.swing.JButton btnAddGebruiker2;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnDelete2;
-    private javax.swing.JButton btnSelect;
+    private javax.swing.JButton btnEditGebruiker;
+    private javax.swing.JButton btnSelectBaby;
+    private javax.swing.JButton btnSelectBoek;
+    private javax.swing.JButton btnSelectKleren;
+    private javax.swing.JButton btnSelectPeroon;
+    private javax.swing.JButton btnSelectSpeelgoed;
     private javax.swing.JComboBox cbxGeslacht;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -638,8 +653,6 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     private javax.swing.JList lstSpeelgoed;
     private javax.swing.JPanel panFoto;
     private javax.swing.JTextField txtAanspreekTitel2;
-    private javax.swing.JButton txtEditGebruiker;
-    private javax.swing.JButton txtEditGebruiker1;
     private javax.swing.JButton txtEditGebruiker3;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEmail2;
