@@ -23,7 +23,11 @@ public class Babyspullen  implements java.io.Serializable {
 
     public Babyspullen() {
     }
+  @Override
+    public String toString() {
+        return getTitel() + " " + getCategorie() + " " + getGeslacht().toString();
 
+    }
 	
     public Babyspullen(Persoon persoon) {
         this.persoon = persoon;

@@ -471,6 +471,9 @@ public class BeheerderUI1 extends javax.swing.JFrame {
 
         }
         BoekListOpvullen();
+        BabyListOpvullen();
+        KlerenListOpvullen();
+        SpeelgoedListOpvullen();
     }//GEN-LAST:event_btnSelectActionPerformed
 
     private void txtEditGebruikerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEditGebruikerActionPerformed

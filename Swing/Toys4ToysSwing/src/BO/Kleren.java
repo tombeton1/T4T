@@ -23,7 +23,11 @@ public class Kleren  implements java.io.Serializable {
 
     public Kleren() {
     }
+  @Override
+    public String toString() {
+        return getSoortKleding() + " " + getSeizoen() + " " + getMaat();
 
+    }
 	
     public Kleren(Persoon persoon) {
         this.persoon = persoon;

@@ -23,6 +23,8 @@ public class Boeken  implements java.io.Serializable {
 
     public Boeken() {
     }
+    
+
 
 	
     public Boeken(Persoon persoon) {
