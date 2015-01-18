@@ -338,7 +338,7 @@ public class BeheerderUI extends javax.swing.JFrame {
 
     private void txtEditGebruikerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEditGebruikerActionPerformed
          if (selectPersoon != null){
-             PersoonService.PersoonUpdate(selectPersoon.getId());
+             //PersoonService.PersoonUpdate(selectPersoon.getId());
          }
          ListboxOpvullen();
     }//GEN-LAST:event_txtEditGebruikerActionPerformed

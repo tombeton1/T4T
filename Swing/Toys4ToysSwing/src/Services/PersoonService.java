@@ -39,15 +39,15 @@ public class PersoonService {
         return p;
     }
 
-    public static Persoon PersoonUpdate(int id) {
+     public static Persoon UpdatePersoon(int id,Persoon persoon)
+    {
         Session s = HibernateUtil.getSessionFactory().openSession();
-        Query q = s.createQuery("update Persoon where id ='" + id + "'");
-        Persoon p = (Persoon) q.uniqueResult();
+        persoon.setId(id);
         s.beginTransaction();
-        s.saveOrUpdate(p);
+        s.merge(persoon);
         s.getTransaction().commit();
-
-        return p;
+        
+        return persoon;
     }
 
     public static void PersoonDelete(Persoon p) {
