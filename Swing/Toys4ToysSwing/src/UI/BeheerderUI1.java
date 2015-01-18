@@ -5,8 +5,11 @@
  */
 package UI;
 
+import BO.Babyspullen;
 import BO.Boeken;
+import BO.Kleren;
 import BO.Persoon;
+import BO.Speelgoed;
 import Services.BabyService;
 import Services.BoekService;
 import Services.KlerenService;
@@ -81,7 +84,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         txtUserName = new javax.swing.JTextField();
         lblPassWord = new javax.swing.JLabel();
         txtPassWord = new javax.swing.JTextField();
-        btnDeleteBoek = new javax.swing.JButton();
+        btnDeleteKleren = new javax.swing.JButton();
         btnEditPersoon = new javax.swing.JButton();
         btnAddPersoon = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -120,6 +123,9 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         txtAdvertentieAuteur = new javax.swing.JTextField();
         btnFoto = new javax.swing.JButton();
         btnDeletePersoon = new javax.swing.JButton();
+        btnDeleteBoek1 = new javax.swing.JButton();
+        btnDeleteSpeelgoed = new javax.swing.JButton();
+        btnDeleteBaby2 = new javax.swing.JButton();
 
         btnDelete2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnDelete2.setText("Delete");
@@ -170,7 +176,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         txtEditGebruiker3.setText("Edit");
         txtEditGebruiker3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteBoekActionPerformed(evt);
+                btnDeleteKlerenActionPerformed(evt);
             }
         });
 
@@ -199,12 +205,12 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSelectBaby);
-        btnSelectBaby.setBounds(730, 440, 79, 31);
+        btnSelectBaby.setBounds(710, 440, 79, 31);
 
         lblAdvertentieUitgeverij.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblAdvertentieUitgeverij.setText("Uitgeverij:");
         getContentPane().add(lblAdvertentieUitgeverij);
-        lblAdvertentieUitgeverij.setBounds(1320, 690, 100, 22);
+        lblAdvertentieUitgeverij.setBounds(1320, 740, 100, 22);
 
         txtTitel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(txtTitel);
@@ -264,15 +270,15 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(txtPassWord);
         txtPassWord.setBounds(180, 790, 190, 28);
 
-        btnDeleteBoek.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnDeleteBoek.setText("Delete");
-        btnDeleteBoek.addActionListener(new java.awt.event.ActionListener() {
+        btnDeleteKleren.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnDeleteKleren.setText("Delete");
+        btnDeleteKleren.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteBoekActionPerformed(evt);
+                btnDeleteKlerenActionPerformed(evt);
             }
         });
-        getContentPane().add(btnDeleteBoek);
-        btnDeleteBoek.setBounds(470, 440, 90, 31);
+        getContentPane().add(btnDeleteKleren);
+        btnDeleteKleren.setBounds(1130, 440, 90, 31);
 
         btnEditPersoon.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnEditPersoon.setText("Edit");
@@ -350,7 +356,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
 
         txtAdvertentieUitgeverij.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(txtAdvertentieUitgeverij);
-        txtAdvertentieUitgeverij.setBounds(1450, 690, 190, 28);
+        txtAdvertentieUitgeverij.setBounds(1450, 740, 190, 28);
 
         lblAanspreekTitel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblAanspreekTitel3.setText("Titel:");
@@ -386,6 +392,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(lblAanspreekTitel5);
         lblAanspreekTitel5.setBounds(800, 580, 130, 22);
 
+        cbxGeslacht.setEditable(true);
         cbxGeslacht.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cbxGeslacht.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jongen", "Meisje" }));
         cbxGeslacht.addActionListener(new java.awt.event.ActionListener() {
@@ -414,7 +421,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSelectSpeelgoed);
-        btnSelectSpeelgoed.setBounds(1400, 440, 79, 31);
+        btnSelectSpeelgoed.setBounds(1360, 440, 79, 31);
 
         btnSelectBoek.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnSelectBoek.setText("Select");
@@ -424,7 +431,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSelectBoek);
-        btnSelectBoek.setBounds(350, 440, 79, 31);
+        btnSelectBoek.setBounds(370, 440, 79, 31);
 
         btnSelectKleren.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnSelectKleren.setText("Select");
@@ -434,7 +441,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSelectKleren);
-        btnSelectKleren.setBounds(1080, 440, 79, 31);
+        btnSelectKleren.setBounds(1040, 440, 79, 31);
 
         btnVerwijderFoto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnVerwijderFoto.setText("Verwijder foto");
@@ -468,11 +475,11 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         lblAdvertentieCategorie.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblAdvertentieCategorie.setText("Categorie:");
         getContentPane().add(lblAdvertentieCategorie);
-        lblAdvertentieCategorie.setBounds(1320, 740, 90, 22);
+        lblAdvertentieCategorie.setBounds(1320, 690, 90, 22);
 
         txtAdvertentieCategorie.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(txtAdvertentieCategorie);
-        txtAdvertentieCategorie.setBounds(1450, 740, 190, 28);
+        txtAdvertentieCategorie.setBounds(1450, 690, 190, 28);
 
         lblAdvertentieAuteur2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblAdvertentieAuteur2.setText("Auteur:");
@@ -501,10 +508,43 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(btnDeletePersoon);
         btnDeletePersoon.setBounds(170, 440, 90, 31);
 
+        btnDeleteBoek1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnDeleteBoek1.setText("Delete");
+        btnDeleteBoek1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteBoek1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnDeleteBoek1);
+        btnDeleteBoek1.setBounds(470, 440, 90, 31);
+
+        btnDeleteSpeelgoed.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnDeleteSpeelgoed.setText("Delete");
+        btnDeleteSpeelgoed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteSpeelgoedActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnDeleteSpeelgoed);
+        btnDeleteSpeelgoed.setBounds(1460, 440, 90, 31);
+
+        btnDeleteBaby2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnDeleteBaby2.setText("Delete");
+        btnDeleteBaby2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteBaby2btnDeleteBabyActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnDeleteBaby2);
+        btnDeleteBaby2.setBounds(810, 440, 90, 31);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
     Persoon selectPersoon = new Persoon();
     Boeken selectBoek = new Boeken();
+    Kleren selectKleren = new Kleren();
+    Speelgoed selectSpeelgoed = new Speelgoed();
+    Babyspullen selectBaby = new Babyspullen();
 
     private void ListboxOpvullen() {
         PersoonService p = new PersoonService();
@@ -555,7 +595,32 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         lstSpeelgoed.setListData(new Object[0]);
     }
     private void btnSelectBabyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectBabyActionPerformed
+        lblAdvertentieAuteur2.setText("leeftijd");
+        lblAdvertentieUitgeverij.setVisible(false);
+        selectBaby = (Babyspullen) lstBabySpullen.getSelectedValue();
+        Boolean test = selectBaby.getGeslacht();
+        if (selectBaby.getGeslacht()) {
+            cbxGeslacht.setSelectedIndex(1);
 
+        }
+        else{
+            cbxGeslacht.setSelectedIndex(2);
+        }
+            
+        
+
+        if (selectBaby != null) {
+            byte[] imageBytes;
+            byte[] image = selectBaby.getBabyspullenFoto();
+            ImageIcon icon = new ImageIcon(image);
+            Babyspullen babyspullen = selectBaby;
+            txtAdvertentieTitel.setText(selectBaby.getTitel());
+            txtOmschrijving.setText(selectBaby.getOmschrijving());
+            txtAdvertentieCategorie.setText(selectBaby.getCategorie());
+            //cbxGeslacht.setVerifyInputWhenFocusTarget(selectBaby.getGeslacht());
+            
+            btnFoto.setIcon(icon);
+        }
 
     }//GEN-LAST:event_btnSelectBabyActionPerformed
 
@@ -600,19 +665,20 @@ public class BeheerderUI1 extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnClearPersoonActionPerformed
 
-    private void btnDeleteBoekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteBoekActionPerformed
-        
-        Boeken boek = new Boeken();
-        boek =  (Boeken) lstBoeken.getSelectedValue();
+    private void btnDeleteKlerenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteKlerenActionPerformed
 
-        if (boek != null) {
-            Boeken Boek = boek;
-            BoekService.BoekDelete(boek);
+        Kleren kleren = new Kleren();
+        kleren =  (Kleren) lstKleren.getSelectedValue();
+
+        if (kleren != null) {
+            Kleren Kleren = kleren;
+            KlerenService.KlerenDelete(kleren);
+
 
         }
-        BoekListOpvullen();
-        ClearPersoon();
-    }//GEN-LAST:event_btnDeleteBoekActionPerformed
+        KlerenListOpvullen();
+
+    }//GEN-LAST:event_btnDeleteKlerenActionPerformed
 
     private void btnAddGebruiker2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddGebruiker2ActionPerformed
         // TODO add your handling code here:
@@ -653,6 +719,8 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSelectSpeelgoedActionPerformed
 
     private void btnSelectBoekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectBoekActionPerformed
+
+        cbxGeslacht.setVisible(false);
         selectBoek = (Boeken) lstBoeken.getSelectedValue();
 
         if (selectBoek != null) {
@@ -668,15 +736,29 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             txtAdvertentieCategorie.setText(selectBoek.getCategorie());
 
             btnFoto.setIcon(icon);
-           
-            
+
         }
     }//GEN-LAST:event_btnSelectBoekActionPerformed
 
     private void btnSelectKlerenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectKlerenActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSelectKlerenActionPerformed
 
+        selectBoek = (Boeken) lstBoeken.getSelectedValue();
+
+        if (selectBoek != null) {
+            byte[] imageBytes;
+            byte[] image = selectBoek.getBoekenFoto();
+            ImageIcon icon = new ImageIcon(image);
+            Boeken boek = selectBoek;
+            txtAdvertentieTitel.setText(selectBoek.getTitel());
+            txtAdvertentieUitgeverij.setText(selectBoek.getTitel());
+            txtOmschrijving.setText(selectBoek.getOmschrijving());
+            txtAdvertentieAuteur.setText(selectBoek.getAuteur());
+            txtAdvertentieUitgeverij.setText(selectBoek.getUitgeverij());
+            txtAdvertentieCategorie.setText(selectBoek.getCategorie());
+
+            btnFoto.setIcon(icon);
+    }//GEN-LAST:event_btnSelectKlerenActionPerformed
+    }
     private void btnSelectPeroonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectPeroonActionPerformed
         selectPersoon = (Persoon) lstPersonen.getSelectedValue();
 
@@ -702,7 +784,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVerwijderFotoActionPerformed
 
     private void btnDeletePersoonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletePersoonActionPerformed
-       Persoon persoon = new Persoon();
+        Persoon persoon = new Persoon();
         persoon = (Persoon) lstPersonen.getSelectedValue();
 
         if (persoon != null) {
@@ -711,6 +793,27 @@ public class BeheerderUI1 extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_btnDeletePersoonActionPerformed
+
+    private void btnDeleteBoek1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteBoek1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteBoek1ActionPerformed
+
+    private void btnDeleteBaby2btnDeleteBabyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteBaby2btnDeleteBabyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDeleteBaby2btnDeleteBabyActionPerformed
+
+    private void btnDeleteSpeelgoedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteSpeelgoedActionPerformed
+       Speelgoed speel = new Speelgoed();
+        speel =  (Speelgoed) lstSpeelgoed.getSelectedValue();
+
+        if (speel != null) {
+            Speelgoed Speel = speel;
+            SpeelgoedService.SpeelgoedDelete(speel);
+
+
+        }
+        SpeelgoedListOpvullen();
+    }//GEN-LAST:event_btnDeleteSpeelgoedActionPerformed
 
     /**
      * @param args the command line arguments
@@ -752,8 +855,11 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     private javax.swing.JButton btnAddPersoon;
     private javax.swing.JButton btnClearPersoon;
     private javax.swing.JButton btnDelete2;
-    private javax.swing.JButton btnDeleteBoek;
+    private javax.swing.JButton btnDeleteBaby2;
+    private javax.swing.JButton btnDeleteBoek1;
+    private javax.swing.JButton btnDeleteKleren;
     private javax.swing.JButton btnDeletePersoon;
+    private javax.swing.JButton btnDeleteSpeelgoed;
     private javax.swing.JButton btnEditPersoon;
     private javax.swing.JButton btnFoto;
     private javax.swing.JButton btnSelectBaby;

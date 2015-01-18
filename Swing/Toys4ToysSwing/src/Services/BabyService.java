@@ -58,12 +58,12 @@ public class BabyService {
         Query q = s.createQuery("from Babyspullen where id ='" +id+ "'");
         return (ArrayList<BabyService>)q.list();
     }
-    public static void BabyDelete(int id)
+    public static void BabyDelete(Babyspullen baby)
             
     {
         Session session = 
               HibernateUtil.getSessionFactory().openSession();
-         Query q = session.createQuery("from Babyspullen where id ='" +id+ "'");
+         Query q = session.createQuery("from Babyspullen where id ='" +baby+ "'");
          Babyspullen ba =  (Babyspullen)q.uniqueResult();
          session.beginTransaction();
          session.delete(ba);

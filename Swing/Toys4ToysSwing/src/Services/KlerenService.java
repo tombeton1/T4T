@@ -59,11 +59,11 @@ public class KlerenService {
         Query q = s.createQuery("from Kleren where id ='" +id+ "'");
         return (ArrayList<KlerenService>)q.list();
     }
-    public static void KlerenDelete(int id)
+    public static void KlerenDelete(Kleren kleren)
     {
         Session session = 
               HibernateUtil.getSessionFactory().openSession();
-         Query q = session.createQuery("from Kleren where id ='" +id+ "'");
+         Query q = session.createQuery("from Kleren where id ='" +kleren+ "'");
          Kleren k =  (Kleren)q.uniqueResult();
          session.beginTransaction();
          session.delete(k);

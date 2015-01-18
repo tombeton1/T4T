@@ -37,6 +37,7 @@ public class StartUp extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btnExit = new javax.swing.JButton();
         txtPassWord = new javax.swing.JPasswordField();
+        lblFalseLogin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Beheer voor Toys4Toys");
@@ -70,6 +71,8 @@ public class StartUp extends javax.swing.JFrame {
             }
         });
 
+        lblFalseLogin.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+
         javax.swing.GroupLayout txtUserNameLayout = new javax.swing.GroupLayout(txtUserName);
         txtUserName.setLayout(txtUserNameLayout);
         txtUserNameLayout.setHorizontalGroup(
@@ -91,6 +94,10 @@ public class StartUp extends javax.swing.JFrame {
                             .addComponent(txtUser)
                             .addComponent(txtPassWord))))
                 .addGap(242, 242, 242))
+            .addGroup(txtUserNameLayout.createSequentialGroup()
+                .addGap(352, 352, 352)
+                .addComponent(lblFalseLogin)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         txtUserNameLayout.setVerticalGroup(
             txtUserNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,7 +119,9 @@ public class StartUp extends javax.swing.JFrame {
                 .addGroup(txtUserNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLogin)
                     .addComponent(btnExit))
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addComponent(lblFalseLogin)
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -129,7 +138,7 @@ public class StartUp extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(1092, 590));
@@ -142,16 +151,20 @@ public class StartUp extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
 
-        LoginService log = new LoginService();
+       LoginService log = new LoginService();
         if (log.LoginVerify(txtUser.getText(), txtPassWord.getText())) {
             BeheerderUI1 b = new BeheerderUI1();
             b.setVisible(true);
+            this.setVisible(false);            
+            
+            b.setDefaultCloseOperation(EXIT_ON_CLOSE);
         }
-        
         else{
-            txtPassWord.setText("");
-            txtUser.setText("");
+            txtUser.setText(null);
+            txtPassWord.setText(null);
+            lblFalseLogin.setText("Uw naam en passwoord stemmen niet overeen");
         }
+
  
     }//GEN-LAST:event_btnLoginActionPerformed
 
@@ -196,6 +209,7 @@ public class StartUp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel lblFalseLogin;
     private javax.swing.JPasswordField txtPassWord;
     private javax.swing.JTextField txtUser;
     private javax.swing.JPanel txtUserName;

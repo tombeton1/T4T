@@ -60,11 +60,11 @@ public class SpeelgoedService {
         return (ArrayList<SpeelgoedService>)q.list();
     }
     
-    public static void SpeelgoedDelete(int id)
+    public static void SpeelgoedDelete(Speelgoed speel)
     {
         Session session = 
               HibernateUtil.getSessionFactory().openSession();
-         Query q = session.createQuery("from Speelgoed where id ='" +id+ "'");
+         Query q = session.createQuery("from Speelgoed where id ='" +speel+ "'");
          Speelgoed sp =  (Speelgoed)q.uniqueResult();
          session.beginTransaction();
          session.delete(sp);
