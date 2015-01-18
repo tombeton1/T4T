@@ -12,12 +12,14 @@ import Services.BoekService;
 import Services.KlerenService;
 import Services.PersoonService;
 import Services.SpeelgoedService;
+import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -79,7 +81,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         txtUserName = new javax.swing.JTextField();
         lblPassWord = new javax.swing.JLabel();
         txtPassWord = new javax.swing.JTextField();
-        btnDeletePersoon = new javax.swing.JButton();
+        btnDeleteBoek = new javax.swing.JButton();
         btnEditPersoon = new javax.swing.JButton();
         btnAddPersoon = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -98,7 +100,6 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         lblAanspreekTitel1 = new javax.swing.JLabel();
         txtAdvertentieUitgeverij = new javax.swing.JTextField();
         lblAanspreekTitel3 = new javax.swing.JLabel();
-        panFoto = new javax.swing.JPanel();
         lblAanspreekTitel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtOmschrijving = new javax.swing.JTextArea();
@@ -117,6 +118,8 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         txtAdvertentieCategorie = new javax.swing.JTextField();
         lblAdvertentieAuteur2 = new javax.swing.JLabel();
         txtAdvertentieAuteur = new javax.swing.JTextField();
+        btnFoto = new javax.swing.JButton();
+        btnDeletePersoon = new javax.swing.JButton();
 
         btnDelete2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnDelete2.setText("Delete");
@@ -167,7 +170,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         txtEditGebruiker3.setText("Edit");
         txtEditGebruiker3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEditGebruiker3ActionPerformed(evt);
+                btnDeleteBoekActionPerformed(evt);
             }
         });
 
@@ -261,15 +264,15 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(txtPassWord);
         txtPassWord.setBounds(180, 790, 190, 28);
 
-        btnDeletePersoon.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnDeletePersoon.setText("Delete");
-        btnDeletePersoon.addActionListener(new java.awt.event.ActionListener() {
+        btnDeleteBoek.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnDeleteBoek.setText("Delete");
+        btnDeleteBoek.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeletePersoonActionPerformed(evt);
+                btnDeleteBoekActionPerformed(evt);
             }
         });
-        getContentPane().add(btnDeletePersoon);
-        btnDeletePersoon.setBounds(170, 440, 90, 31);
+        getContentPane().add(btnDeleteBoek);
+        btnDeleteBoek.setBounds(470, 440, 90, 31);
 
         btnEditPersoon.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnEditPersoon.setText("Edit");
@@ -354,11 +357,6 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(lblAanspreekTitel3);
         lblAanspreekTitel3.setBounds(810, 510, 50, 22);
 
-        panFoto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        panFoto.setLayout(new javax.swing.BoxLayout(panFoto, javax.swing.BoxLayout.LINE_AXIS));
-        getContentPane().add(panFoto);
-        panFoto.setBounds(500, 570, 190, 190);
-
         lblAanspreekTitel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblAanspreekTitel4.setText("Foto:");
         getContentPane().add(lblAanspreekTitel4);
@@ -426,7 +424,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSelectBoek);
-        btnSelectBoek.setBounds(410, 440, 79, 31);
+        btnSelectBoek.setBounds(350, 440, 79, 31);
 
         btnSelectKleren.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnSelectKleren.setText("Select");
@@ -485,6 +483,24 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(txtAdvertentieAuteur);
         txtAdvertentieAuteur.setBounds(1450, 640, 190, 28);
 
+        btnFoto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnFoto.setText("Geen afbeelding");
+        btnFoto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        btnFoto.setFocusable(false);
+        btnFoto.setRolloverEnabled(false);
+        getContentPane().add(btnFoto);
+        btnFoto.setBounds(490, 550, 220, 200);
+
+        btnDeletePersoon.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnDeletePersoon.setText("Delete");
+        btnDeletePersoon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeletePersoonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnDeletePersoon);
+        btnDeletePersoon.setBounds(170, 440, 90, 31);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
     Persoon selectPersoon = new Persoon();
@@ -532,7 +548,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         txtWoonplaats.setText(null);
         txtUserName.setText(null);
         txtPassWord.setText(null);
-        
+
         lstBabySpullen.setListData(new Object[0]);
         lstBoeken.setListData(new Object[0]);
         lstKleren.setListData(new Object[0]);
@@ -542,18 +558,6 @@ public class BeheerderUI1 extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnSelectBabyActionPerformed
-
-    private void btnDeletePersoonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletePersoonActionPerformed
-        Persoon persoon = new Persoon();
-        persoon = (Persoon) lstPersonen.getSelectedValue();
-
-        if (persoon != null) {
-            Persoon Persoon = persoon;
-            PersoonService.PersoonDelete(persoon);
-
-        }
-        ListboxOpvullen();
-    }//GEN-LAST:event_btnDeletePersoonActionPerformed
 
     private void btnEditPersoonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditPersoonActionPerformed
 
@@ -596,9 +600,19 @@ public class BeheerderUI1 extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnClearPersoonActionPerformed
 
-    private void txtEditGebruiker3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEditGebruiker3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEditGebruiker3ActionPerformed
+    private void btnDeleteBoekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteBoekActionPerformed
+        
+        Boeken boek = new Boeken();
+        boek =  (Boeken) lstBoeken.getSelectedValue();
+
+        if (boek != null) {
+            Boeken Boek = boek;
+            BoekService.BoekDelete(boek);
+
+        }
+        BoekListOpvullen();
+        ClearPersoon();
+    }//GEN-LAST:event_btnDeleteBoekActionPerformed
 
     private void btnAddGebruiker2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddGebruiker2ActionPerformed
         // TODO add your handling code here:
@@ -624,7 +638,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(this,"Fout bij lezen bestand");
+            JOptionPane.showMessageDialog(this, "Fout bij lezen bestand");
         }
 
         //txtLijnen.setText("" + regels.size());
@@ -639,9 +653,12 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSelectSpeelgoedActionPerformed
 
     private void btnSelectBoekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectBoekActionPerformed
-        selectBoek =  (Boeken) lstBoeken.getSelectedValue();
+        selectBoek = (Boeken) lstBoeken.getSelectedValue();
 
         if (selectBoek != null) {
+            byte[] imageBytes;
+            byte[] image = selectBoek.getBoekenFoto();
+            ImageIcon icon = new ImageIcon(image);
             Boeken boek = selectBoek;
             txtAdvertentieTitel.setText(selectBoek.getTitel());
             txtAdvertentieUitgeverij.setText(selectBoek.getTitel());
@@ -649,6 +666,10 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             txtAdvertentieAuteur.setText(selectBoek.getAuteur());
             txtAdvertentieUitgeverij.setText(selectBoek.getUitgeverij());
             txtAdvertentieCategorie.setText(selectBoek.getCategorie());
+
+            btnFoto.setIcon(icon);
+           
+            
         }
     }//GEN-LAST:event_btnSelectBoekActionPerformed
 
@@ -679,6 +700,17 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     private void btnVerwijderFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerwijderFotoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnVerwijderFotoActionPerformed
+
+    private void btnDeletePersoonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletePersoonActionPerformed
+       Persoon persoon = new Persoon();
+        persoon = (Persoon) lstPersonen.getSelectedValue();
+
+        if (persoon != null) {
+            Persoon Persoon = persoon;
+            PersoonService.PersoonDelete(persoon);
+
+        }
+    }//GEN-LAST:event_btnDeletePersoonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -720,8 +752,10 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     private javax.swing.JButton btnAddPersoon;
     private javax.swing.JButton btnClearPersoon;
     private javax.swing.JButton btnDelete2;
+    private javax.swing.JButton btnDeleteBoek;
     private javax.swing.JButton btnDeletePersoon;
     private javax.swing.JButton btnEditPersoon;
+    private javax.swing.JButton btnFoto;
     private javax.swing.JButton btnSelectBaby;
     private javax.swing.JButton btnSelectBoek;
     private javax.swing.JButton btnSelectFile;
@@ -767,7 +801,6 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     private javax.swing.JList lstKleren;
     private javax.swing.JList lstPersonen;
     private javax.swing.JList lstSpeelgoed;
-    private javax.swing.JPanel panFoto;
     private javax.swing.JTextField txtAanspreekTitel2;
     private javax.swing.JTextField txtAdvertentieAuteur;
     private javax.swing.JTextField txtAdvertentieCategorie;

@@ -49,16 +49,17 @@ public class BoekService {
         return (ArrayList<BoekService>)q.list();
     }
     
-      public static void BoekDelete(int id)
+      public static void BoekDelete(Boeken boek)
     {
         Session session = 
               HibernateUtil.getSessionFactory().openSession();
-         Query q = session.createQuery("from Boeken where id ='" +id+ "'");
+         Query q = session.createQuery("from Boeken where id ='" +boek+ "'");
          Boeken b =  (Boeken)q.uniqueResult();
          session.beginTransaction();
          session.delete(b);
          session.getTransaction().commit();
     }
+      
   
     
 }
