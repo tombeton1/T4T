@@ -87,7 +87,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         btnDeleteKleren = new javax.swing.JButton();
         btnEditPersoon = new javax.swing.JButton();
         btnAddPersoon = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblBackground = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -115,7 +115,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         btnSelectKleren = new javax.swing.JButton();
         btnVerwijderFoto = new javax.swing.JButton();
         btnClearPersoon = new javax.swing.JButton();
-        lblAanspreekTitel6 = new javax.swing.JLabel();
+        lblGeslacht = new javax.swing.JLabel();
         txtAdvertentieTitel = new javax.swing.JTextField();
         lblAdvertentieCategorie = new javax.swing.JLabel();
         txtAdvertentieCategorie = new javax.swing.JTextField();
@@ -126,6 +126,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         btnDeleteBoek1 = new javax.swing.JButton();
         btnDeleteSpeelgoed = new javax.swing.JButton();
         btnDeleteBaby2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         btnDelete2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnDelete2.setText("Delete");
@@ -188,14 +189,15 @@ public class BeheerderUI1 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Beheerder");
-        setMinimumSize(new java.awt.Dimension(1620, 920));
+        setFocusTraversalPolicyProvider(true);
+        setMinimumSize(new java.awt.Dimension(1500, 800));
         getContentPane().setLayout(null);
 
         lstPersonen.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jScrollPane1.setViewportView(lstPersonen);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(37, 103, 251, 320);
+        jScrollPane1.setBounds(10, 60, 251, 310);
 
         btnSelectBaby.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnSelectBaby.setText("Select");
@@ -205,70 +207,70 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSelectBaby);
-        btnSelectBaby.setBounds(710, 440, 79, 31);
+        btnSelectBaby.setBounds(590, 380, 79, 31);
 
         lblAdvertentieUitgeverij.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblAdvertentieUitgeverij.setText("Uitgeverij:");
         getContentPane().add(lblAdvertentieUitgeverij);
-        lblAdvertentieUitgeverij.setBounds(1320, 740, 100, 22);
+        lblAdvertentieUitgeverij.setBounds(390, 590, 100, 22);
 
         txtTitel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(txtTitel);
-        txtTitel.setBounds(180, 510, 190, 28);
+        txtTitel.setBounds(140, 440, 190, 28);
 
         lblVoornaam.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblVoornaam.setText("Voornaam:");
         getContentPane().add(lblVoornaam);
-        lblVoornaam.setBounds(30, 560, 86, 22);
+        lblVoornaam.setBounds(10, 480, 86, 22);
 
         txtVoornaam.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(txtVoornaam);
-        txtVoornaam.setBounds(180, 560, 190, 28);
+        txtVoornaam.setBounds(140, 480, 190, 28);
 
         lblFamilieNaam.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblFamilieNaam.setText("Familienaam");
+        lblFamilieNaam.setText("Familienaam:");
         getContentPane().add(lblFamilieNaam);
-        lblFamilieNaam.setBounds(30, 610, 97, 22);
+        lblFamilieNaam.setBounds(10, 520, 103, 22);
 
         txtFamilieNaam.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(txtFamilieNaam);
-        txtFamilieNaam.setBounds(180, 600, 190, 28);
+        txtFamilieNaam.setBounds(140, 520, 190, 28);
 
         lblEmail.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblEmail.setText("E-mail:");
         getContentPane().add(lblEmail);
-        lblEmail.setBounds(30, 660, 55, 22);
+        lblEmail.setBounds(10, 560, 55, 22);
 
         txtEmail.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(txtEmail);
-        txtEmail.setBounds(180, 650, 190, 28);
+        txtEmail.setBounds(140, 560, 190, 28);
 
         lblWoonplaats.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblWoonplaats.setText("WoonPlaats:");
         getContentPane().add(lblWoonplaats);
-        lblWoonplaats.setBounds(30, 700, 98, 22);
+        lblWoonplaats.setBounds(10, 600, 98, 22);
 
         txtWoonplaats.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(txtWoonplaats);
-        txtWoonplaats.setBounds(180, 700, 190, 28);
+        txtWoonplaats.setBounds(140, 600, 190, 28);
 
         lblUserName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblUserName.setText("Gebruiker naam:");
+        lblUserName.setText("Gebruikersnaam:");
         getContentPane().add(lblUserName);
-        lblUserName.setBounds(30, 750, 130, 22);
+        lblUserName.setBounds(10, 640, 140, 22);
 
         txtUserName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(txtUserName);
-        txtUserName.setBounds(180, 740, 190, 28);
+        txtUserName.setBounds(140, 640, 190, 28);
 
         lblPassWord.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblPassWord.setText("Wachtwoord:");
         getContentPane().add(lblPassWord);
-        lblPassWord.setBounds(30, 790, 104, 22);
+        lblPassWord.setBounds(10, 680, 104, 22);
 
         txtPassWord.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(txtPassWord);
-        txtPassWord.setBounds(180, 790, 190, 28);
+        txtPassWord.setBounds(140, 680, 190, 28);
 
         btnDeleteKleren.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnDeleteKleren.setText("Delete");
@@ -278,7 +280,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDeleteKleren);
-        btnDeleteKleren.setBounds(1130, 440, 90, 31);
+        btnDeleteKleren.setBounds(980, 380, 90, 31);
 
         btnEditPersoon.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnEditPersoon.setText("Edit");
@@ -288,7 +290,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnEditPersoon);
-        btnEditPersoon.setBounds(20, 840, 107, 31);
+        btnEditPersoon.setBounds(10, 720, 107, 31);
 
         btnAddPersoon.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnAddPersoon.setText("Add");
@@ -298,75 +300,75 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnAddPersoon);
-        btnAddPersoon.setBounds(140, 840, 100, 31);
+        btnAddPersoon.setBounds(130, 720, 100, 31);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setText("Gebruikers Lijst");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(48, 40, 179, 50);
+        lblBackground.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblBackground.setText("Gebruikers Lijst");
+        getContentPane().add(lblBackground);
+        lblBackground.setBounds(10, 20, 179, 50);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel3.setText("Babyspullen");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(630, 30, 220, 60);
+        jLabel3.setBounds(580, 10, 220, 60);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel4.setText("Boeken");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(310, 30, 90, 60);
+        jLabel4.setBounds(290, 10, 90, 60);
 
         lstBoeken.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jScrollPane4.setViewportView(lstBoeken);
 
         getContentPane().add(jScrollPane4);
-        jScrollPane4.setBounds(310, 110, 290, 320);
+        jScrollPane4.setBounds(280, 60, 290, 310);
 
         lstBabySpullen.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jScrollPane5.setViewportView(lstBabySpullen);
 
         getContentPane().add(jScrollPane5);
-        jScrollPane5.setBounds(630, 110, 290, 320);
+        jScrollPane5.setBounds(580, 60, 290, 310);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel5.setText("Kleren");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(960, 30, 220, 60);
+        jLabel5.setBounds(880, 20, 150, 50);
 
         lstKleren.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jScrollPane6.setViewportView(lstKleren);
 
         getContentPane().add(jScrollPane6);
-        jScrollPane6.setBounds(960, 110, 290, 320);
+        jScrollPane6.setBounds(880, 60, 290, 310);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel6.setText("Speelgoed");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(1290, 30, 220, 60);
+        jLabel6.setBounds(1180, 20, 140, 50);
 
         lstSpeelgoed.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jScrollPane7.setViewportView(lstSpeelgoed);
 
         getContentPane().add(jScrollPane7);
-        jScrollPane7.setBounds(1290, 110, 290, 320);
+        jScrollPane7.setBounds(1180, 60, 290, 310);
 
         lblAanspreekTitel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblAanspreekTitel1.setText("Aanspreek Titel:");
         getContentPane().add(lblAanspreekTitel1);
-        lblAanspreekTitel1.setBounds(30, 510, 127, 22);
+        lblAanspreekTitel1.setBounds(10, 440, 127, 22);
 
         txtAdvertentieUitgeverij.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(txtAdvertentieUitgeverij);
-        txtAdvertentieUitgeverij.setBounds(1450, 740, 190, 28);
+        txtAdvertentieUitgeverij.setBounds(480, 590, 190, 28);
 
         lblAanspreekTitel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblAanspreekTitel3.setText("Titel:");
         getContentPane().add(lblAanspreekTitel3);
-        lblAanspreekTitel3.setBounds(810, 510, 50, 22);
+        lblAanspreekTitel3.setBounds(390, 470, 50, 22);
 
         lblAanspreekTitel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblAanspreekTitel4.setText("Foto:");
         getContentPane().add(lblAanspreekTitel4);
-        lblAanspreekTitel4.setBounds(440, 570, 50, 22);
+        lblAanspreekTitel4.setBounds(1050, 440, 50, 22);
 
         txtOmschrijving.setColumns(20);
         txtOmschrijving.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -375,7 +377,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         jScrollPane2.setViewportView(txtOmschrijving);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(930, 580, 320, 190);
+        jScrollPane2.setBounds(700, 470, 290, 190);
 
         btnSelectFile.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnSelectFile.setText("Kies een andere foto");
@@ -385,12 +387,12 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSelectFile);
-        btnSelectFile.setBounds(490, 780, 220, 30);
+        btnSelectFile.setBounds(1060, 680, 220, 30);
 
         lblAanspreekTitel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblAanspreekTitel5.setText("Omschrijving:");
         getContentPane().add(lblAanspreekTitel5);
-        lblAanspreekTitel5.setBounds(800, 580, 130, 22);
+        lblAanspreekTitel5.setBounds(700, 440, 130, 22);
 
         cbxGeslacht.setEditable(true);
         cbxGeslacht.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -401,7 +403,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cbxGeslacht);
-        cbxGeslacht.setBounds(1450, 580, 120, 30);
+        cbxGeslacht.setBounds(480, 630, 120, 30);
 
         btnSelectPeroon.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnSelectPeroon.setText("Select");
@@ -411,7 +413,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSelectPeroon);
-        btnSelectPeroon.setBounds(60, 440, 79, 31);
+        btnSelectPeroon.setBounds(10, 380, 79, 31);
 
         btnSelectSpeelgoed.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnSelectSpeelgoed.setText("Select");
@@ -421,7 +423,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSelectSpeelgoed);
-        btnSelectSpeelgoed.setBounds(1360, 440, 79, 31);
+        btnSelectSpeelgoed.setBounds(1180, 380, 79, 31);
 
         btnSelectBoek.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnSelectBoek.setText("Select");
@@ -431,7 +433,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSelectBoek);
-        btnSelectBoek.setBounds(370, 440, 79, 31);
+        btnSelectBoek.setBounds(290, 380, 79, 31);
 
         btnSelectKleren.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnSelectKleren.setText("Select");
@@ -441,7 +443,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSelectKleren);
-        btnSelectKleren.setBounds(1040, 440, 79, 31);
+        btnSelectKleren.setBounds(890, 380, 79, 31);
 
         btnVerwijderFoto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnVerwijderFoto.setText("Verwijder foto");
@@ -451,7 +453,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnVerwijderFoto);
-        btnVerwijderFoto.setBounds(490, 830, 220, 30);
+        btnVerwijderFoto.setBounds(1060, 720, 220, 30);
 
         btnClearPersoon.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnClearPersoon.setText("Clear");
@@ -461,34 +463,34 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnClearPersoon);
-        btnClearPersoon.setBounds(260, 840, 107, 31);
+        btnClearPersoon.setBounds(240, 720, 107, 31);
 
-        lblAanspreekTitel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        lblAanspreekTitel6.setText("Geslacht:");
-        getContentPane().add(lblAanspreekTitel6);
-        lblAanspreekTitel6.setBounds(1320, 590, 100, 22);
+        lblGeslacht.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblGeslacht.setText("Geslacht:");
+        getContentPane().add(lblGeslacht);
+        lblGeslacht.setBounds(390, 630, 100, 22);
 
         txtAdvertentieTitel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(txtAdvertentieTitel);
-        txtAdvertentieTitel.setBounds(930, 510, 190, 28);
+        txtAdvertentieTitel.setBounds(480, 470, 190, 28);
 
         lblAdvertentieCategorie.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblAdvertentieCategorie.setText("Categorie:");
         getContentPane().add(lblAdvertentieCategorie);
-        lblAdvertentieCategorie.setBounds(1320, 690, 90, 22);
+        lblAdvertentieCategorie.setBounds(390, 550, 90, 22);
 
         txtAdvertentieCategorie.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(txtAdvertentieCategorie);
-        txtAdvertentieCategorie.setBounds(1450, 690, 190, 28);
+        txtAdvertentieCategorie.setBounds(480, 550, 190, 28);
 
         lblAdvertentieAuteur2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblAdvertentieAuteur2.setText("Auteur:");
         getContentPane().add(lblAdvertentieAuteur2);
-        lblAdvertentieAuteur2.setBounds(1320, 640, 100, 22);
+        lblAdvertentieAuteur2.setBounds(390, 510, 100, 22);
 
         txtAdvertentieAuteur.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(txtAdvertentieAuteur);
-        txtAdvertentieAuteur.setBounds(1450, 640, 190, 28);
+        txtAdvertentieAuteur.setBounds(480, 510, 190, 28);
 
         btnFoto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnFoto.setText("Geen afbeelding");
@@ -496,7 +498,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         btnFoto.setFocusable(false);
         btnFoto.setRolloverEnabled(false);
         getContentPane().add(btnFoto);
-        btnFoto.setBounds(490, 550, 220, 200);
+        btnFoto.setBounds(1050, 470, 220, 200);
 
         btnDeletePersoon.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnDeletePersoon.setText("Delete");
@@ -506,7 +508,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDeletePersoon);
-        btnDeletePersoon.setBounds(170, 440, 90, 31);
+        btnDeletePersoon.setBounds(90, 380, 90, 31);
 
         btnDeleteBoek1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnDeleteBoek1.setText("Delete");
@@ -516,7 +518,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDeleteBoek1);
-        btnDeleteBoek1.setBounds(470, 440, 90, 31);
+        btnDeleteBoek1.setBounds(380, 380, 90, 31);
 
         btnDeleteSpeelgoed.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnDeleteSpeelgoed.setText("Delete");
@@ -526,17 +528,21 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDeleteSpeelgoed);
-        btnDeleteSpeelgoed.setBounds(1460, 440, 90, 31);
+        btnDeleteSpeelgoed.setBounds(1270, 380, 90, 31);
 
         btnDeleteBaby2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnDeleteBaby2.setText("Delete");
         btnDeleteBaby2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteBaby2btnDeleteBabyActionPerformed(evt);
+                btnDeleteBabyActionPerformed(evt);
             }
         });
         getContentPane().add(btnDeleteBaby2);
-        btnDeleteBaby2.setBounds(810, 440, 90, 31);
+        btnDeleteBaby2.setBounds(680, 380, 90, 31);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/vector1.jpg"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 1920, 1200);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -595,19 +601,16 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         lstSpeelgoed.setListData(new Object[0]);
     }
     private void btnSelectBabyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectBabyActionPerformed
-        lblAdvertentieAuteur2.setText("leeftijd");
+        txtAdvertentieAuteur.setText("leeftijd");
         lblAdvertentieUitgeverij.setVisible(false);
         selectBaby = (Babyspullen) lstBabySpullen.getSelectedValue();
-        Boolean test = selectBaby.getGeslacht();
-        if (selectBaby.getGeslacht()) {
-            cbxGeslacht.setSelectedIndex(1);
 
+        if (selectBaby.getGeslacht()) {
+            cbxGeslacht.setSelectedIndex(0);
+
+        } else {
+            cbxGeslacht.setSelectedIndex(1);
         }
-        else{
-            cbxGeslacht.setSelectedIndex(2);
-        }
-            
-        
 
         if (selectBaby != null) {
             byte[] imageBytes;
@@ -617,10 +620,12 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             txtAdvertentieTitel.setText(selectBaby.getTitel());
             txtOmschrijving.setText(selectBaby.getOmschrijving());
             txtAdvertentieCategorie.setText(selectBaby.getCategorie());
-            //cbxGeslacht.setVerifyInputWhenFocusTarget(selectBaby.getGeslacht());
-            
+
             btnFoto.setIcon(icon);
         }
+
+        txtAdvertentieAuteur.setText("Auteur");
+        lblAdvertentieUitgeverij.setVisible(true);
 
     }//GEN-LAST:event_btnSelectBabyActionPerformed
 
@@ -641,7 +646,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
 
     private void btnAddPersoonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPersoonActionPerformed
 
-        if (selectPersoon != null) {
+        if (txtUserName != null) {
             JOptionPane.showMessageDialog(this, "Deze gebruiker bestaat al indien, u een nieuw gebruiker wil toevoegen kies dan voor de Add knop nadat u alle velden heeft leeg gemaakt met de Clear knop");
         } else {
 
@@ -668,12 +673,11 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     private void btnDeleteKlerenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteKlerenActionPerformed
 
         Kleren kleren = new Kleren();
-        kleren =  (Kleren) lstKleren.getSelectedValue();
+        kleren = (Kleren) lstKleren.getSelectedValue();
 
         if (kleren != null) {
             Kleren Kleren = kleren;
             KlerenService.KlerenDelete(kleren);
-
 
         }
         KlerenListOpvullen();
@@ -721,12 +725,16 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     private void btnSelectBoekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectBoekActionPerformed
 
         cbxGeslacht.setVisible(false);
+        lblGeslacht.setVisible(false);
         selectBoek = (Boeken) lstBoeken.getSelectedValue();
-
-        if (selectBoek != null) {
+        if (selectBoek.getBoekenFoto() != null) {
             byte[] imageBytes;
             byte[] image = selectBoek.getBoekenFoto();
             ImageIcon icon = new ImageIcon(image);
+            btnFoto.setIcon(icon);
+        }
+        if (selectBoek != null) {
+
             Boeken boek = selectBoek;
             txtAdvertentieTitel.setText(selectBoek.getTitel());
             txtAdvertentieUitgeverij.setText(selectBoek.getTitel());
@@ -735,9 +743,9 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             txtAdvertentieUitgeverij.setText(selectBoek.getUitgeverij());
             txtAdvertentieCategorie.setText(selectBoek.getCategorie());
 
-            btnFoto.setIcon(icon);
-
         }
+        cbxGeslacht.setVisible(true);
+        lblGeslacht.setVisible(true);
     }//GEN-LAST:event_btnSelectBoekActionPerformed
 
     private void btnSelectKlerenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectKlerenActionPerformed
@@ -798,18 +806,17 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnDeleteBoek1ActionPerformed
 
-    private void btnDeleteBaby2btnDeleteBabyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteBaby2btnDeleteBabyActionPerformed
+    private void btnDeleteBabyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteBabyActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnDeleteBaby2btnDeleteBabyActionPerformed
+    }//GEN-LAST:event_btnDeleteBabyActionPerformed
 
     private void btnDeleteSpeelgoedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteSpeelgoedActionPerformed
-       Speelgoed speel = new Speelgoed();
-        speel =  (Speelgoed) lstSpeelgoed.getSelectedValue();
+        Speelgoed speel = new Speelgoed();
+        speel = (Speelgoed) lstSpeelgoed.getSelectedValue();
 
         if (speel != null) {
             Speelgoed Speel = speel;
             SpeelgoedService.SpeelgoedDelete(speel);
-
 
         }
         SpeelgoedListOpvullen();
@@ -870,7 +877,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     private javax.swing.JButton btnSelectSpeelgoed;
     private javax.swing.JButton btnVerwijderFoto;
     private javax.swing.JComboBox cbxGeslacht;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -886,14 +893,15 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     private javax.swing.JLabel lblAanspreekTitel3;
     private javax.swing.JLabel lblAanspreekTitel4;
     private javax.swing.JLabel lblAanspreekTitel5;
-    private javax.swing.JLabel lblAanspreekTitel6;
     private javax.swing.JLabel lblAdvertentieAuteur2;
     private javax.swing.JLabel lblAdvertentieCategorie;
     private javax.swing.JLabel lblAdvertentieUitgeverij;
+    private javax.swing.JLabel lblBackground;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblEmail2;
     private javax.swing.JLabel lblFamilieNaam;
     private javax.swing.JLabel lblFamilieNaam2;
+    private javax.swing.JLabel lblGeslacht;
     private javax.swing.JLabel lblPassWord;
     private javax.swing.JLabel lblPassWord2;
     private javax.swing.JLabel lblUserName;
