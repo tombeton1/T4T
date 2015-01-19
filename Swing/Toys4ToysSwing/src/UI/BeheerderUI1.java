@@ -125,7 +125,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         btnDeletePersoon = new javax.swing.JButton();
         btnDeleteBoek1 = new javax.swing.JButton();
         btnDeleteSpeelgoed = new javax.swing.JButton();
-        btnDeleteBaby2 = new javax.swing.JButton();
+        btnDeleteBaby = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         btnDelete2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -514,7 +514,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         btnDeleteBoek1.setText("Delete");
         btnDeleteBoek1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteBoek1ActionPerformed(evt);
+                btnDeleteBoekActionPerformed(evt);
             }
         });
         getContentPane().add(btnDeleteBoek1);
@@ -530,15 +530,15 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(btnDeleteSpeelgoed);
         btnDeleteSpeelgoed.setBounds(1270, 380, 90, 31);
 
-        btnDeleteBaby2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnDeleteBaby2.setText("Delete");
-        btnDeleteBaby2.addActionListener(new java.awt.event.ActionListener() {
+        btnDeleteBaby.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnDeleteBaby.setText("Delete");
+        btnDeleteBaby.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteBabyActionPerformed(evt);
             }
         });
-        getContentPane().add(btnDeleteBaby2);
-        btnDeleteBaby2.setBounds(680, 380, 90, 31);
+        getContentPane().add(btnDeleteBaby);
+        btnDeleteBaby.setBounds(680, 380, 90, 31);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/vector1.jpg"))); // NOI18N
         getContentPane().add(jLabel2);
@@ -551,38 +551,38 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     Kleren selectKleren = new Kleren();
     Speelgoed selectSpeelgoed = new Speelgoed();
     Babyspullen selectBaby = new Babyspullen();
-
+    
     private void ListboxOpvullen() {
         PersoonService p = new PersoonService();
         lstPersonen.setListData(p.AllePersonenOphalen().toArray());
     }
-
+    
     private void BoekListOpvullen() {
         BoekService b = new BoekService();
         lstBoeken.setListData(b.SelecteerBoek(selectPersoon.getId()).toArray());
-
+        
     }
-
+    
     private void BabyListOpvullen() {
         BabyService ba = new BabyService();
         if (selectPersoon != null) {
             lstBabySpullen.setListData(ba.SelecteerBaby(selectPersoon.getId()).toArray());
         }
-
+        
     }
-
+    
     private void KlerenListOpvullen() {
         KlerenService k = new KlerenService();
         lstKleren.setListData(k.SelecteerKleren(selectPersoon.getId()).toArray());
-
+        
     }
-
+    
     private void SpeelgoedListOpvullen() {
         SpeelgoedService sp = new SpeelgoedService();
         lstSpeelgoed.setListData(sp.SelecteerSpeelgoed(selectPersoon.getId()).toArray());
-
+        
     }
-
+    
     private void ClearPersoon() {
         selectPersoon = null;
         txtTitel.setText(null);
@@ -594,7 +594,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         txtWoonplaats.setText(null);
         txtUserName.setText(null);
         txtPassWord.setText(null);
-
+        
         lstBabySpullen.setListData(new Object[0]);
         lstBoeken.setListData(new Object[0]);
         lstKleren.setListData(new Object[0]);
@@ -604,14 +604,14 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         txtAdvertentieAuteur.setText("leeftijd");
         lblAdvertentieUitgeverij.setVisible(false);
         selectBaby = (Babyspullen) lstBabySpullen.getSelectedValue();
-
+        
         if (selectBaby.getGeslacht()) {
             cbxGeslacht.setSelectedIndex(0);
-
+            
         } else {
             cbxGeslacht.setSelectedIndex(1);
         }
-
+        
         if (selectBaby != null) {
             byte[] imageBytes;
             byte[] image = selectBaby.getBabyspullenFoto();
@@ -620,17 +620,17 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             txtAdvertentieTitel.setText(selectBaby.getTitel());
             txtOmschrijving.setText(selectBaby.getOmschrijving());
             txtAdvertentieCategorie.setText(selectBaby.getCategorie());
-
+            
             btnFoto.setIcon(icon);
         }
-
+        
         txtAdvertentieAuteur.setText("Auteur");
         lblAdvertentieUitgeverij.setVisible(true);
 
     }//GEN-LAST:event_btnSelectBabyActionPerformed
 
     private void btnEditPersoonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditPersoonActionPerformed
-
+        
         if (selectPersoon != null) {
             selectPersoon.setAanspreekTitel(txtTitel.getText());
             selectPersoon.setVoornaam(txtVoornaam.getText());
@@ -645,11 +645,11 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditPersoonActionPerformed
 
     private void btnAddPersoonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPersoonActionPerformed
-
-        if (txtUserName != null) {
+        
+        if (selectPersoon != null) {
             JOptionPane.showMessageDialog(this, "Deze gebruiker bestaat al indien, u een nieuw gebruiker wil toevoegen kies dan voor de Add knop nadat u alle velden heeft leeg gemaakt met de Clear knop");
         } else {
-
+            
             Persoon p = new Persoon();
             p.setAanspreekTitel(txtTitel.getText());
             p.setVoornaam(txtVoornaam.getText());
@@ -658,7 +658,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             p.setWoonPlaats(txtWoonplaats.getText());
             p.setUserName(txtUserName.getText());
             p.setPassWord(txtPassWord.getText());
-
+            
             PersoonService.PersoonAdd(p);
         }
         ListboxOpvullen();
@@ -671,14 +671,14 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClearPersoonActionPerformed
 
     private void btnDeleteKlerenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteKlerenActionPerformed
-
+        
         Kleren kleren = new Kleren();
         kleren = (Kleren) lstKleren.getSelectedValue();
-
+        
         if (kleren != null) {
             Kleren Kleren = kleren;
             KlerenService.KlerenDelete(kleren);
-
+            
         }
         KlerenListOpvullen();
 
@@ -692,19 +692,19 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         JFileChooser dialog = new JFileChooser();
         dialog.showOpenDialog(this);
         String file = dialog.getSelectedFile().getAbsolutePath();
-
+        
         BufferedReader in;
         ArrayList<String> regels = new ArrayList<>();
         String regel;
         try {
             in = new BufferedReader(new FileReader(file));
             regel = in.readLine();
-
+            
             while (regel != null) {
                 regels.add(regel);
                 regel = in.readLine();
             }
-
+            
         } catch (FileNotFoundException ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
         } catch (IOException ex) {
@@ -723,7 +723,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSelectSpeelgoedActionPerformed
 
     private void btnSelectBoekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectBoekActionPerformed
-
+        
         cbxGeslacht.setVisible(false);
         lblGeslacht.setVisible(false);
         selectBoek = (Boeken) lstBoeken.getSelectedValue();
@@ -734,7 +734,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             btnFoto.setIcon(icon);
         }
         if (selectBoek != null) {
-
+            
             Boeken boek = selectBoek;
             txtAdvertentieTitel.setText(selectBoek.getTitel());
             txtAdvertentieUitgeverij.setText(selectBoek.getTitel());
@@ -742,16 +742,16 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             txtAdvertentieAuteur.setText(selectBoek.getAuteur());
             txtAdvertentieUitgeverij.setText(selectBoek.getUitgeverij());
             txtAdvertentieCategorie.setText(selectBoek.getCategorie());
-
+            
         }
         cbxGeslacht.setVisible(true);
         lblGeslacht.setVisible(true);
     }//GEN-LAST:event_btnSelectBoekActionPerformed
 
     private void btnSelectKlerenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectKlerenActionPerformed
-
+        
         selectBoek = (Boeken) lstBoeken.getSelectedValue();
-
+        
         if (selectBoek != null) {
             byte[] imageBytes;
             byte[] image = selectBoek.getBoekenFoto();
@@ -763,13 +763,13 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             txtAdvertentieAuteur.setText(selectBoek.getAuteur());
             txtAdvertentieUitgeverij.setText(selectBoek.getUitgeverij());
             txtAdvertentieCategorie.setText(selectBoek.getCategorie());
-
+            
             btnFoto.setIcon(icon);
     }//GEN-LAST:event_btnSelectKlerenActionPerformed
     }
     private void btnSelectPeroonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectPeroonActionPerformed
         selectPersoon = (Persoon) lstPersonen.getSelectedValue();
-
+        
         if (selectPersoon != null) {
             Persoon Persoon = selectPersoon;
             txtTitel.setText(selectPersoon.getAanspreekTitel());
@@ -779,7 +779,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             txtWoonplaats.setText(selectPersoon.getWoonPlaats());
             txtUserName.setText(selectPersoon.getUserName());
             txtPassWord.setText(selectPersoon.getPassWord());
-
+            
         }
         BoekListOpvullen();
         BabyListOpvullen();
@@ -794,30 +794,46 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     private void btnDeletePersoonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletePersoonActionPerformed
         Persoon persoon = new Persoon();
         persoon = (Persoon) lstPersonen.getSelectedValue();
-
+        
         if (persoon != null) {
             Persoon Persoon = persoon;
             PersoonService.PersoonDelete(persoon);
-
+            
         }
     }//GEN-LAST:event_btnDeletePersoonActionPerformed
 
-    private void btnDeleteBoek1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteBoek1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDeleteBoek1ActionPerformed
+    private void btnDeleteBoekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteBoekActionPerformed
+        Boeken boek = new Boeken();
+        boek = (Boeken) lstBoeken.getSelectedValue();
+        
+        if (boek != null) {
+            Boeken Boeken = boek;
+            BoekService.BoekDelete(boek);
+            
+        }
+        BoekListOpvullen();
+    }//GEN-LAST:event_btnDeleteBoekActionPerformed
 
     private void btnDeleteBabyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteBabyActionPerformed
-        // TODO add your handling code here:
+        Babyspullen baby = new Babyspullen();
+        baby = (Babyspullen) lstBabySpullen.getSelectedValue();
+        
+        if (baby != null) {
+            Babyspullen Babyspullen = baby;
+            BabyService.BabyDelete(baby);
+            
+        }
+        BabyListOpvullen();
     }//GEN-LAST:event_btnDeleteBabyActionPerformed
 
     private void btnDeleteSpeelgoedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteSpeelgoedActionPerformed
         Speelgoed speel = new Speelgoed();
         speel = (Speelgoed) lstSpeelgoed.getSelectedValue();
-
+        
         if (speel != null) {
             Speelgoed Speel = speel;
             SpeelgoedService.SpeelgoedDelete(speel);
-
+            
         }
         SpeelgoedListOpvullen();
     }//GEN-LAST:event_btnDeleteSpeelgoedActionPerformed
@@ -862,7 +878,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     private javax.swing.JButton btnAddPersoon;
     private javax.swing.JButton btnClearPersoon;
     private javax.swing.JButton btnDelete2;
-    private javax.swing.JButton btnDeleteBaby2;
+    private javax.swing.JButton btnDeleteBaby;
     private javax.swing.JButton btnDeleteBoek1;
     private javax.swing.JButton btnDeleteKleren;
     private javax.swing.JButton btnDeletePersoon;
