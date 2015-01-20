@@ -22,6 +22,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -126,6 +127,11 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         btnDeleteSpeelgoed = new javax.swing.JButton();
         btnDeleteBaby = new javax.swing.JButton();
         cbxCategorie = new javax.swing.JComboBox();
+        btnEditBaby = new javax.swing.JButton();
+        btnEditBoek1 = new javax.swing.JButton();
+        btnEditKleren = new javax.swing.JButton();
+        btnEditSpeelgoed = new javax.swing.JButton();
+        lblAchtergrond = new javax.swing.JLabel();
 
         btnDelete2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnDelete2.setText("Delete");
@@ -211,7 +217,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         lblAdvertentieUitgeverij.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblAdvertentieUitgeverij.setText("Uitgeverij:");
         getContentPane().add(lblAdvertentieUitgeverij);
-        lblAdvertentieUitgeverij.setBounds(430, 570, 100, 30);
+        lblAdvertentieUitgeverij.setBounds(460, 590, 100, 30);
 
         txtTitel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(txtTitel);
@@ -357,12 +363,12 @@ public class BeheerderUI1 extends javax.swing.JFrame {
 
         txtAdvertentieUitgeverij.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(txtAdvertentieUitgeverij);
-        txtAdvertentieUitgeverij.setBounds(520, 570, 210, 30);
+        txtAdvertentieUitgeverij.setBounds(550, 590, 210, 30);
 
         lblTitel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblTitel.setText("Titel:");
         getContentPane().add(lblTitel);
-        lblTitel.setBounds(430, 450, 50, 30);
+        lblTitel.setBounds(460, 470, 50, 30);
 
         lblAanspreekTitel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblAanspreekTitel4.setText("Foto:");
@@ -376,7 +382,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         jScrollPane2.setViewportView(txtOmschrijving);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(870, 470, 290, 190);
+        jScrollPane2.setBounds(830, 500, 290, 190);
 
         btnSelectFile.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnSelectFile.setText("Kies een andere foto");
@@ -391,7 +397,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         lblAanspreekTitel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblAanspreekTitel5.setText("Omschrijving:");
         getContentPane().add(lblAanspreekTitel5);
-        lblAanspreekTitel5.setBounds(870, 440, 130, 22);
+        lblAanspreekTitel5.setBounds(830, 470, 130, 22);
 
         cbxGeslacht.setEditable(true);
         cbxGeslacht.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -402,7 +408,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cbxGeslacht);
-        cbxGeslacht.setBounds(520, 620, 210, 30);
+        cbxGeslacht.setBounds(550, 640, 210, 30);
 
         btnSelectPeroon.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnSelectPeroon.setText("Select");
@@ -467,25 +473,25 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         lblGeslacht.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblGeslacht.setText("Geslacht:");
         getContentPane().add(lblGeslacht);
-        lblGeslacht.setBounds(430, 620, 100, 30);
+        lblGeslacht.setBounds(460, 640, 100, 30);
 
         txtAdvertentieTitel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(txtAdvertentieTitel);
-        txtAdvertentieTitel.setBounds(520, 450, 210, 30);
+        txtAdvertentieTitel.setBounds(550, 470, 210, 30);
 
         lblAdvertentieCategorie.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblAdvertentieCategorie.setText("Categorie:");
         getContentPane().add(lblAdvertentieCategorie);
-        lblAdvertentieCategorie.setBounds(430, 530, 90, 30);
+        lblAdvertentieCategorie.setBounds(460, 550, 90, 30);
 
         lblAdvertentieAuteur.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblAdvertentieAuteur.setText("Auteur:");
         getContentPane().add(lblAdvertentieAuteur);
-        lblAdvertentieAuteur.setBounds(430, 490, 100, 30);
+        lblAdvertentieAuteur.setBounds(460, 510, 100, 30);
 
         txtAdvertentieAuteur.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(txtAdvertentieAuteur);
-        txtAdvertentieAuteur.setBounds(520, 490, 210, 30);
+        txtAdvertentieAuteur.setBounds(550, 510, 210, 30);
 
         btnFoto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnFoto.setText("Geen afbeelding");
@@ -538,7 +544,52 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         cbxCategorie.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cbxCategorie.setMinimumSize(new java.awt.Dimension(169, 28));
         getContentPane().add(cbxCategorie);
-        cbxCategorie.setBounds(520, 530, 210, 30);
+        cbxCategorie.setBounds(550, 550, 210, 30);
+
+        btnEditBaby.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnEditBaby.setText("Edit");
+        btnEditBaby.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditBabyActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEditBaby);
+        btnEditBaby.setBounds(780, 380, 80, 30);
+
+        btnEditBoek1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnEditBoek1.setText("Edit");
+        btnEditBoek1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditBoekActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEditBoek1);
+        btnEditBoek1.setBounds(480, 380, 80, 30);
+
+        btnEditKleren.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnEditKleren.setText("Edit");
+        btnEditKleren.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditKlerenActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEditKleren);
+        btnEditKleren.setBounds(1080, 380, 63, 30);
+
+        btnEditSpeelgoed.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnEditSpeelgoed.setText("Edit");
+        btnEditSpeelgoed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditSpeelgoedActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEditSpeelgoed);
+        btnEditSpeelgoed.setBounds(1370, 380, 80, 30);
+
+        lblAchtergrond.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/vector1.jpg"))); // NOI18N
+        lblAchtergrond.setText("jLabel1");
+        getContentPane().add(lblAchtergrond);
+        lblAchtergrond.setBounds(0, 0, 1965, 1200);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -547,7 +598,14 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     Kleren selectKleren = new Kleren();
     Speelgoed selectSpeelgoed = new Speelgoed();
     Babyspullen selectBaby = new Babyspullen();
-    //String select;
+
+    private boolean Geslacht(int geslacht) {
+        if (cbxGeslacht.getSelectedIndex() == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     private void CBXVullen(String select) {
         if ("selectBoek".equals(select)) {
@@ -556,7 +614,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             cbxCategorie.addItem("Voorlees boeken");
             cbxCategorie.addItem("Educatieve boeken");
             cbxCategorie.addItem("Nieuwe ouder");
-             if ("PrentenBoeken".equals(selectBoek.getCategorie().toString())) {
+            if ("PrentenBoeken".equals(selectBoek.getCategorie().toString())) {
                 cbxCategorie.setSelectedIndex(0);
             } else if ("VoorleesBoeken".equals(selectBoek.getCategorie().toString())) {
                 cbxCategorie.setSelectedIndex(1);
@@ -564,11 +622,9 @@ public class BeheerderUI1 extends javax.swing.JFrame {
                 cbxCategorie.setSelectedIndex(2);
             } else if ("EducatieveBoeken".equals(selectBoek.getCategorie().toString())) {
                 cbxCategorie.setSelectedIndex(3);
+            } else if ("VoorNieuweOuders".equals(selectBoek.getCategorie().toString())) {
+                cbxCategorie.setSelectedIndex(4);
             }
-             else if ("VoorNieuweOuders".equals(selectBoek.getCategorie().toString())) {
-                cbxCategorie.setSelectedIndex(3);
-            }
-             
 
         }
         if ("selectBaby".equals(select)) {
@@ -595,6 +651,17 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             cbxCategorie.addItem("Lente");
             cbxCategorie.addItem("Zomer");
             cbxCategorie.addItem("Alle");
+            if ("Winter".equals(selectKleren.getSeizoen().toString())) {
+                cbxCategorie.setSelectedIndex(0);
+            } else if ("Herfst".equals(selectKleren.getSeizoen().toString())) {
+                cbxCategorie.setSelectedIndex(1);
+            } else if ("Lente".equals(selectKleren.getSeizoen().toString())) {
+                cbxCategorie.setSelectedIndex(2);
+            } else if ("Zomer".equals(selectKleren.getSeizoen().toString())) {
+                cbxCategorie.setSelectedIndex(3);
+            } else if ("Alle".equals(selectKleren.getSeizoen().toString())) {
+                cbxCategorie.setSelectedIndex(4);
+            }
 
         }
         if ("selectSpeelgoed".equals(select)) {
@@ -604,6 +671,17 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             cbxCategorie.addItem("Kleuter");
             cbxCategorie.addItem("Scholier");
             cbxCategorie.addItem("Tiener");
+            if ("Baby".equals(selectSpeelgoed.getCategorie().toString())) {
+                cbxCategorie.setSelectedIndex(0);
+            } else if ("Peuter".equals(selectSpeelgoed.getCategorie().toString())) {
+                cbxCategorie.setSelectedIndex(1);
+            } else if ("Kleuter".equals(selectSpeelgoed.getCategorie().toString())) {
+                cbxCategorie.setSelectedIndex(2);
+            } else if ("Scholier".equals(selectSpeelgoed.getCategorie().toString())) {
+                cbxCategorie.setSelectedIndex(3);
+            } else if ("Tiener".equals(selectSpeelgoed.getCategorie().toString())) {
+                cbxCategorie.setSelectedIndex(4);
+            }
 
         }
 
@@ -868,27 +946,28 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     private void btnSelectFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectFileActionPerformed
         JFileChooser dialog = new JFileChooser();
         dialog.showOpenDialog(this);
-        String file = dialog.getSelectedFile().getAbsolutePath();
-
-        BufferedReader in;
-        ArrayList<String> regels = new ArrayList<>();
-        String regel;
+        String file = null;
         try {
-            in = new BufferedReader(new FileReader(file));
-            regel = in.readLine();
+            file = dialog.getSelectedFile().getAbsolutePath();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+        ImageIcon icon = null;
 
-            while (regel != null) {
-                regels.add(regel);
-                regel = in.readLine();
+        ImageIcon imageicon = new ImageIcon(file);
+
+        if (imageicon != null) {
+
+            if (imageicon.getIconWidth() > 60) {
+                System.out.println(btnFoto.getWidth());
+                icon = new ImageIcon(imageicon.getImage().getScaledInstance(300, -1, Image.SCALE_DEFAULT));
+            } else {
+                icon = imageicon;
             }
-
-        } catch (FileNotFoundException ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage());
-        } catch (IOException ex) {
-            JOptionPane.showMessageDialog(this, "Fout bij lezen bestand");
+            btnFoto.setText(null);
+            btnFoto.setIcon((Icon) icon);
         }
 
-        //txtLijnen.setText("" + regels.size());
     }//GEN-LAST:event_btnSelectFileActionPerformed
 
     private void cbxGeslachtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxGeslachtActionPerformed
@@ -919,14 +998,8 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         CBXVullen("selectKleren");
         DetailsVullen("selectKleren");
         if (selectKleren != null) {
-            byte[] imageBytes;
-            byte[] image = selectBoek.getBoekenFoto();
-            ImageIcon icon = new ImageIcon(image);
-            Boeken boek = selectBoek;
-            txtAdvertentieTitel.setText(selectKleren.getSoortKleding());
-            txtAdvertentieUitgeverij.setText(selectKleren.getSeizoen());
-            txtAdvertentieAuteur.setText(selectKleren.getMaat());
-            btnFoto.setIcon(icon);
+
+
     }//GEN-LAST:event_btnSelectKlerenActionPerformed
     }
     private void btnSelectPeroonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectPeroonActionPerformed
@@ -952,7 +1025,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSelectPeroonActionPerformed
 
     private void btnVerwijderFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerwijderFotoActionPerformed
-        // TODO add your handling code here:
+        btnFoto.setIcon(null);
     }//GEN-LAST:event_btnVerwijderFotoActionPerformed
 
     private void btnDeletePersoonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletePersoonActionPerformed
@@ -1002,6 +1075,85 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         SpeelgoedListOpvullen();
     }//GEN-LAST:event_btnDeleteSpeelgoedActionPerformed
 
+    private void btnEditBabyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditBabyActionPerformed
+        if (selectBaby != null) {
+            JOptionPane.showMessageDialog(this, "Gelieve eerst een advertentie te selecteren!");
+        } else {
+
+//            byte[] imageBytes;
+//            byte[] image = selectBaby.getBabyspullenFoto();
+            selectBaby.setTitel(txtAdvertentieTitel.getText());
+            selectBaby.setLeeftijd(Integer.parseInt(txtAdvertentieAuteur.getText()));
+            selectBaby.setCategorie(cbxCategorie.toString());
+            selectBaby.setCategorie(txtAdvertentieUitgeverij.getText());
+            selectBaby.setOmschrijving(txtOmschrijving.getText());
+            selectBaby.setBabyspullenFoto(null);
+            selectBaby.setGeslacht(Geslacht(cbxGeslacht.getSelectedIndex()));
+            BabyService.BabyspullenUpdate(selectBaby.getId(), selectBaby);
+
+        }
+        BabyListOpvullen();
+    }//GEN-LAST:event_btnEditBabyActionPerformed
+
+    private void btnEditBoekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditBoekActionPerformed
+        if (selectBoek != null) {
+            JOptionPane.showMessageDialog(this, "Gelieve eerst een advertentie te selecteren!");
+        } else {
+
+//            byte[] imageBytes;
+//            byte[] image = selectBaby.getBabyspullenFoto();
+            selectBoek.setTitel(txtAdvertentieTitel.getText());
+            selectBoek.setAuteur(txtAdvertentieAuteur.getText());
+            selectBoek.setCategorie(cbxCategorie.toString());
+            selectBoek.setUitgeverij(txtAdvertentieUitgeverij.getText());
+            selectBoek.setOmschrijving(txtOmschrijving.getText());
+            selectBoek.setBoekenFoto(null);
+            BoekService.UpdateBoek(selectBoek.getId(), selectBoek);
+
+        }
+        BoekListOpvullen();
+    }//GEN-LAST:event_btnEditBoekActionPerformed
+
+    private void btnEditKlerenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditKlerenActionPerformed
+        if (selectKleren != null) {
+            JOptionPane.showMessageDialog(this, "Gelieve eerst een advertentie te selecteren!");
+        } else {
+
+//            byte[] imageBytes;
+//            byte[] image = selectBaby.getBabyspullenFoto();
+            selectKleren.setSoortKleding(txtAdvertentieTitel.getText());
+            selectKleren.setMaat(txtAdvertentieAuteur.getText());
+            selectKleren.setSeizoen(cbxCategorie.toString());
+            selectKleren.setOmschrijving(txtOmschrijving.getText());
+            selectKleren.setGeslacht(Geslacht(cbxGeslacht.getSelectedIndex()));
+            selectKleren.setKlerenFoto(null);
+
+            KlerenService.KlerenUpdate(selectKleren.getId(), selectKleren);
+
+        }
+        KlerenListOpvullen();
+    }//GEN-LAST:event_btnEditKlerenActionPerformed
+
+    private void btnEditSpeelgoedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditSpeelgoedActionPerformed
+      if (selectSpeelgoed!= null) {
+            JOptionPane.showMessageDialog(this, "Gelieve eerst een advertentie te selecteren!");
+        } else {
+
+//            byte[] imageBytes;
+//            byte[] image = selectBaby.getBabyspullenFoto();
+            selectSpeelgoed.setTitel(txtAdvertentieTitel.getText());
+            selectSpeelgoed.setLeeftijd(Integer.parseInt(txtAdvertentieAuteur.getText()));
+            selectSpeelgoed.setCategorie(cbxCategorie.toString());
+            selectSpeelgoed.setOmschrijving(txtOmschrijving.getText());
+            selectSpeelgoed.setSpeelgoedFoto(null);
+            selectSpeelgoed.setGeslacht(Geslacht(cbxGeslacht.getSelectedIndex()));
+            SpeelgoedService.SpeelgoedUpdate(selectSpeelgoed.getId(), selectSpeelgoed);
+
+
+        }
+       SpeelgoedListOpvullen();
+    }//GEN-LAST:event_btnEditSpeelgoedActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1047,7 +1199,11 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     private javax.swing.JButton btnDeleteKleren;
     private javax.swing.JButton btnDeletePersoon;
     private javax.swing.JButton btnDeleteSpeelgoed;
+    private javax.swing.JButton btnEditBaby;
+    private javax.swing.JButton btnEditBoek1;
+    private javax.swing.JButton btnEditKleren;
     private javax.swing.JButton btnEditPersoon;
+    private javax.swing.JButton btnEditSpeelgoed;
     private javax.swing.JButton btnFoto;
     private javax.swing.JButton btnSelectBaby;
     private javax.swing.JButton btnSelectBoek;
@@ -1072,6 +1228,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     private javax.swing.JLabel lblAanspreekTitel2;
     private javax.swing.JLabel lblAanspreekTitel4;
     private javax.swing.JLabel lblAanspreekTitel5;
+    private javax.swing.JLabel lblAchtergrond;
     private javax.swing.JLabel lblAdvertentieAuteur;
     private javax.swing.JLabel lblAdvertentieCategorie;
     private javax.swing.JLabel lblAdvertentieUitgeverij;

@@ -17,11 +17,12 @@ import org.hibernate.Session;
  */
 public class BoekService {
     
-    public static Boeken BoekAdd(Boeken b)
+    public static Boeken UpdateBoek(int id, Boeken b)
     {
         Session s = HibernateUtil.getSessionFactory().openSession();
+        b.setId(id);
         s.beginTransaction();
-        s.saveOrUpdate(b);
+        s.merge(b);
         s.getTransaction().commit();
         
         return b;
