@@ -29,7 +29,7 @@ public class Persoon implements java.io.Serializable {
 
     @Override
     public String toString() {
-        return getVoornaam() + " " + getFamilienaam() + " " + getUserName();
+        return getUserName();
 
     }
 

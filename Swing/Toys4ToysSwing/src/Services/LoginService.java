@@ -7,7 +7,6 @@ package Services;
 
 import BO.HibernateUtil;
 import BO.Persoon;
-import java.util.logging.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -16,19 +15,9 @@ import org.hibernate.Session;
  * @author Tom
  */
 public class LoginService {
-    String user ="admin";
-    String pass ="admin";
 
     
-    public  boolean verify(String inputUser, String intputPass){
-        if (inputUser.equalsIgnoreCase("admin")&&(intputPass.equalsIgnoreCase("admin"))) {
-            return true;
-        }
-        else{
-        return false;
-        }
-    
-    }
+
     public static boolean LoginVerify(String username, String password) {
 
         boolean verify = false;
@@ -51,6 +40,8 @@ public class LoginService {
         }
         return verify; 
     }
-       
-    
+
+
+    public LoginService() {
+    }
 }

@@ -7,6 +7,7 @@ package Services;
 
 import BO.Babyspullen;
 import BO.HibernateUtil;
+import BO.Persoon;
 import java.util.ArrayList;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -29,6 +30,8 @@ public class BabyService {
         return baby;
     }
     
+    
+    
     public static Babyspullen BabyspullenAdd(Babyspullen ba)
     {
         Session s = HibernateUtil.getSessionFactory().openSession();
@@ -38,32 +41,47 @@ public class BabyService {
         
         return ba;
     }
-    public static  ArrayList<BabyService> AlleBabyspullenOphalen()
+    
+    public static  ArrayList<Babyspullen> AlleAdsOphalenPerUser(int id)
+    {
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        Query q = s.createQuery("from Babyspullen b where b.persoon.id="+id+"");
+        return (ArrayList<Babyspullen>)q.list();
+    }
+    
+    public static  ArrayList<Babyspullen> AlleBabyspullenOphalen()
     {
         Session s = HibernateUtil.getSessionFactory().openSession();
        Query q = s.createQuery("from Babyspullen");
-       return (ArrayList<BabyService>)q.list();
+       return (ArrayList<Babyspullen>)q.list();
     }
 
-    public static ArrayList<BabyService> ZoekBaby(String zoekTerm) {
+    public static ArrayList<Babyspullen> ZoekBaby(String zoekTerm) {
             
         Session s = HibernateUtil.getSessionFactory().openSession();
-       Query q = s.createQuery("from Babyspullen where Omschrijving like '%" + zoekTerm + "%' OR Categorie like '%" + zoekTerm + "%'");
-       return (ArrayList<BabyService>)q.list();
+       Query q = s.createQuery("from Babyspullen b where b.omschrijving like '%" + zoekTerm + "%' OR b.categorie like '%" + zoekTerm + "%'");
+       return (ArrayList<Babyspullen>)q.list();
     }
     
-    public static ArrayList<BabyService> SelecteerBaby(int id)
+    public static ArrayList<Babyspullen> SelecteerBaby(int id, Persoon p)
     {
         Session s = HibernateUtil.getSessionFactory().openSession();
-        Query q = s.createQuery("from Babyspullen where id ='" +id+ "'");
-        return (ArrayList<BabyService>)q.list();
+        Query q = s.createQuery("from Babyspullen b where b.persoon.id =" +p.getId()+ "");
+        return (ArrayList<Babyspullen>)q.list();
+    }    
+    
+    
+    public static byte[] SelectFoto(int id)
+    {
+        Session s  = HibernateUtil.getSessionFactory().openSession();
+        Query q = s.createQuery("select b.babyspullenFoto from Babyspullen b where b.id =" +id+"");
+        return (byte[])q.uniqueResult();        
     }
-    public static void BabyDelete(Babyspullen baby)
+    public static void BabyDelete(int id)
             
     {
-        Session session = 
-              HibernateUtil.getSessionFactory().openSession();
-         Query q = session.createQuery("from Babyspullen where id ='" +baby+ "'");
+        Session session =   HibernateUtil.getSessionFactory().openSession();
+         Query q = session.createQuery("from Babyspullen b where b.id =" +id+ "");
          Babyspullen ba =  (Babyspullen)q.uniqueResult();
          session.beginTransaction();
          session.delete(ba);

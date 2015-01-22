@@ -21,7 +21,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import javax.swing.DefaultListModel;
+import javax.swing.*;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -418,7 +418,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnSelectPeroon);
-        btnSelectPeroon.setBounds(10, 380, 79, 31);
+        btnSelectPeroon.setBounds(40, 380, 79, 31);
 
         btnSelectSpeelgoed.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnSelectSpeelgoed.setText("Select");
@@ -509,7 +509,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnDeletePersoon);
-        btnDeletePersoon.setBounds(90, 380, 90, 31);
+        btnDeletePersoon.setBounds(140, 380, 90, 31);
 
         btnDeleteBoek1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnDeleteBoek1.setText("Delete");
@@ -598,6 +598,10 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     Kleren selectKleren = new Kleren();
     Speelgoed selectSpeelgoed = new Speelgoed();
     Babyspullen selectBaby = new Babyspullen();
+    PersoonService persoonService = new PersoonService();
+    BoekService bookService = new BoekService();
+    BabyService babyService = new BabyService();
+    KlerenService klerenService = new KlerenService();
 
     private boolean Geslacht(int geslacht) {
         if (cbxGeslacht.getSelectedIndex() == 0) {
@@ -697,6 +701,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             lblGeslacht.setVisible(false);
             cbxGeslacht.setVisible(false);
             txtOmschrijving.setText(selectBoek.getOmschrijving());
+            // btnFoto.getImageBoek(selectBoek.getId());
             if (selectBoek.getBoekenFoto() != null) {
                 byte[] imageBytes;
                 byte[] image = selectBoek.getBoekenFoto();
@@ -817,33 +822,30 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     }
 
     private void ListboxOpvullen() {
-        PersoonService p = new PersoonService();
-        lstPersonen.setListData(p.AllePersonenOphalen().toArray());
+        persoonService = new PersoonService();
+        lstPersonen.setListData(persoonService.AllePersonenOphalen().toArray());
     }
 
     private void BoekListOpvullen() {
-        BoekService b = new BoekService();
-        lstBoeken.setListData(b.SelecteerBoek(selectPersoon.getId()).toArray());
+        lstBoeken.setListData(bookService.SelecteerBoek(selectPersoon.getId(), selectPersoon).toArray());
 
     }
 
     private void BabyListOpvullen() {
-        BabyService ba = new BabyService();
-        if (selectPersoon != null) {
-            lstBabySpullen.setListData(ba.SelecteerBaby(selectPersoon.getId()).toArray());
-        }
+
+        lstBabySpullen.setListData(babyService.SelecteerBaby(selectPersoon.getId(), selectPersoon).toArray());
 
     }
 
     private void KlerenListOpvullen() {
-        KlerenService k = new KlerenService();
-        lstKleren.setListData(k.SelecteerKleren(selectPersoon.getId()).toArray());
+
+        lstKleren.setListData(klerenService.SelecteerKleren(selectPersoon.getId(), selectPersoon).toArray());
 
     }
 
     private void SpeelgoedListOpvullen() {
         SpeelgoedService sp = new SpeelgoedService();
-        lstSpeelgoed.setListData(sp.SelecteerSpeelgoed(selectPersoon.getId()).toArray());
+        lstSpeelgoed.setListData(sp.SelecteerSpeelgoed(selectPersoon.getId(), selectPersoon).toArray());
 
     }
 
@@ -893,7 +895,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             selectPersoon.setWoonPlaats(txtWoonplaats.getText());
             selectPersoon.setUserName(txtUserName.getText());
             selectPersoon.setPassWord(txtPassWord.getText());
-            PersoonService.UpdatePersoon(selectPersoon.getId(), selectPersoon);
+            PersoonService.PersoonUpdate(selectPersoon.getId(), selectPersoon);
         }
         ListboxOpvullen();
     }//GEN-LAST:event_btnEditPersoonActionPerformed
@@ -932,7 +934,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
 
         if (kleren != null) {
             Kleren Kleren = kleren;
-            KlerenService.KlerenDelete(kleren);
+            KlerenService.KlerenDelete(kleren.getId());
 
         }
         KlerenListOpvullen();
@@ -1034,7 +1036,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
 
         if (persoon != null) {
             Persoon Persoon = persoon;
-            PersoonService.PersoonDelete(persoon);
+            PersoonService.PersoonDelete(persoon.getId());
 
         }
     }//GEN-LAST:event_btnDeletePersoonActionPerformed
@@ -1045,7 +1047,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
 
         if (boek != null) {
             Boeken Boeken = boek;
-            BoekService.BoekDelete(boek);
+            BoekService.BoekDelete(boek.getId());
 
         }
         BoekListOpvullen();
@@ -1057,7 +1059,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
 
         if (baby != null) {
             Babyspullen Babyspullen = baby;
-            BabyService.BabyDelete(baby);
+            BabyService.BabyDelete(baby.getId());
 
         }
         BabyListOpvullen();
@@ -1069,7 +1071,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
 
         if (speel != null) {
             Speelgoed Speel = speel;
-            SpeelgoedService.SpeelgoedDelete(speel);
+            SpeelgoedService.SpeelgoedDelete(speel.getId());
 
         }
         SpeelgoedListOpvullen();
@@ -1108,7 +1110,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             selectBoek.setUitgeverij(txtAdvertentieUitgeverij.getText());
             selectBoek.setOmschrijving(txtOmschrijving.getText());
             selectBoek.setBoekenFoto(null);
-            BoekService.UpdateBoek(selectBoek.getId(), selectBoek);
+            BoekService.BoekenUpdate(selectBoek.getId(), selectBoek);
 
         }
         BoekListOpvullen();
@@ -1135,7 +1137,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditKlerenActionPerformed
 
     private void btnEditSpeelgoedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditSpeelgoedActionPerformed
-      if (selectSpeelgoed!= null) {
+        if (selectSpeelgoed != null) {
             JOptionPane.showMessageDialog(this, "Gelieve eerst een advertentie te selecteren!");
         } else {
 
@@ -1149,9 +1151,8 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             selectSpeelgoed.setGeslacht(Geslacht(cbxGeslacht.getSelectedIndex()));
             SpeelgoedService.SpeelgoedUpdate(selectSpeelgoed.getId(), selectSpeelgoed);
 
-
         }
-       SpeelgoedListOpvullen();
+        SpeelgoedListOpvullen();
     }//GEN-LAST:event_btnEditSpeelgoedActionPerformed
 
     /**

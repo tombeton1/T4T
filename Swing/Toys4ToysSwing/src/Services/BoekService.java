@@ -7,6 +7,7 @@ package Services;
 
 import BO.Boeken;
 import BO.HibernateUtil;
+import BO.Persoon;
 import java.util.ArrayList;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -17,50 +18,75 @@ import org.hibernate.Session;
  */
 public class BoekService {
     
-    public static Boeken UpdateBoek(int id, Boeken b)
+    
+    public static Boeken BoekenUpdate(int id,Boeken boek)
     {
         Session s = HibernateUtil.getSessionFactory().openSession();
-        b.setId(id);
+        boek.setId(id);
         s.beginTransaction();
-        s.merge(b);
+        s.merge(boek);
+        s.getTransaction().commit();
+        
+        return boek;
+    }
+    
+    public static Boeken BoekAdd(Boeken b)
+    {
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        s.beginTransaction();
+        s.saveOrUpdate(b);
         s.getTransaction().commit();
         
         return b;
     }
     
-    public static  ArrayList<BoekService> AlleBoekenOphalen()
+    public static  ArrayList<Boeken> AlleAdsOphalenperUser(int id)
+    {
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        Query q = s.createQuery("from Boeken b where b.persoon.id="+id+"");
+        return (ArrayList<Boeken>)q.list();
+    }
+    
+    public static  ArrayList<Boeken> AlleBoekenOphalen()
     {
         Session s = HibernateUtil.getSessionFactory().openSession();
        Query q = s.createQuery("from Boeken");
-       return (ArrayList<BoekService>)q.list();
+       return (ArrayList<Boeken>)q.list();
     }
 
-    public static ArrayList<BoekService> ZoekBoek(String zoekTerm) {
+    public static ArrayList<Boeken> ZoekBoek(String zoekTerm) {
         
         Session s = HibernateUtil.getSessionFactory().openSession();
-       Query q = s.createQuery("from Boeken where PersoonID like '%" + zoekTerm + "%' OR Titel like '%" + zoekTerm + "%' OR Auteur like '%" + zoekTerm + "%'");
-       return (ArrayList<BoekService>)q.list();
+       Query q = s.createQuery("from Boeken b where b.omschrijving like '%" + zoekTerm + "%' OR b.titel like '%" + zoekTerm + "%' OR b.auteur like '%" + zoekTerm + "%'");
+       return (ArrayList<Boeken>)q.list();
    
     }
     
-    public static ArrayList<BoekService> SelecteerBoek(int id)
+    public static byte[] SelectFoto(int id)
     {
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        Query q = s.createQuery("from Boeken where PersoonID ='" +id+ "'");
-        return (ArrayList<BoekService>)q.list();
+        Session s  = HibernateUtil.getSessionFactory().openSession();
+        Query q = s.createQuery("select b.boekenFoto from Boeken b where b.id =" +id+"");
+        return (byte[])q.uniqueResult();        
     }
     
-      public static void BoekDelete(Boeken boek)
+    public static ArrayList<Boeken> SelecteerBoek(int id, Persoon p)
+    {
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        Query q = s.createQuery("from Boeken b where b.persoon.id ='" +p.getId()+ "'");
+        return (ArrayList<Boeken>)q.list();
+    }
+  
+    
+      public static void BoekDelete(int id)
     {
         Session session = 
               HibernateUtil.getSessionFactory().openSession();
-         Query q = session.createQuery("from Boeken where id ='" +boek+ "'");
+         Query q = session.createQuery("from Boeken b where b.id ='" +id+ "'");
          Boeken b =  (Boeken)q.uniqueResult();
          session.beginTransaction();
          session.delete(b);
          session.getTransaction().commit();
     }
-      
   
     
 }

@@ -7,6 +7,7 @@ package Services;
 
 import BO.HibernateUtil;
 import BO.Kleren;
+import BO.Persoon;
 import java.util.ArrayList;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -38,32 +39,49 @@ public class KlerenService {
         
         return k;
     }
-    public static  ArrayList<KlerenService> AlleKlerenOphalen()
+    
+    public static byte[] SelectFoto(int id)
+    {
+        Session s  = HibernateUtil.getSessionFactory().openSession();
+        Query q = s.createQuery("select k.klerenFoto from Kleren k where k.id =" +id+"");
+        return (byte[])q.uniqueResult();        
+    }
+    
+    public static  ArrayList<Kleren> AlleKlerenOphalen()
     {
         Session s = HibernateUtil.getSessionFactory().openSession();
        Query q = s.createQuery("from Kleren");
-       return (ArrayList<KlerenService>)q.list();
+       return (ArrayList<Kleren>)q.list();
     }
     
-    public static ArrayList<KlerenService> ZoekKleren(String zoekTerm)
-    {
-        Session s  = HibernateUtil.getSessionFactory().openSession();
-        Query q = s.createQuery("from Kleren where Omschrijving like '%" + zoekTerm + "%' OR Seizoen like '%" + zoekTerm + "%' OR SoortKleding like '%" + zoekTerm + "%'");
-       return (ArrayList<KlerenService>)q.list();
-    
-    }
-    
-    public static ArrayList<KlerenService> SelecteerKleren(int id)
+    public static  ArrayList<Kleren> AlleAdsOphalenPerUser(int id)
     {
         Session s = HibernateUtil.getSessionFactory().openSession();
-        Query q = s.createQuery("from Kleren where id ='" +id+ "'");
-        return (ArrayList<KlerenService>)q.list();
+        Query q = s.createQuery("from Kleren k where k.persoon.id="+id+"");
+        return (ArrayList<Kleren>)q.list();
     }
-    public static void KlerenDelete(Kleren kleren)
+    
+    public static ArrayList<Kleren> ZoekKleren(String zoekTerm)
+    {
+        Session s  = HibernateUtil.getSessionFactory().openSession();
+        Query q = s.createQuery("from Kleren k where k.omschrijving like '%" + zoekTerm + "%' OR k.seizoen like '%" + zoekTerm + "%' OR k.soortKleding like '%" + zoekTerm + "%'");
+       return (ArrayList<Kleren>)q.list();
+    
+    }
+    
+    public static ArrayList<Kleren> SelecteerKleren(int id, Persoon p)
+    {
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        Query q = s.createQuery("from Kleren k where k.persoon.id ='" +p.getId()+ "'");
+        return (ArrayList<Kleren>)q.list();
+    }
+    
+ 
+    public static void KlerenDelete(int id)
     {
         Session session = 
               HibernateUtil.getSessionFactory().openSession();
-         Query q = session.createQuery("from Kleren where id ='" +kleren+ "'");
+         Query q = session.createQuery("from Kleren k where k.id ='" +id+ "'");
          Kleren k =  (Kleren)q.uniqueResult();
          session.beginTransaction();
          session.delete(k);

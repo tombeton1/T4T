@@ -26,7 +26,7 @@ public class Babyspullen  implements java.io.Serializable {
     }
   @Override
     public String toString() {
-        return getTitel() + " " + getCategorie() + " " + getGeslacht().toString();
+        return getTitel();
 
     }
 	
