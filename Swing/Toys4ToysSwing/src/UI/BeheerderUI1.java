@@ -21,6 +21,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import Services.ImageService;
+import java.io.FileNotFoundException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -542,44 +546,44 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         cbxCategorie.setBounds(550, 550, 210, 30);
 
         btnEditBaby.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnEditBaby.setText("Edit");
+        btnEditBaby.setText("Update");
         btnEditBaby.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditBabyActionPerformed(evt);
+                btnUpdateBabyActionPerformed(evt);
             }
         });
         getContentPane().add(btnEditBaby);
-        btnEditBaby.setBounds(780, 380, 80, 30);
+        btnEditBaby.setBounds(780, 380, 89, 30);
 
         btnEditBoek1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnEditBoek1.setText("Edit");
+        btnEditBoek1.setText("Update");
         btnEditBoek1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditBoekActionPerformed(evt);
+                btnUpdateBoekActionPerformed(evt);
             }
         });
         getContentPane().add(btnEditBoek1);
-        btnEditBoek1.setBounds(480, 380, 80, 30);
+        btnEditBoek1.setBounds(480, 380, 90, 30);
 
         btnEditKleren.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnEditKleren.setText("Edit");
+        btnEditKleren.setText("Update");
         btnEditKleren.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditKlerenActionPerformed(evt);
+                btnUpdateKlerenActionPerformed(evt);
             }
         });
         getContentPane().add(btnEditKleren);
-        btnEditKleren.setBounds(1080, 380, 63, 30);
+        btnEditKleren.setBounds(1080, 380, 90, 30);
 
         btnEditSpeelgoed.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnEditSpeelgoed.setText("Edit");
+        btnEditSpeelgoed.setText("Update");
         btnEditSpeelgoed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditSpeelgoedActionPerformed(evt);
+                btnUpdateSpeelgoedActionPerformed(evt);
             }
         });
         getContentPane().add(btnEditSpeelgoed);
-        btnEditSpeelgoed.setBounds(1370, 380, 80, 30);
+        btnEditSpeelgoed.setBounds(1370, 380, 90, 30);
 
         lblAchtergrond.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/vector1.jpg"))); // NOI18N
         lblAchtergrond.setText("jLabel1");
@@ -600,6 +604,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     ImageService imageService = new ImageService();
     Image image;
     Image sizeImage;
+    String file;
 
     private boolean Geslacht(int geslacht) {
         if (cbxGeslacht.getSelectedIndex() == 0) {
@@ -706,6 +711,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
                 btnFoto.setIcon(new ImageIcon(sizeImage));
             } else {
                 btnFoto.setIcon(null);
+                btnFoto.setText("Geen afbeelding");
             }
             if (selectBoek != null) {
 
@@ -737,6 +743,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
                 btnFoto.setIcon(new ImageIcon(sizeImage));
             } else {
                 btnFoto.setIcon(null);
+                btnFoto.setText("Geen afbeelding");
             }
 
             if (selectBaby != null) {
@@ -768,6 +775,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
                 btnFoto.setIcon(new ImageIcon(sizeImage));
             } else {
                 btnFoto.setIcon(null);
+                btnFoto.setText("Geen afbeelding");
             }
             if (selectKleren != null) {
                 byte[] imageBytes;
@@ -802,6 +810,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
                 btnFoto.setIcon(new ImageIcon(sizeImage));
             } else {
                 btnFoto.setIcon(null);
+                btnFoto.setText("Geen afbeelding");
             }
             if (selectSpeelgoed != null) {
 
@@ -943,7 +952,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     private void btnSelectFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectFileActionPerformed
         JFileChooser dialog = new JFileChooser();
         dialog.showOpenDialog(this);
-        String file = null;
+        file = null;
         try {
             file = dialog.getSelectedFile().getAbsolutePath();
         } catch (Exception e) {
@@ -957,7 +966,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
 
             if (imageicon.getIconWidth() > 60) {
                 System.out.println(btnFoto.getWidth());
-                icon = new ImageIcon(imageicon.getImage().getScaledInstance(300, -1, Image.SCALE_DEFAULT));
+                icon = new ImageIcon(imageicon.getImage().getScaledInstance(200, -1, Image.SCALE_DEFAULT));
             } else {
                 icon = imageicon;
             }
@@ -1072,83 +1081,99 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         SpeelgoedListOpvullen();
     }//GEN-LAST:event_btnDeleteSpeelgoedActionPerformed
 
-    private void btnEditBabyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditBabyActionPerformed
-        if (selectBaby != null) {
+    private void btnUpdateBabyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateBabyActionPerformed
+        if (selectBaby.getId() == null) {
             JOptionPane.showMessageDialog(this, "Gelieve eerst een advertentie te selecteren!");
         } else {
 
-//            byte[] imageBytes;
-//            byte[] image = selectBaby.getBabyspullenFoto();
             selectBaby.setTitel(txtAdvertentieTitel.getText());
             selectBaby.setLeeftijd(Integer.parseInt(txtAdvertentieAuteur.getText()));
             selectBaby.setCategorie(cbxCategorie.toString());
             selectBaby.setCategorie(txtAdvertentieUitgeverij.getText());
             selectBaby.setOmschrijving(txtOmschrijving.getText());
-            selectBaby.setBabyspullenFoto(null);
             selectBaby.setGeslacht(Geslacht(cbxGeslacht.getSelectedIndex()));
             BabyService.BabyspullenUpdate(selectBaby.getId(), selectBaby);
+            try {
+                imageService.FotoBabyToDB(file, selectBaby.getId());
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Er is iets mis met de verbinding " + ex.getMessage());
+            } catch (FileNotFoundException ex) {
+                JOptionPane.showMessageDialog(this, "De foto is niet gevonden " + ex.getMessage());
+            }
 
         }
         BabyListOpvullen();
-    }//GEN-LAST:event_btnEditBabyActionPerformed
+    }//GEN-LAST:event_btnUpdateBabyActionPerformed
 
-    private void btnEditBoekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditBoekActionPerformed
-        if (selectBoek != null) {
+    private void btnUpdateBoekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateBoekActionPerformed
+        if (selectBoek.getId() == null) {
             JOptionPane.showMessageDialog(this, "Gelieve eerst een advertentie te selecteren!");
         } else {
 
-//            byte[] imageBytes;
-//            byte[] image = selectBaby.getBabyspullenFoto();
             selectBoek.setTitel(txtAdvertentieTitel.getText());
             selectBoek.setAuteur(txtAdvertentieAuteur.getText());
             selectBoek.setCategorie(cbxCategorie.toString());
             selectBoek.setUitgeverij(txtAdvertentieUitgeverij.getText());
             selectBoek.setOmschrijving(txtOmschrijving.getText());
-            selectBoek.setBoekenFoto(null);
+            try {
+                imageService.FotoBoekToDB(file, selectBoek.getId());
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Er is iets mis met de verbinding " + ex.getMessage());
+            } catch (FileNotFoundException ex) {
+                JOptionPane.showMessageDialog(this, "De foto is niet gevonden " + ex.getMessage());
+            }
             BoekService.BoekenUpdate(selectBoek.getId(), selectBoek);
 
         }
         BoekListOpvullen();
-    }//GEN-LAST:event_btnEditBoekActionPerformed
+    }//GEN-LAST:event_btnUpdateBoekActionPerformed
 
-    private void btnEditKlerenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditKlerenActionPerformed
-        if (selectKleren != null) {
+    private void btnUpdateKlerenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateKlerenActionPerformed
+        if (selectKleren.getId() == null) {
             JOptionPane.showMessageDialog(this, "Gelieve eerst een advertentie te selecteren!");
         } else {
 
-//            byte[] imageBytes;
-//            byte[] image = selectBaby.getBabyspullenFoto();
             selectKleren.setSoortKleding(txtAdvertentieTitel.getText());
             selectKleren.setMaat(txtAdvertentieAuteur.getText());
             selectKleren.setSeizoen(cbxCategorie.toString());
             selectKleren.setOmschrijving(txtOmschrijving.getText());
             selectKleren.setGeslacht(Geslacht(cbxGeslacht.getSelectedIndex()));
-            selectKleren.setKlerenFoto(null);
+            try {
+                imageService.FotoKlerenToDB(file, selectKleren.getId());
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Er is iets mis met de verbinding " + ex.getMessage());
+            } catch (FileNotFoundException ex) {
+                JOptionPane.showMessageDialog(this, "De foto is niet gevonden " + ex.getMessage());
+            }
 
             KlerenService.KlerenUpdate(selectKleren.getId(), selectKleren);
 
         }
         KlerenListOpvullen();
-    }//GEN-LAST:event_btnEditKlerenActionPerformed
+    }//GEN-LAST:event_btnUpdateKlerenActionPerformed
 
-    private void btnEditSpeelgoedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditSpeelgoedActionPerformed
+    private void btnUpdateSpeelgoedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateSpeelgoedActionPerformed
         if (selectSpeelgoed != null) {
             JOptionPane.showMessageDialog(this, "Gelieve eerst een advertentie te selecteren!");
         } else {
 
-//            byte[] imageBytes;
-//            byte[] image = selectBaby.getBabyspullenFoto();
             selectSpeelgoed.setTitel(txtAdvertentieTitel.getText());
             selectSpeelgoed.setLeeftijd(Integer.parseInt(txtAdvertentieAuteur.getText()));
             selectSpeelgoed.setCategorie(cbxCategorie.toString());
             selectSpeelgoed.setOmschrijving(txtOmschrijving.getText());
-            selectSpeelgoed.setSpeelgoedFoto(null);
             selectSpeelgoed.setGeslacht(Geslacht(cbxGeslacht.getSelectedIndex()));
+            try {
+                imageService.FotoSpeelToDB(file, selectSpeelgoed.getId());
+            }  catch (SQLException ex) {
+                JOptionPane.showMessageDialog(this, "Er is iets mis met de verbinding " + ex.getMessage());
+            } catch (FileNotFoundException ex) {
+                JOptionPane.showMessageDialog(this, "De foto is niet gevonden " + ex.getMessage());
+            }
             SpeelgoedService.SpeelgoedUpdate(selectSpeelgoed.getId(), selectSpeelgoed);
 
         }
         SpeelgoedListOpvullen();
-    }//GEN-LAST:event_btnEditSpeelgoedActionPerformed
+    }//GEN-LAST:event_btnUpdateSpeelgoedActionPerformed
 
     /**
      * @param args the command line arguments

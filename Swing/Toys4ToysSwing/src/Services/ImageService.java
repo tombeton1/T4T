@@ -36,7 +36,7 @@ public class ImageService {
     int id;
     String sql;
     Image image;
-     FileInputStream fins;
+    FileInputStream fins;
     File f;
 
     private Connection Verbinding() {
@@ -65,8 +65,8 @@ public class ImageService {
         }
         return image;
     }
-    
-     public Image getFotoBaby(int id) {
+
+    public Image getFotoBaby(int id) {
         try {
             conn = Verbinding();
             sql = "select ba.babyspullenFoto from BabySpullen ba where ba.id =" + id + "";
@@ -83,8 +83,8 @@ public class ImageService {
         }
         return image;
     }
-     
-     public Image getFotoKleren(int id) {
+
+    public Image getFotoKleren(int id) {
         try {
             conn = Verbinding();
             sql = "select k.klerenFoto from Kleren k where k.id =" + id + "";
@@ -100,8 +100,10 @@ public class ImageService {
             Logger.getLogger(ImageService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return image;
+
     }
-     public Image getFotoSpeel(int id) {
+
+    public Image getFotoSpeel(int id) {
         try {
             conn = Verbinding();
             sql = "select s.speelgoedFoto from Speelgoed s where s.id =" + id + "";
@@ -118,52 +120,45 @@ public class ImageService {
         }
         return image;
     }
-//     public static byte[] toByteArray(InputStream input, long size) throws IOException{
-//         
-//         
-//        return null;
-//         
-//     }
-     public void  setFotoBoek(String file, int id ) throws SQLException, FileNotFoundException{
-         f = new File(file);
-         fins = new FileInputStream(f);
-         conn = Verbinding();
-          sql = "insert into from Boeken set BoekenFoto=? where id =" + id + "";
-          ps = conn.prepareStatement(sql);
-          ps.setBinaryStream(1, fins);
-          ps.execute();
-          
-//          
-//          st = conn.createStatement();
-//            rs = st.executeQuery(sql);
-////         try {
-//             conn = Verbinding();
-//             sql = "insert into b.boekenFoto from Boeken b where b.id =" + id + "";
-//             st = conn.createStatement();
-//            rs = st.executeQuery(sql);
-//            Path path = Paths.get(file);
-//byte[] data = Files.readAllBytes(file);
-//            while (rs.next()) {
-//        
-////        byte[] bytes = IOUtils.toByteArray(fileContent);
-////                image = ImageIO.
-////                image = ImageIO.write(byte[],("boekenFoto"));
-////                image =  ImageIO.get;
-//
-//            }
-//         } catch (Exception e) {
-//         }
-//         
-         
-     }
-}
-//     }
-//     PreparedStatement ps = conn.prepareStatement("INSERT INTO tbl_bezienswaardigheden (naam, adres, xpos, ypos) VALUES (?,?,?,?)");
-//     Part filePart = request.getPart("upfileBaby"); 
-//        String fileName = filePart.getSubmittedFileName();
-//        InputStream fileContent = filePart.getInputStream();
-//        byte[] bytes = IOUtils.toByteArray(fileContent);
-//        
-//        ba.setBabyspullenFoto(bytes);
-//}
 
+    public String FotoBoekToDB(String file, int id) throws SQLException, FileNotFoundException {
+        f = new File(file);
+        fins = new FileInputStream(f);
+        conn = Verbinding();
+        sql = "update Boeken set BoekenFoto=? where id =" + id + "";
+        ps = conn.prepareStatement(sql);
+        ps.setBinaryStream(1, fins);
+        ps.execute();
+        return file;
+    }
+    public String FotoBabyToDB(String file, int id) throws SQLException, FileNotFoundException {
+        f = new File(file);
+        fins = new FileInputStream(f);
+        conn = Verbinding();
+        sql = "update BabySpullen set BabyspullenFoto=? where id =" + id + "";
+        ps = conn.prepareStatement(sql);
+        ps.setBinaryStream(1, fins);
+        ps.execute();
+        return file;
+    }
+     public String FotoKlerenToDB(String file, int id) throws SQLException, FileNotFoundException {
+        f = new File(file);
+        fins = new FileInputStream(f);
+        conn = Verbinding();
+        sql = "update Kleren set BabyspullenFoto=? where id =" + id + "";
+        ps = conn.prepareStatement(sql);
+        ps.setBinaryStream(1, fins);
+        ps.execute();
+        return file;
+    }
+     public String FotoSpeelToDB(String file, int id) throws SQLException, FileNotFoundException {
+        f = new File(file);
+        fins = new FileInputStream(f);
+        conn = Verbinding();
+        sql = "update Speelgoed set SpeelgoedFoto=? where id =" + id + "";
+        ps = conn.prepareStatement(sql);
+        ps.setBinaryStream(1, fins);
+        ps.execute();
+        return file;
+    }
+}
