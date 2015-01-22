@@ -16,16 +16,11 @@ import Services.KlerenService;
 import Services.PersoonService;
 import Services.SpeelgoedService;
 import java.awt.Image;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import javax.swing.*;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import Services.ImageService;
 
 /**
  *
@@ -602,6 +597,9 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     BoekService bookService = new BoekService();
     BabyService babyService = new BabyService();
     KlerenService klerenService = new KlerenService();
+    ImageService imageService = new ImageService();
+    Image image;
+    Image sizeImage;
 
     private boolean Geslacht(int geslacht) {
         if (cbxGeslacht.getSelectedIndex() == 0) {
@@ -703,10 +701,9 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             txtOmschrijving.setText(selectBoek.getOmschrijving());
             // btnFoto.getImageBoek(selectBoek.getId());
             if (selectBoek.getBoekenFoto() != null) {
-                byte[] imageBytes;
-                byte[] image = selectBoek.getBoekenFoto();
-                ImageIcon icon = new ImageIcon(image);
-                btnFoto.setIcon(icon);
+                image = imageService.getFotoBoek(selectBoek.getId());
+                sizeImage = image.getScaledInstance(btnFoto.getWidth(), btnFoto.getHeight(), WIDTH);
+                btnFoto.setIcon(new ImageIcon(sizeImage));
             } else {
                 btnFoto.setIcon(null);
             }
@@ -735,10 +732,9 @@ public class BeheerderUI1 extends javax.swing.JFrame {
                 cbxGeslacht.setSelectedIndex(1);
             }
             if (selectBaby.getBabyspullenFoto() != null) {
-                byte[] imageBytes;
-                byte[] image = selectBaby.getBabyspullenFoto();
-                ImageIcon icon = new ImageIcon(image);
-                btnFoto.setIcon(icon);
+                image = imageService.getFotoBaby(selectBaby.getId());
+                sizeImage = image.getScaledInstance(btnFoto.getWidth(), btnFoto.getHeight(), WIDTH);
+                btnFoto.setIcon(new ImageIcon(sizeImage));
             } else {
                 btnFoto.setIcon(null);
             }
@@ -767,10 +763,9 @@ public class BeheerderUI1 extends javax.swing.JFrame {
                 cbxGeslacht.setSelectedIndex(1);
             }
             if (selectKleren.getKlerenFoto() != null) {
-                byte[] imageBytes;
-                byte[] image = selectKleren.getKlerenFoto();
-                ImageIcon icon = new ImageIcon(image);
-                btnFoto.setIcon(icon);
+                image = imageService.getFotoKleren(selectKleren.getId());
+                sizeImage = image.getScaledInstance(btnFoto.getWidth(), btnFoto.getHeight(), WIDTH);
+                btnFoto.setIcon(new ImageIcon(sizeImage));
             } else {
                 btnFoto.setIcon(null);
             }
@@ -802,10 +797,9 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
 
             if (selectSpeelgoed.getSpeelgoedFoto() != null) {
-                byte[] imageBytes;
-                byte[] image = selectBoek.getBoekenFoto();
-                ImageIcon icon = new ImageIcon(image);
-                btnFoto.setIcon(icon);
+                image = imageService.getFotoSpeel(selectSpeelgoed.getId());
+                sizeImage = image.getScaledInstance(btnFoto.getWidth(), btnFoto.getHeight(), WIDTH);
+                btnFoto.setIcon(new ImageIcon(sizeImage));
             } else {
                 btnFoto.setIcon(null);
             }
@@ -869,6 +863,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         txtAdvertentieUitgeverij.setText(null);
         txtOmschrijving.setText(null);
         btnFoto.setIcon(null);
+        btnFoto.setText("Geen afbeelding");
     }
 
     private void ClearList() {
