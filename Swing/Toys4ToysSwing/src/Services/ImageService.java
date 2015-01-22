@@ -10,8 +10,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -145,7 +143,7 @@ public class ImageService {
         f = new File(file);
         fins = new FileInputStream(f);
         conn = Verbinding();
-        sql = "update Kleren set BabyspullenFoto=? where id =" + id + "";
+        sql = "update Kleren set KlerenFoto=? where id =" + id + "";
         ps = conn.prepareStatement(sql);
         ps.setBinaryStream(1, fins);
         ps.execute();

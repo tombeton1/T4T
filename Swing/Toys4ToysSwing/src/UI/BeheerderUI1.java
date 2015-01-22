@@ -1031,7 +1031,23 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSelectPeroonActionPerformed
 
     private void btnVerwijderFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerwijderFotoActionPerformed
+
         btnFoto.setIcon(null);
+        btnFoto.setText("Geen Afbeelding");
+        if (selectBaby.getId() != null) {
+            selectBaby.setBabyspullenFoto(null);
+            BabyService.BabyspullenUpdate(selectBaby.getId(), selectBaby);
+        } else if (selectBoek.getId() != null) {
+            selectBoek.setBoekenFoto(null);
+            BoekService.BoekenUpdate(selectBoek.getId(), selectBoek);
+        } else if (selectKleren.getId() != null) {
+            selectKleren.setKlerenFoto(null);
+            KlerenService.KlerenUpdate(selectKleren.getId(), selectKleren);
+        } else if (selectSpeelgoed.getId() != null) {
+            selectSpeelgoed.setSpeelgoedFoto(null);
+            SpeelgoedService.SpeelgoedUpdate(selectSpeelgoed.getId(), selectSpeelgoed);
+        }
+
     }//GEN-LAST:event_btnVerwijderFotoActionPerformed
 
     private void btnDeletePersoonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletePersoonActionPerformed
@@ -1164,7 +1180,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             selectSpeelgoed.setGeslacht(Geslacht(cbxGeslacht.getSelectedIndex()));
             try {
                 imageService.FotoSpeelToDB(file, selectSpeelgoed.getId());
-            }  catch (SQLException ex) {
+            } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(this, "Er is iets mis met de verbinding " + ex.getMessage());
             } catch (FileNotFoundException ex) {
                 JOptionPane.showMessageDialog(this, "De foto is niet gevonden " + ex.getMessage());
