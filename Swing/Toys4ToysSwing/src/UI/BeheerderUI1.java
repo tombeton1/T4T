@@ -119,6 +119,12 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         btnEditBoek1 = new javax.swing.JButton();
         btnEditKleren = new javax.swing.JButton();
         btnEditSpeelgoed = new javax.swing.JButton();
+        lblSter = new javax.swing.JLabel();
+        lblSter1 = new javax.swing.JLabel();
+        lblSter2 = new javax.swing.JLabel();
+        lblSter3 = new javax.swing.JLabel();
+        lblSter4 = new javax.swing.JLabel();
+        lblSter5 = new javax.swing.JLabel();
         lblAchtergrond = new javax.swing.JLabel();
 
         btnDelete2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -573,10 +579,39 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(btnEditSpeelgoed);
         btnEditSpeelgoed.setBounds(1370, 380, 90, 30);
 
+        lblSter.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSter.setText("*");
+        getContentPane().add(lblSter);
+        lblSter.setBounds(770, 470, 20, 22);
+
+        lblSter1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSter1.setText("*");
+        getContentPane().add(lblSter1);
+        lblSter1.setBounds(370, 480, 20, 22);
+
+        lblSter2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSter2.setText("*");
+        getContentPane().add(lblSter2);
+        lblSter2.setBounds(370, 520, 20, 22);
+
+        lblSter3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSter3.setText("*");
+        getContentPane().add(lblSter3);
+        lblSter3.setBounds(370, 560, 20, 22);
+
+        lblSter4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSter4.setText("*");
+        getContentPane().add(lblSter4);
+        lblSter4.setBounds(370, 640, 20, 22);
+
+        lblSter5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSter5.setText("*");
+        getContentPane().add(lblSter5);
+        lblSter5.setBounds(370, 680, 20, 22);
+
         lblAchtergrond.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/vector1.jpg"))); // NOI18N
-        lblAchtergrond.setText("jLabel1");
         getContentPane().add(lblAchtergrond);
-        lblAchtergrond.setBounds(0, 0, 1965, 1200);
+        lblAchtergrond.setBounds(0, 0, 1920, 1200);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -594,6 +629,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     Image image;
     Image sizeImage;
     String file;
+    JFileChooser dialog;
 
     private boolean Geslacht(int geslacht) {
         if (cbxGeslacht.getSelectedIndex() == 0) {
@@ -953,6 +989,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
 
         }
         KlerenListOpvullen();
+        ClearAdvertentie();
 
     }//GEN-LAST:event_btnDeleteKlerenActionPerformed
 
@@ -961,28 +998,30 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddGebruiker2ActionPerformed
 
     private void btnSelectFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelectFileActionPerformed
-        JFileChooser dialog = new JFileChooser();
-        dialog.showOpenDialog(this);
+        dialog = new JFileChooser();
+        dialog.showOpenDialog(null);
         file = null;
         try {
-            file = dialog.getSelectedFile().getAbsolutePath();
+            file = dialog.getSelectedFile().toString();
+
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage());
+            JOptionPane.showMessageDialog(this, e.getMessage()+ " foto geslecteerd ");
         }
-        ImageIcon icon = null;
+        if (file != null) {
+            ImageIcon icon = null;
+            ImageIcon imageicon = new ImageIcon(file);
+            
+            if (imageicon != null) {
 
-        ImageIcon imageicon = new ImageIcon(file);
-
-        if (imageicon != null) {
-
-            if (imageicon.getIconWidth() > 60) {
-                System.out.println(btnFoto.getWidth());
-                icon = new ImageIcon(imageicon.getImage().getScaledInstance(200, -1, Image.SCALE_DEFAULT));
-            } else {
-                icon = imageicon;
+                if (imageicon.getIconWidth() > 60) {
+                    System.out.println(btnFoto.getWidth());
+                    icon = new ImageIcon(imageicon.getImage().getScaledInstance(200, -1, Image.SCALE_DEFAULT));
+                } else {
+                    icon = imageicon;
+                }
+                btnFoto.setText(null);
+                btnFoto.setIcon((Icon) icon);
             }
-            btnFoto.setText(null);
-            btnFoto.setIcon((Icon) icon);
         }
 
     }//GEN-LAST:event_btnSelectFileActionPerformed
@@ -1107,6 +1146,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
 
         }
         SpeelgoedListOpvullen();
+        ClearAdvertentie();
     }//GEN-LAST:event_btnDeleteSpeelgoedActionPerformed
 
     private void btnUpdateBabyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateBabyActionPerformed
@@ -1130,7 +1170,8 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
 
         }
-        BabyListOpvullen();
+
+
     }//GEN-LAST:event_btnUpdateBabyActionPerformed
 
     private void btnUpdateBoekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateBoekActionPerformed
@@ -1177,11 +1218,12 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             KlerenService.KlerenUpdate(selectKleren.getId(), selectKleren);
 
         }
-        KlerenListOpvullen();
+
+
     }//GEN-LAST:event_btnUpdateKlerenActionPerformed
 
     private void btnUpdateSpeelgoedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateSpeelgoedActionPerformed
-        if (selectSpeelgoed != null) {
+        if (selectSpeelgoed.getId() == null) {
             JOptionPane.showMessageDialog(this, "Gelieve eerst een advertentie te selecteren!");
         } else {
 
@@ -1200,7 +1242,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             SpeelgoedService.SpeelgoedUpdate(selectSpeelgoed.getId(), selectSpeelgoed);
 
         }
-        SpeelgoedListOpvullen();
+
     }//GEN-LAST:event_btnUpdateSpeelgoedActionPerformed
 
     /**
@@ -1289,6 +1331,12 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     private javax.swing.JLabel lblGeslacht;
     private javax.swing.JLabel lblPassWord;
     private javax.swing.JLabel lblPassWord2;
+    private javax.swing.JLabel lblSter;
+    private javax.swing.JLabel lblSter1;
+    private javax.swing.JLabel lblSter2;
+    private javax.swing.JLabel lblSter3;
+    private javax.swing.JLabel lblSter4;
+    private javax.swing.JLabel lblSter5;
     private javax.swing.JLabel lblTitel;
     private javax.swing.JLabel lblUserName;
     private javax.swing.JLabel lblUserName2;

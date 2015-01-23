@@ -22,7 +22,7 @@ public class Speelgoed  implements java.io.Serializable {
     }
  @Override
     public String toString() {
-        return getTitel() + " " + getLeeftijd().toString() + " " + getCategorie();
+        return getTitel();
 
     }
 	

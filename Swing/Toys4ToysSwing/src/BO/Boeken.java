@@ -27,7 +27,7 @@ public class Boeken  implements java.io.Serializable {
 
  @Override
     public String toString(){
-        return getTitel()+" "+ getAuteur()+" "+getUitgeverij();
+        return getTitel();
     }
 	
     public Boeken(Persoon persoon) {

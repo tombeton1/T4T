@@ -9,6 +9,8 @@ import BO.Babyspullen;
 import BO.HibernateUtil;
 import BO.Persoon;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -21,11 +23,15 @@ public class BabyService {
     
     public static Babyspullen BabyspullenUpdate(int id,Babyspullen baby)
     {
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        baby.setId(id);
-        s.beginTransaction();
-        s.merge(baby);
-        s.getTransaction().commit();
+        try {
+            Session s = HibernateUtil.getSessionFactory().openSession();
+            baby.setId(id);
+            s.beginTransaction();
+            s.merge(baby);
+            s.getTransaction().commit();
+        } catch (HibernateException hi) {
+            JOptionPane.showMessageDialog(null, hi.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
+        }
         
         return baby;
     }
@@ -34,58 +40,44 @@ public class BabyService {
     
     public static Babyspullen BabyspullenAdd(Babyspullen ba)
     {
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        s.beginTransaction();
-        s.saveOrUpdate(ba);
-        s.getTransaction().commit();
+        try {
+            Session s = HibernateUtil.getSessionFactory().openSession();
+            s.beginTransaction();
+            s.saveOrUpdate(ba);
+            s.getTransaction().commit();
+        } catch (HibernateException hi) {
+            JOptionPane.showMessageDialog(null, hi.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
+        }
         
         return ba;
     }
-    
-    public static  ArrayList<Babyspullen> AlleAdsOphalenPerUser(int id)
-    {
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        Query q = s.createQuery("from Babyspullen b where b.persoon.id="+id+"");
-        return (ArrayList<Babyspullen>)q.list();
-    }
-    
-    public static  ArrayList<Babyspullen> AlleBabyspullenOphalen()
-    {
-        Session s = HibernateUtil.getSessionFactory().openSession();
-       Query q = s.createQuery("from Babyspullen");
-       return (ArrayList<Babyspullen>)q.list();
-    }
 
-    public static ArrayList<Babyspullen> ZoekBaby(String zoekTerm) {
-            
-        Session s = HibernateUtil.getSessionFactory().openSession();
-       Query q = s.createQuery("from Babyspullen b where b.omschrijving like '%" + zoekTerm + "%' OR b.categorie like '%" + zoekTerm + "%'");
-       return (ArrayList<Babyspullen>)q.list();
-    }
     
     public static ArrayList<Babyspullen> SelecteerBaby(int id, Persoon p)
     {
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        Query q = s.createQuery("from Babyspullen b where b.persoon.id =" +p.getId()+ "");
+        Query q = null;
+        try {
+            Session s = HibernateUtil.getSessionFactory().openSession();
+            q = s.createQuery("from Babyspullen b where b.persoon.id =" + p.getId() + "");
+        } catch (HibernateException hi) {
+            JOptionPane.showMessageDialog(null, hi.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
+        }
         return (ArrayList<Babyspullen>)q.list();
     }    
     
-    
-    public static byte[] SelectFoto(int id)
-    {
-        Session s  = HibernateUtil.getSessionFactory().openSession();
-        Query q = s.createQuery("select b.babyspullenFoto from Babyspullen b where b.id =" +id+"");
-        return (byte[])q.uniqueResult();        
-    }
     public static void BabyDelete(int id)
             
     {
-        Session session =   HibernateUtil.getSessionFactory().openSession();
-         Query q = session.createQuery("from Babyspullen b where b.id =" +id+ "");
-         Babyspullen ba =  (Babyspullen)q.uniqueResult();
-         session.beginTransaction();
-         session.delete(ba);
-         session.getTransaction().commit();
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            Query q = session.createQuery("from Babyspullen b where b.id =" + id + "");
+            Babyspullen ba = (Babyspullen) q.uniqueResult();
+            session.beginTransaction();
+            session.delete(ba);
+            session.getTransaction().commit();
+        } catch (HibernateException hi) {
+             JOptionPane.showMessageDialog(null, hi.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
     
 }

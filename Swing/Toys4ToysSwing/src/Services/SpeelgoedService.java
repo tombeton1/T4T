@@ -9,6 +9,8 @@ import BO.HibernateUtil;
 import BO.Persoon;
 import BO.Speelgoed;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import org.hibernate.HibernateException;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -21,56 +23,42 @@ public class SpeelgoedService {
     
     public static Speelgoed SpeelgoedUpdate(int id,Speelgoed speelgoed)
     {
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        speelgoed.setId(id);       
-        s.beginTransaction();
-        s.merge(speelgoed);
-        s.getTransaction().commit();
+        try {
+            Session s = HibernateUtil.getSessionFactory().openSession();
+            speelgoed.setId(id);            
+            s.beginTransaction();
+            s.merge(speelgoed);
+            s.getTransaction().commit();
+        } catch (HibernateException hi) {
+             JOptionPane.showMessageDialog(null, hi.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
+        }
         
         return speelgoed;
     }
     
     public static Speelgoed SpeelgoedAdd(Speelgoed sp)
     {
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        s.beginTransaction();
-        s.saveOrUpdate(sp);
-        s.getTransaction().commit();
+        try {
+            Session s = HibernateUtil.getSessionFactory().openSession();
+            s.beginTransaction();
+            s.saveOrUpdate(sp);
+            s.getTransaction().commit();
+        } catch (HibernateException hi) {
+             JOptionPane.showMessageDialog(null, hi.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
+        }
         
         return sp;
     }
-    public static  ArrayList<Speelgoed> AlleSpeelgoedOphalen()
-    {
-        Session s = HibernateUtil.getSessionFactory().openSession();
-       Query q = s.createQuery("from Speelgoed");
-       return (ArrayList<Speelgoed>)q.list();
-    }
-    
-    public static  ArrayList<Speelgoed> AlleAdsOphalenPerUser(int id)
-    {
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        Query q = s.createQuery("from Speelgoed s where s.persoon.id="+id+"");
-        return (ArrayList<Speelgoed>)q.list();
-    }
-    
-    public static byte[] SelectFoto(int id)
-    {
-        Session s  = HibernateUtil.getSessionFactory().openSession();
-        Query q = s.createQuery("select s.speelgoedFoto from Speelgoed s where s.id =" +id+"");
-        return (byte[])q.uniqueResult();        
-    }    
-    
-    public static  ArrayList<Speelgoed> ZoekSpeelgoed(String zoekTerm)
-    {
-       Session s = HibernateUtil.getSessionFactory().openSession();
-       Query q = s.createQuery("from Speelgoed s where s.omschrijving like '%" + zoekTerm + "%' OR s.titel like '%" + zoekTerm + "%'");
-       return (ArrayList<Speelgoed>)q.list();
-    }
-    
+
     public static ArrayList<Speelgoed> SelecteerSpeelgoed(int id, Persoon p)
     {
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        Query q = s.createQuery("from Speelgoed s where s.persoon.id ='" +p.getId()+ "'");
+        Query q = null;
+        try {
+            Session s = HibernateUtil.getSessionFactory().openSession();
+            q = s.createQuery("from Speelgoed s where s.persoon.id ='" + p.getId() + "'");
+        } catch (HibernateException hi) {
+            JOptionPane.showMessageDialog(null, hi.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
+        }
         return (ArrayList<Speelgoed>)q.list();
     }
     
@@ -78,13 +66,17 @@ public class SpeelgoedService {
     
     public static void SpeelgoedDelete(int id)
     {
-        Session session = 
-              HibernateUtil.getSessionFactory().openSession();
-         Query q = session.createQuery("from Speelgoed s where s.id ='" +id+ "'");
-         Speelgoed sp =  (Speelgoed)q.uniqueResult();
-         session.beginTransaction();
-         session.delete(sp);
-         session.getTransaction().commit();
+        try {
+            Session session
+                    = HibernateUtil.getSessionFactory().openSession();
+            Query q = session.createQuery("from Speelgoed s where s.id ='" + id + "'");
+            Speelgoed sp = (Speelgoed) q.uniqueResult();
+            session.beginTransaction();
+            session.delete(sp);
+            session.getTransaction().commit();
+        } catch (HibernateException hi) {
+            JOptionPane.showMessageDialog(null, hi.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
     
 }

@@ -25,7 +25,7 @@ public class Kleren  implements java.io.Serializable {
     }
   @Override
     public String toString() {
-        return getSoortKleding() + " " + getSeizoen() + " " + getMaat();
+        return getSoortKleding();
 
     }
 	

@@ -7,6 +7,7 @@ package Services;
 
 import BO.HibernateUtil;
 import BO.Persoon;
+import javax.swing.JOptionPane;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -21,9 +22,14 @@ public class LoginService {
     public static boolean LoginVerify(String username, String password) {
 
         boolean verify = false;
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        Query q = s.createQuery("from Persoon where username ='" + username + "'");
-        Persoon p = (Persoon) q.uniqueResult();
+        Persoon p = null;
+        try {
+            Session s = HibernateUtil.getSessionFactory().openSession();
+            Query q = s.createQuery("from Persoon where username ='" + username + "'");
+            p = (Persoon) q.uniqueResult();
+        } catch (Exception e) {
+             JOptionPane.showMessageDialog(null, e.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
+        }
         
         if (p != null) {
             

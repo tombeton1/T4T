@@ -19,6 +19,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -41,7 +42,7 @@ public class ImageService {
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/toys4toysdb", "root", "usbw");
         } catch (SQLException ex) {
-            Logger.getLogger(ImageService.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
         }
         return conn;
     }
@@ -57,9 +58,9 @@ public class ImageService {
 
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ImageService.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
         } catch (IOException ex) {
-            Logger.getLogger(ImageService.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
         }
         return image;
     }
@@ -75,9 +76,9 @@ public class ImageService {
 
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ImageService.class.getName()).log(Level.SEVERE, null, ex);
+           JOptionPane.showMessageDialog(null, ex.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
         } catch (IOException ex) {
-            Logger.getLogger(ImageService.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
         }
         return image;
     }
@@ -93,9 +94,9 @@ public class ImageService {
 
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ImageService.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
         } catch (IOException ex) {
-            Logger.getLogger(ImageService.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
         }
         return image;
 
@@ -112,51 +113,75 @@ public class ImageService {
 
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ImageService.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
         } catch (IOException ex) {
-            Logger.getLogger(ImageService.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
         }
         return image;
     }
 
     public String FotoBoekToDB(String file, int id) throws SQLException, FileNotFoundException {
-        f = new File(file);
-        fins = new FileInputStream(f);
-        conn = Verbinding();
-        sql = "update Boeken set BoekenFoto=? where id =" + id + "";
-        ps = conn.prepareStatement(sql);
-        ps.setBinaryStream(1, fins);
-        ps.execute();
+        try {
+            f = new File(file);
+            fins = new FileInputStream(f);
+            conn = Verbinding();
+            sql = "update Boeken set BoekenFoto=? where id =" + id + "";
+            ps = conn.prepareStatement(sql);
+            ps.setBinaryStream(1, fins);
+            ps.execute();
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
+        }
         return file;
     }
     public String FotoBabyToDB(String file, int id) throws SQLException, FileNotFoundException {
-        f = new File(file);
-        fins = new FileInputStream(f);
-        conn = Verbinding();
-        sql = "update BabySpullen set BabyspullenFoto=? where id =" + id + "";
-        ps = conn.prepareStatement(sql);
-        ps.setBinaryStream(1, fins);
-        ps.execute();
+        try {
+            f = new File(file);
+            fins = new FileInputStream(f);
+            conn = Verbinding();
+            sql = "update BabySpullen set BabyspullenFoto=? where id =" + id + "";
+            ps = conn.prepareStatement(sql);
+            ps.setBinaryStream(1, fins);
+            ps.execute();
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
+        }
         return file;
     }
      public String FotoKlerenToDB(String file, int id) throws SQLException, FileNotFoundException {
-        f = new File(file);
-        fins = new FileInputStream(f);
-        conn = Verbinding();
-        sql = "update Kleren set KlerenFoto=? where id =" + id + "";
-        ps = conn.prepareStatement(sql);
-        ps.setBinaryStream(1, fins);
-        ps.execute();
+         try {
+             f = new File(file);
+             fins = new FileInputStream(f);
+             conn = Verbinding();
+             sql = "update Kleren set KlerenFoto=? where id =" + id + "";
+             ps = conn.prepareStatement(sql);
+             ps.setBinaryStream(1, fins);
+             ps.execute();
+         } catch (FileNotFoundException ex) {
+             JOptionPane.showMessageDialog(null, ex.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
+         } catch (SQLException ex) {
+             JOptionPane.showMessageDialog(null, ex.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
+         }
         return file;
     }
      public String FotoSpeelToDB(String file, int id) throws SQLException, FileNotFoundException {
-        f = new File(file);
-        fins = new FileInputStream(f);
-        conn = Verbinding();
-        sql = "update Speelgoed set SpeelgoedFoto=? where id =" + id + "";
-        ps = conn.prepareStatement(sql);
-        ps.setBinaryStream(1, fins);
-        ps.execute();
+         try {
+             f = new File(file);
+             fins = new FileInputStream(f);
+             conn = Verbinding();
+             sql = "update Speelgoed set SpeelgoedFoto=? where id =" + id + "";
+             ps = conn.prepareStatement(sql);
+             ps.setBinaryStream(1, fins);
+             ps.execute();
+         } catch (FileNotFoundException ex) {
+             JOptionPane.showMessageDialog(null, ex.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
+         } catch (SQLException ex) {
+             JOptionPane.showMessageDialog(null, ex.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
+         }
         return file;
     }
 }

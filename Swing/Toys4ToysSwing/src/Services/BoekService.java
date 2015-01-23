@@ -9,6 +9,8 @@ import BO.Boeken;
 import BO.HibernateUtil;
 import BO.Persoon;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -21,10 +23,15 @@ public class BoekService {
     
     public static Boeken BoekenUpdate(int id,Boeken boek)
     {
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        boek.setId(id);
-        s.beginTransaction();
-        s.merge(boek);
+        Session s = null;
+        try {
+            s = HibernateUtil.getSessionFactory().openSession();
+            boek.setId(id);
+            s.beginTransaction();
+            s.merge(boek);
+        } catch (HibernateException hi) {
+            JOptionPane.showMessageDialog(null, hi.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
+        }
         s.getTransaction().commit();
         
         return boek;
@@ -32,60 +39,45 @@ public class BoekService {
     
     public static Boeken BoekAdd(Boeken b)
     {
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        s.beginTransaction();
-        s.saveOrUpdate(b);
-        s.getTransaction().commit();
+        try {
+            Session s = HibernateUtil.getSessionFactory().openSession();
+            s.beginTransaction();
+            s.saveOrUpdate(b);
+            s.getTransaction().commit();
+        } catch (HibernateException hi) {
+            JOptionPane.showMessageDialog(null, hi.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
+        }
         
         return b;
     }
-    
-    public static  ArrayList<Boeken> AlleAdsOphalenperUser(int id)
-    {
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        Query q = s.createQuery("from Boeken b where b.persoon.id="+id+"");
-        return (ArrayList<Boeken>)q.list();
-    }
-    
-    public static  ArrayList<Boeken> AlleBoekenOphalen()
-    {
-        Session s = HibernateUtil.getSessionFactory().openSession();
-       Query q = s.createQuery("from Boeken");
-       return (ArrayList<Boeken>)q.list();
-    }
-
-    public static ArrayList<Boeken> ZoekBoek(String zoekTerm) {
-        
-        Session s = HibernateUtil.getSessionFactory().openSession();
-       Query q = s.createQuery("from Boeken b where b.omschrijving like '%" + zoekTerm + "%' OR b.titel like '%" + zoekTerm + "%' OR b.auteur like '%" + zoekTerm + "%'");
-       return (ArrayList<Boeken>)q.list();
-   
-    }
-    
-    public static byte[] SelectFoto(int id)
-    {
-        Session s  = HibernateUtil.getSessionFactory().openSession();
-        Query q = s.createQuery("select b.boekenFoto from Boeken b where b.id =" +id+"");
-        return (byte[])q.uniqueResult();        
-    }
+ 
     
     public static ArrayList<Boeken> SelecteerBoek(int id, Persoon p)
     {
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        Query q = s.createQuery("from Boeken b where b.persoon.id ='" +p.getId()+ "'");
+        Query q = null;
+        try {
+            Session s = HibernateUtil.getSessionFactory().openSession();
+            q = s.createQuery("from Boeken b where b.persoon.id ='" + p.getId() + "'");
+        } catch (HibernateException hi) {
+            JOptionPane.showMessageDialog(null, hi.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
+        }
         return (ArrayList<Boeken>)q.list();
     }
   
     
       public static void BoekDelete(int id)
     {
-        Session session = 
-              HibernateUtil.getSessionFactory().openSession();
-         Query q = session.createQuery("from Boeken b where b.id ='" +id+ "'");
-         Boeken b =  (Boeken)q.uniqueResult();
-         session.beginTransaction();
-         session.delete(b);
-         session.getTransaction().commit();
+        try {
+            Session session
+                    = HibernateUtil.getSessionFactory().openSession();
+            Query q = session.createQuery("from Boeken b where b.id ='" + id + "'");
+            Boeken b = (Boeken) q.uniqueResult();
+            session.beginTransaction();
+            session.delete(b);
+            session.getTransaction().commit();
+        } catch (HibernateException hi) {
+            JOptionPane.showMessageDialog(null, hi.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
   
     
