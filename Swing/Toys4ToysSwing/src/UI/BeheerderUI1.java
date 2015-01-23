@@ -5,26 +5,13 @@
  */
 package UI;
 
-import BO.Babyspullen;
-import BO.Boeken;
-import BO.Kleren;
-import BO.Persoon;
-import BO.Speelgoed;
-import Services.BabyService;
-import Services.BoekService;
-import Services.KlerenService;
-import Services.PersoonService;
-import Services.SpeelgoedService;
+import BO.*;
+import Services.*;
 import java.awt.Image;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import Services.ImageService;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -37,6 +24,8 @@ public class BeheerderUI1 extends javax.swing.JFrame {
      */
     public BeheerderUI1() {
         initComponents();
+        cbxGeslacht.addItem("Jongen");
+        cbxGeslacht.addItem("Meisje");
         ListboxOpvullen();
     }
 
@@ -219,6 +208,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         lblAdvertentieUitgeverij.setBounds(460, 590, 100, 30);
 
         txtTitel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtTitel.setName("txtTitel"); // NOI18N
         getContentPane().add(txtTitel);
         txtTitel.setBounds(150, 440, 210, 28);
 
@@ -398,9 +388,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(lblAanspreekTitel5);
         lblAanspreekTitel5.setBounds(830, 470, 130, 22);
 
-        cbxGeslacht.setEditable(true);
         cbxGeslacht.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cbxGeslacht.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Jongen", "Meisje" }));
         cbxGeslacht.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxGeslachtActionPerformed(evt);
@@ -602,6 +590,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     BabyService babyService = new BabyService();
     KlerenService klerenService = new KlerenService();
     ImageService imageService = new ImageService();
+    Validator valid = new Validator();
     Image image;
     Image sizeImage;
     String file;
@@ -612,6 +601,24 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         } else {
             return false;
         }
+    }
+
+    private boolean IsPresent() {
+        return valid.IsPresent(txtFamilieNaam)
+                && valid.IsPresent(txtVoornaam)
+                && valid.IsPresent(txtEmail)
+                && valid.IsPresent(txtUserName)
+                && valid.IsPresent(txtPassWord);
+
+    }
+
+    private boolean IsValdidPersoon() {
+        return valid.IsAlpha(txtVoornaam)
+                && valid.IsAlpha(txtFamilieNaam)
+                && valid.IsEmail(txtEmail)
+                && valid.IsUsername(txtUserName)
+                && valid.IsPassword(txtPassWord);
+
     }
 
     private void CBXVullen(String select) {
@@ -905,25 +912,29 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEditPersoonActionPerformed
 
     private void btnAddPersoonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPersoonActionPerformed
-
-        if (selectPersoon != null) {
+        Persoon p = new Persoon();
+        if (selectPersoon.getId() != null) {
             JOptionPane.showMessageDialog(this, "Deze gebruiker bestaat al indien, u een nieuw gebruiker wil toevoegen kies dan voor de Add knop nadat u alle velden heeft leeg gemaakt met de Clear knop");
         } else {
 
-            Persoon p = new Persoon();
-            p.setAanspreekTitel(txtTitel.getText());
-            p.setVoornaam(txtVoornaam.getText());
-            p.setFamilienaam(txtFamilieNaam.getText());
-            p.setEmail(txtEmail.getText());
-            p.setWoonPlaats(txtWoonplaats.getText());
-            p.setUserName(txtUserName.getText());
-            p.setPassWord(txtPassWord.getText());
+            if (IsPresent()) {
 
-            PersoonService.PersoonAdd(p);
+                p.setAanspreekTitel(txtTitel.getText());
+                p.setVoornaam(txtVoornaam.getText());
+                p.setFamilienaam(txtFamilieNaam.getText());
+                p.setEmail(txtEmail.getText());
+                p.setWoonPlaats(txtWoonplaats.getText());
+                p.setUserName(txtUserName.getText());
+                p.setPassWord(txtPassWord.getText());
+                if (IsValdidPersoon()) {
+                    PersoonService.PersoonAdd(p);
+                    ListboxOpvullen();
+                    ClearList();
+                    ClearPersoon();
+                }
+            }
         }
-        ListboxOpvullen();
-        ClearList();
-        ClearPersoon();
+
     }//GEN-LAST:event_btnAddPersoonActionPerformed
 
     private void btnClearPersoonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearPersoonActionPerformed
@@ -1057,6 +1068,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         if (persoon != null) {
             Persoon Persoon = persoon;
             PersoonService.PersoonDelete(persoon.getId());
+            ListboxOpvullen();
 
         }
     }//GEN-LAST:event_btnDeletePersoonActionPerformed
