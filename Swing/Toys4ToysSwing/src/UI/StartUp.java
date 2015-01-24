@@ -6,6 +6,7 @@
 package UI;
 
 import Services.LoginService;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,29 +30,44 @@ public class StartUp extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtUserName = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        txtUser = new javax.swing.JTextField();
-        btnLogin = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        btnExit = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        txtUser = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         txtPassWord = new javax.swing.JPasswordField();
-        lblFalseLogin = new javax.swing.JLabel();
+        btnLogin = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Beheer voor Toys4Toys");
+        getContentPane().setLayout(null);
 
-        txtUserName.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        jLabel3.setText("Toys4Toys Beheer");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(77, 24, 421, 58);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Beheerder naam:");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(34, 133, 185, 29);
+
+        txtUser.setBackground(new java.awt.Color(255, 255, 204));
+        txtUser.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        getContentPane().add(txtUser);
+        txtUser.setBounds(225, 130, 316, 35);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setText("Wachtwoord: ");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(34, 192, 149, 29);
 
-        txtUser.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        txtPassWord.setBackground(new java.awt.Color(255, 255, 204));
+        getContentPane().add(txtPassWord);
+        txtPassWord.setBounds(225, 183, 316, 38);
 
+        btnLogin.setBackground(new java.awt.Color(255, 255, 204));
         btnLogin.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnLogin.setText("Login");
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -59,10 +75,10 @@ public class StartUp extends javax.swing.JFrame {
                 btnLoginActionPerformed(evt);
             }
         });
+        getContentPane().add(btnLogin);
+        btnLogin.setBounds(225, 255, 89, 37);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        jLabel3.setText("Toys4Toys Beheer");
-
+        btnExit.setBackground(new java.awt.Color(255, 255, 204));
         btnExit.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnExit.setText("Exit");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
@@ -70,103 +86,39 @@ public class StartUp extends javax.swing.JFrame {
                 btnExitActionPerformed(evt);
             }
         });
+        getContentPane().add(btnExit);
+        btnExit.setBounds(340, 255, 71, 37);
 
-        lblFalseLogin.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/vector1.jpg"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(0, 0, 1965, 1200);
 
-        javax.swing.GroupLayout txtUserNameLayout = new javax.swing.GroupLayout(txtUserName);
-        txtUserName.setLayout(txtUserNameLayout);
-        txtUserNameLayout.setHorizontalGroup(
-            txtUserNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(txtUserNameLayout.createSequentialGroup()
-                .addGap(331, 331, 331)
-                .addGroup(txtUserNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.CENTER, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(txtUserNameLayout.createSequentialGroup()
-                        .addGroup(txtUserNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(6, 6, 6)
-                        .addGroup(txtUserNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(txtUserNameLayout.createSequentialGroup()
-                                .addComponent(btnLogin)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnExit))
-                            .addComponent(txtUser)
-                            .addComponent(txtPassWord))))
-                .addGap(242, 242, 242))
-            .addGroup(txtUserNameLayout.createSequentialGroup()
-                .addGap(352, 352, 352)
-                .addComponent(lblFalseLogin)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        txtUserNameLayout.setVerticalGroup(
-            txtUserNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(txtUserNameLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addGroup(txtUserNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGroup(txtUserNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(txtUserNameLayout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jLabel2))
-                    .addGroup(txtUserNameLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(txtPassWord)))
-                .addGap(34, 34, 34)
-                .addGroup(txtUserNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLogin)
-                    .addComponent(btnExit))
-                .addGap(45, 45, 45)
-                .addComponent(lblFalseLogin)
-                .addContainerGap(64, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(103, Short.MAX_VALUE))
-        );
-
-        setSize(new java.awt.Dimension(1092, 590));
+        setSize(new java.awt.Dimension(604, 376));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_btnExitActionPerformed
-
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
 
-       LoginService log = new LoginService();
+        LoginService log = new LoginService();
         if (log.LoginVerify(txtUser.getText(), txtPassWord.getText())) {
             BeheerderUI1 b = new BeheerderUI1();
             b.setVisible(true);
-            this.setVisible(false);            
-            
+            this.setVisible(false);
+
             b.setDefaultCloseOperation(EXIT_ON_CLOSE);
         }
         else{
             txtUser.setText(null);
             txtPassWord.setText(null);
-            lblFalseLogin.setText("Uw naam en passwoord stemmen niet overeen");
+            JOptionPane.showMessageDialog(this, "Uw naam en passwoord stemmen niet overeen", "Foutje", JOptionPane.INFORMATION_MESSAGE);
+           
         }
-
- 
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnExitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,9 +161,8 @@ public class StartUp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel lblFalseLogin;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPasswordField txtPassWord;
     private javax.swing.JTextField txtUser;
-    private javax.swing.JPanel txtUserName;
     // End of variables declaration//GEN-END:variables
 }

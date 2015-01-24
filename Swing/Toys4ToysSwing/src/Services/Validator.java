@@ -18,6 +18,7 @@ public class Validator {
 
     public static boolean IsPresent(JTextField textfield) {
         if ("".equals(textfield.getText())) {
+            textfield.setText("Verplicht veld");
             JOptionPane.showMessageDialog(null, "Verplicht veld(en) vergeten", "Foutje", JOptionPane.INFORMATION_MESSAGE);
             return false;
         } else {
@@ -67,6 +68,19 @@ public class Validator {
             if (!Character.isLetter(c)) {
                 result = false;
                 JOptionPane.showMessageDialog(null, "enkel letters aub", "Foutje", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+
+        return result;
+    }
+     public boolean IsCijfer(JTextField textfield) {
+        boolean result = true;
+        char[] chars = textfield.getText().toCharArray();
+
+        for (char c : chars) {
+            if (!Character.isLetter(c)) {
+                result = false;
+                JOptionPane.showMessageDialog(null, "enkel cijfers aub", "Foutje", JOptionPane.INFORMATION_MESSAGE);
             }
         }
 

@@ -11,7 +11,6 @@ import BO.Speelgoed;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
 

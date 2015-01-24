@@ -125,6 +125,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         lblSter3 = new javax.swing.JLabel();
         lblSter4 = new javax.swing.JLabel();
         lblSter5 = new javax.swing.JLabel();
+        lblSter6 = new javax.swing.JLabel();
         lblAchtergrond = new javax.swing.JLabel();
 
         btnDelete2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -192,6 +193,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1500, 850));
         getContentPane().setLayout(null);
 
+        lstPersonen.setBackground(new java.awt.Color(207, 179, 42));
         lstPersonen.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jScrollPane1.setViewportView(lstPersonen);
 
@@ -213,6 +215,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(lblAdvertentieUitgeverij);
         lblAdvertentieUitgeverij.setBounds(460, 590, 100, 30);
 
+        txtTitel.setBackground(new java.awt.Color(207, 179, 42));
         txtTitel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtTitel.setName("txtTitel"); // NOI18N
         getContentPane().add(txtTitel);
@@ -223,7 +226,13 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(lblVoornaam);
         lblVoornaam.setBounds(10, 480, 86, 22);
 
+        txtVoornaam.setBackground(new java.awt.Color(207, 179, 42));
         txtVoornaam.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtVoornaam.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                VoornaamVerplicht(evt);
+            }
+        });
         getContentPane().add(txtVoornaam);
         txtVoornaam.setBounds(150, 480, 210, 28);
 
@@ -232,7 +241,13 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(lblFamilieNaam);
         lblFamilieNaam.setBounds(10, 520, 103, 22);
 
+        txtFamilieNaam.setBackground(new java.awt.Color(207, 179, 42));
         txtFamilieNaam.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtFamilieNaam.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                FamilieVerplicht(evt);
+            }
+        });
         getContentPane().add(txtFamilieNaam);
         txtFamilieNaam.setBounds(150, 520, 210, 28);
 
@@ -241,7 +256,13 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(lblEmail);
         lblEmail.setBounds(10, 560, 55, 22);
 
+        txtEmail.setBackground(new java.awt.Color(207, 179, 42));
         txtEmail.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                EmailVerplicht(evt);
+            }
+        });
         getContentPane().add(txtEmail);
         txtEmail.setBounds(150, 560, 210, 28);
 
@@ -250,6 +271,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(lblWoonplaats);
         lblWoonplaats.setBounds(10, 600, 98, 22);
 
+        txtWoonplaats.setBackground(new java.awt.Color(207, 179, 42));
         txtWoonplaats.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(txtWoonplaats);
         txtWoonplaats.setBounds(150, 600, 210, 28);
@@ -259,7 +281,13 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(lblUserName);
         lblUserName.setBounds(10, 640, 140, 22);
 
+        txtUserName.setBackground(new java.awt.Color(207, 179, 42));
         txtUserName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtUserName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                UserVerplicht(evt);
+            }
+        });
         getContentPane().add(txtUserName);
         txtUserName.setBounds(150, 640, 210, 28);
 
@@ -268,7 +296,13 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(lblPassWord);
         lblPassWord.setBounds(10, 680, 104, 22);
 
+        txtPassWord.setBackground(new java.awt.Color(207, 179, 42));
         txtPassWord.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtPassWord.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                PassVerplicht(evt);
+            }
+        });
         getContentPane().add(txtPassWord);
         txtPassWord.setBounds(150, 680, 210, 28);
 
@@ -317,12 +351,14 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(290, 10, 90, 60);
 
+        lstBoeken.setBackground(new java.awt.Color(207, 179, 42));
         lstBoeken.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jScrollPane4.setViewportView(lstBoeken);
 
         getContentPane().add(jScrollPane4);
         jScrollPane4.setBounds(280, 60, 290, 310);
 
+        lstBabySpullen.setBackground(new java.awt.Color(207, 179, 42));
         lstBabySpullen.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jScrollPane5.setViewportView(lstBabySpullen);
 
@@ -334,6 +370,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(jLabel5);
         jLabel5.setBounds(880, 20, 150, 50);
 
+        lstKleren.setBackground(new java.awt.Color(207, 179, 42));
         lstKleren.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jScrollPane6.setViewportView(lstKleren);
 
@@ -345,6 +382,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(jLabel6);
         jLabel6.setBounds(1180, 20, 140, 50);
 
+        lstSpeelgoed.setBackground(new java.awt.Color(207, 179, 42));
         lstSpeelgoed.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jScrollPane7.setViewportView(lstSpeelgoed);
 
@@ -356,6 +394,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(lblAanspreekTitel1);
         lblAanspreekTitel1.setBounds(10, 440, 127, 22);
 
+        txtAdvertentieUitgeverij.setBackground(new java.awt.Color(207, 179, 42));
         txtAdvertentieUitgeverij.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(txtAdvertentieUitgeverij);
         txtAdvertentieUitgeverij.setBounds(550, 590, 210, 30);
@@ -370,6 +409,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(lblAanspreekTitel4);
         lblAanspreekTitel4.setBounds(1220, 440, 50, 22);
 
+        txtOmschrijving.setBackground(new java.awt.Color(207, 179, 42));
         txtOmschrijving.setColumns(20);
         txtOmschrijving.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtOmschrijving.setLineWrap(true);
@@ -394,6 +434,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(lblAanspreekTitel5);
         lblAanspreekTitel5.setBounds(830, 470, 130, 22);
 
+        cbxGeslacht.setBackground(new java.awt.Color(207, 179, 42));
         cbxGeslacht.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cbxGeslacht.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -468,6 +509,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(lblGeslacht);
         lblGeslacht.setBounds(460, 640, 100, 30);
 
+        txtAdvertentieTitel.setBackground(new java.awt.Color(207, 179, 42));
         txtAdvertentieTitel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(txtAdvertentieTitel);
         txtAdvertentieTitel.setBounds(550, 470, 210, 30);
@@ -482,10 +524,22 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(lblAdvertentieAuteur);
         lblAdvertentieAuteur.setBounds(460, 510, 100, 30);
 
+        txtAdvertentieAuteur.setBackground(new java.awt.Color(207, 179, 42));
         txtAdvertentieAuteur.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtAdvertentieAuteur.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                ClearAuteur(evt);
+            }
+        });
+        txtAdvertentieAuteur.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                EnkelNummers(evt);
+            }
+        });
         getContentPane().add(txtAdvertentieAuteur);
         txtAdvertentieAuteur.setBounds(550, 510, 210, 30);
 
+        btnFoto.setBackground(new java.awt.Color(207, 179, 42));
         btnFoto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnFoto.setText("Geen afbeelding");
         btnFoto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -534,6 +588,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(btnDeleteBaby);
         btnDeleteBaby.setBounds(680, 380, 90, 31);
 
+        cbxCategorie.setBackground(new java.awt.Color(207, 179, 42));
         cbxCategorie.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cbxCategorie.setMinimumSize(new java.awt.Dimension(169, 28));
         getContentPane().add(cbxCategorie);
@@ -582,7 +637,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         lblSter.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblSter.setText("*");
         getContentPane().add(lblSter);
-        lblSter.setBounds(770, 470, 20, 22);
+        lblSter.setBounds(770, 550, 20, 22);
 
         lblSter1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblSter1.setText("*");
@@ -609,9 +664,15 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(lblSter5);
         lblSter5.setBounds(370, 680, 20, 22);
 
+        lblSter6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSter6.setText("*");
+        getContentPane().add(lblSter6);
+        lblSter6.setBounds(770, 470, 20, 22);
+
         lblAchtergrond.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/vector1.jpg"))); // NOI18N
+        lblAchtergrond.setText("jLabel1");
         getContentPane().add(lblAchtergrond);
-        lblAchtergrond.setBounds(0, 0, 1920, 1200);
+        lblAchtergrond.setBounds(0, 0, 1965, 1200);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1005,12 +1066,12 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             file = dialog.getSelectedFile().toString();
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage()+ " foto geslecteerd ");
+            JOptionPane.showMessageDialog(this, e.getMessage() + " foto geslecteerd ");
         }
         if (file != null) {
             ImageIcon icon = null;
             ImageIcon imageicon = new ImageIcon(file);
-            
+
             if (imageicon != null) {
 
                 if (imageicon.getIconWidth() > 60) {
@@ -1245,6 +1306,51 @@ public class BeheerderUI1 extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnUpdateSpeelgoedActionPerformed
 
+    private void VoornaamVerplicht(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_VoornaamVerplicht
+        if ("Verplicht veld".equals(txtVoornaam.getText())) {
+            txtVoornaam.setText("");
+        }
+
+    }//GEN-LAST:event_VoornaamVerplicht
+
+    private void FamilieVerplicht(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_FamilieVerplicht
+        if ("Verplicht veld".equals(txtFamilieNaam.getText())) {
+            txtFamilieNaam.setText("");
+        }
+    }//GEN-LAST:event_FamilieVerplicht
+
+    private void EmailVerplicht(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_EmailVerplicht
+        if ("Verplicht veld".equals(txtEmail.getText())) {
+            txtFamilieNaam.setText("");
+        }
+    }//GEN-LAST:event_EmailVerplicht
+
+    private void UserVerplicht(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_UserVerplicht
+        if ("Verplicht veld".equals(txtUserName.getText())) {
+            txtUserName.setText("");
+        }
+    }//GEN-LAST:event_UserVerplicht
+
+    private void PassVerplicht(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PassVerplicht
+        if ("Verplicht veld".equals(txtPassWord.getText())) {
+            txtPassWord.setText("");
+        }
+    }//GEN-LAST:event_PassVerplicht
+
+    private void EnkelNummers(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EnkelNummers
+        if ("Leeftijd".equals(lblAdvertentieAuteur.getText()) || ("Maat".equals(lblAdvertentieAuteur.getText()))) {
+            try {
+                int nummer = Integer.parseInt(txtAdvertentieAuteur.getText());
+            } catch (NumberFormatException nfe) {
+                JOptionPane.showMessageDialog(this, "enkel cijfers", "Foutje", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_EnkelNummers
+
+    private void ClearAuteur(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_ClearAuteur
+        txtAdvertentieAuteur.setText("");
+    }//GEN-LAST:event_ClearAuteur
+
     /**
      * @param args the command line arguments
      */
@@ -1337,6 +1443,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     private javax.swing.JLabel lblSter3;
     private javax.swing.JLabel lblSter4;
     private javax.swing.JLabel lblSter5;
+    private javax.swing.JLabel lblSter6;
     private javax.swing.JLabel lblTitel;
     private javax.swing.JLabel lblUserName;
     private javax.swing.JLabel lblUserName2;
