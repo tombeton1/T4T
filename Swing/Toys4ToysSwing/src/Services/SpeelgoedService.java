@@ -23,23 +23,22 @@ public class SpeelgoedService {
     
     public static Speelgoed SpeelgoedUpdate(int id,Speelgoed speelgoed)
     {
-        try {
+        
             Session s = HibernateUtil.getSessionFactory().openSession();
             speelgoed.setId(id);            
             s.beginTransaction();
             s.merge(speelgoed);
             s.getTransaction().commit();
-        } catch (HibernateException hi) {
-             JOptionPane.showMessageDialog(null, hi.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
-        }
+       
         
         return speelgoed;
     }
     
-    public static Speelgoed SpeelgoedAdd(Speelgoed sp)
+    public static Speelgoed SpeelgoedAdd(int id,Speelgoed sp)
     {
         try {
             Session s = HibernateUtil.getSessionFactory().openSession();
+            sp.setId(id);
             s.beginTransaction();
             s.saveOrUpdate(sp);
             s.getTransaction().commit();

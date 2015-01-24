@@ -23,15 +23,13 @@ public class BabyService {
     
     public static Babyspullen BabyspullenUpdate(int id,Babyspullen baby)
     {
-        try {
+       
             Session s = HibernateUtil.getSessionFactory().openSession();
             baby.setId(id);
             s.beginTransaction();
             s.merge(baby);
             s.getTransaction().commit();
-        } catch (HibernateException hi) {
-            JOptionPane.showMessageDialog(null, hi.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
-        }
+       
         
         return baby;
     }

@@ -1239,7 +1239,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             } catch (FileNotFoundException ex) {
                 JOptionPane.showMessageDialog(this, "De foto is niet gevonden " + ex.getMessage());
             }
-            SpeelgoedService.SpeelgoedUpdate(selectSpeelgoed.getId(), selectSpeelgoed);
+            SpeelgoedService.SpeelgoedAdd(selectSpeelgoed.getId(), selectSpeelgoed);
 
         }
 

@@ -23,15 +23,13 @@ public class KlerenService {
     
     public static Kleren KlerenUpdate(int id,Kleren kleren)
     {
-        try {
+       
             Session s = HibernateUtil.getSessionFactory().openSession();
             kleren.setId(id);
             s.beginTransaction();
             s.merge(kleren);
             s.getTransaction().commit();
-        } catch (HibernateException hi) {
-            JOptionPane.showMessageDialog(null, hi.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
-        }
+       
         
         return kleren;
     }

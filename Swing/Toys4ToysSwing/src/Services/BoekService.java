@@ -19,26 +19,20 @@ import org.hibernate.Session;
  * @author Véronique
  */
 public class BoekService {
-    
-    
-    public static Boeken BoekenUpdate(int id,Boeken boek)
-    {
+
+    public static Boeken BoekenUpdate(int id, Boeken boek) {
         Session s = null;
-        try {
-            s = HibernateUtil.getSessionFactory().openSession();
-            boek.setId(id);
-            s.beginTransaction();
-            s.merge(boek);
-        } catch (HibernateException hi) {
-            JOptionPane.showMessageDialog(null, hi.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
-        }
+
+        s = HibernateUtil.getSessionFactory().openSession();
+        boek.setId(id);
+        s.beginTransaction();
+        s.merge(boek);
         s.getTransaction().commit();
-        
+
         return boek;
     }
-    
-    public static Boeken BoekAdd(Boeken b)
-    {
+
+    public static Boeken BoekAdd(Boeken b) {
         try {
             Session s = HibernateUtil.getSessionFactory().openSession();
             s.beginTransaction();
@@ -47,13 +41,11 @@ public class BoekService {
         } catch (HibernateException hi) {
             JOptionPane.showMessageDialog(null, hi.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
         }
-        
+
         return b;
     }
- 
-    
-    public static ArrayList<Boeken> SelecteerBoek(int id, Persoon p)
-    {
+
+    public static ArrayList<Boeken> SelecteerBoek(int id, Persoon p) {
         Query q = null;
         try {
             Session s = HibernateUtil.getSessionFactory().openSession();
@@ -61,12 +53,10 @@ public class BoekService {
         } catch (HibernateException hi) {
             JOptionPane.showMessageDialog(null, hi.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
         }
-        return (ArrayList<Boeken>)q.list();
+        return (ArrayList<Boeken>) q.list();
     }
-  
-    
-      public static void BoekDelete(int id)
-    {
+
+    public static void BoekDelete(int id) {
         try {
             Session session
                     = HibernateUtil.getSessionFactory().openSession();
@@ -79,6 +69,5 @@ public class BoekService {
             JOptionPane.showMessageDialog(null, hi.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-  
-    
+
 }
