@@ -8,6 +8,7 @@ package Services;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -99,5 +100,13 @@ public class Validator {
         }
         
         return result;
+    }
+      public static boolean IsPresentTxtArea(JTextArea textfield) {
+        if ("".equals(textfield.getText())) {
+            JOptionPane.showMessageDialog(null, "omschrijving vergeten", "Foutje", JOptionPane.INFORMATION_MESSAGE);
+            return false;
+        } else {
+            return true;
+        }
     }
 }

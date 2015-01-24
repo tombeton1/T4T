@@ -126,6 +126,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         lblSter4 = new javax.swing.JLabel();
         lblSter5 = new javax.swing.JLabel();
         lblSter6 = new javax.swing.JLabel();
+        lblSter7 = new javax.swing.JLabel();
         lblAchtergrond = new javax.swing.JLabel();
 
         btnDelete2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -317,7 +318,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         btnDeleteKleren.setBounds(980, 380, 90, 31);
 
         btnEditPersoon.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnEditPersoon.setText("Edit");
+        btnEditPersoon.setText("Update");
         btnEditPersoon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEditPersoonActionPerformed(evt);
@@ -417,7 +418,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         jScrollPane2.setViewportView(txtOmschrijving);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(830, 500, 290, 190);
+        jScrollPane2.setBounds(830, 500, 340, 190);
 
         btnSelectFile.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnSelectFile.setText("Kies een andere foto");
@@ -637,7 +638,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         lblSter.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblSter.setText("*");
         getContentPane().add(lblSter);
-        lblSter.setBounds(770, 550, 20, 22);
+        lblSter.setBounds(770, 510, 20, 22);
 
         lblSter1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblSter1.setText("*");
@@ -667,7 +668,12 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         lblSter6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblSter6.setText("*");
         getContentPane().add(lblSter6);
-        lblSter6.setBounds(770, 470, 20, 22);
+        lblSter6.setBounds(950, 470, 20, 22);
+
+        lblSter7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lblSter7.setText("*");
+        getContentPane().add(lblSter7);
+        lblSter7.setBounds(770, 470, 20, 22);
 
         lblAchtergrond.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/vector1.jpg"))); // NOI18N
         lblAchtergrond.setText("jLabel1");
@@ -700,9 +706,16 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         }
     }
 
+    private boolean AdvertentiePresent() {
+        return valid.IsPresent(txtAdvertentieTitel)
+                && valid.IsPresent(txtAdvertentieAuteur)
+                && valid.IsPresentTxtArea(txtOmschrijving);
+
+    }
+
     private boolean IsPresent() {
-        return valid.IsPresent(txtFamilieNaam)
-                && valid.IsPresent(txtVoornaam)
+        return valid.IsPresent(txtVoornaam)
+                && valid.IsPresent(txtFamilieNaam)
                 && valid.IsPresent(txtEmail)
                 && valid.IsPresent(txtUserName)
                 && valid.IsPresent(txtPassWord);
@@ -994,24 +1007,32 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSelectBabyActionPerformed
 
     private void btnEditPersoonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditPersoonActionPerformed
+        // selectPersoon = (Persoon) lstPersonen.getSelectedValue();
+        if (selectPersoon.getId() == null) {
+            JOptionPane.showMessageDialog(null, "Geen persoon gesecelteerd", "Foutje", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            if (IsPresent()) {
 
-        if (selectPersoon != null) {
-            selectPersoon.setAanspreekTitel(txtTitel.getText());
-            selectPersoon.setVoornaam(txtVoornaam.getText());
-            selectPersoon.setFamilienaam(txtFamilieNaam.getText());
-            selectPersoon.setEmail(txtEmail.getText());
-            selectPersoon.setWoonPlaats(txtWoonplaats.getText());
-            selectPersoon.setUserName(txtUserName.getText());
-            selectPersoon.setPassWord(txtPassWord.getText());
-            PersoonService.PersoonUpdate(selectPersoon.getId(), selectPersoon);
+                selectPersoon.setAanspreekTitel(txtTitel.getText());
+                selectPersoon.setVoornaam(txtVoornaam.getText());
+                selectPersoon.setFamilienaam(txtFamilieNaam.getText());
+                selectPersoon.setEmail(txtEmail.getText());
+                selectPersoon.setWoonPlaats(txtWoonplaats.getText());
+                selectPersoon.setUserName(txtUserName.getText());
+                selectPersoon.setPassWord(txtPassWord.getText());
+                PersoonService.PersoonUpdate(selectPersoon.getId(), selectPersoon);
+                ListboxOpvullen();
+            }
         }
-        ListboxOpvullen();
+
+
     }//GEN-LAST:event_btnEditPersoonActionPerformed
 
     private void btnAddPersoonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddPersoonActionPerformed
         Persoon p = new Persoon();
         if (selectPersoon.getId() != null) {
             JOptionPane.showMessageDialog(this, "Deze gebruiker bestaat al indien, u een nieuw gebruiker wil toevoegen kies dan voor de Add knop nadat u alle velden heeft leeg gemaakt met de Clear knop");
+            selectPersoon = selectPersoon;
         } else {
 
             if (IsPresent()) {
@@ -1030,12 +1051,14 @@ public class BeheerderUI1 extends javax.swing.JFrame {
                     ClearPersoon();
                 }
             }
+
         }
 
     }//GEN-LAST:event_btnAddPersoonActionPerformed
 
     private void btnClearPersoonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearPersoonActionPerformed
         ClearPersoon();
+        selectPersoon = new Persoon();
 
     }//GEN-LAST:event_btnClearPersoonActionPerformed
 
@@ -1214,22 +1237,26 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         if (selectBaby.getId() == null) {
             JOptionPane.showMessageDialog(this, "Gelieve eerst een advertentie te selecteren!");
         } else {
-
-            selectBaby.setTitel(txtAdvertentieTitel.getText());
-            selectBaby.setLeeftijd(Integer.parseInt(txtAdvertentieAuteur.getText()));
-            selectBaby.setCategorie(cbxCategorie.toString());
-            selectBaby.setCategorie(txtAdvertentieUitgeverij.getText());
-            selectBaby.setOmschrijving(txtOmschrijving.getText());
-            selectBaby.setGeslacht(Geslacht(cbxGeslacht.getSelectedIndex()));
-            BabyService.BabyspullenUpdate(selectBaby.getId(), selectBaby);
-            try {
-                imageService.FotoBabyToDB(file, selectBaby.getId());
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(this, "Er is iets mis met de verbinding " + ex.getMessage());
-            } catch (FileNotFoundException ex) {
-                JOptionPane.showMessageDialog(this, "De foto is niet gevonden " + ex.getMessage());
+            if (AdvertentiePresent()) {
+                selectBaby.setTitel(txtAdvertentieTitel.getText());
+                selectBaby.setLeeftijd(Integer.parseInt(txtAdvertentieAuteur.getText()));
+                selectBaby.setCategorie(cbxCategorie.toString());
+                selectBaby.setCategorie(txtAdvertentieUitgeverij.getText());
+                selectBaby.setOmschrijving(txtOmschrijving.getText());
+                selectBaby.setGeslacht(Geslacht(cbxGeslacht.getSelectedIndex()));
+                BabyService.BabyspullenUpdate(selectBaby.getId(), selectBaby);
+                try {
+                    if (file == null) {
+                        selectBaby.setBabyspullenFoto(selectBaby.getBabyspullenFoto());
+                    } else {
+                        imageService.FotoBabyToDB(file, selectBaby.getId());
+                    }
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(this, "Er is iets mis met de verbinding " + ex.getMessage());
+                } catch (FileNotFoundException ex) {
+                    JOptionPane.showMessageDialog(this, "De foto is niet gevonden " + ex.getMessage());
+                }
             }
-
         }
 
 
@@ -1239,23 +1266,29 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         if (selectBoek.getId() == null) {
             JOptionPane.showMessageDialog(this, "Gelieve eerst een advertentie te selecteren!");
         } else {
+            if (AdvertentiePresent()) {
 
-            selectBoek.setTitel(txtAdvertentieTitel.getText());
-            selectBoek.setAuteur(txtAdvertentieAuteur.getText());
-            selectBoek.setCategorie(cbxCategorie.toString());
-            selectBoek.setUitgeverij(txtAdvertentieUitgeverij.getText());
-            selectBoek.setOmschrijving(txtOmschrijving.getText());
-            try {
-                imageService.FotoBoekToDB(file, selectBoek.getId());
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(this, "Er is iets mis met de verbinding " + ex.getMessage());
-            } catch (FileNotFoundException ex) {
-                JOptionPane.showMessageDialog(this, "De foto is niet gevonden " + ex.getMessage());
+                selectBoek.setTitel(txtAdvertentieTitel.getText());
+                selectBoek.setAuteur(txtAdvertentieAuteur.getText());
+                selectBoek.setCategorie(cbxCategorie.getSelectedItem().toString());
+                selectBoek.setUitgeverij(txtAdvertentieUitgeverij.getText());
+                selectBoek.setOmschrijving(txtOmschrijving.getText());
+                try {
+                    if (file == null) {
+                        selectBoek.setBoekenFoto(selectBoek.getBoekenFoto());
+                    } else {
+                        imageService.FotoBoekToDB(file, selectBoek.getId());
+                    }
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(this, "Er is iets mis met de verbinding " + ex.getMessage());
+                } catch (FileNotFoundException ex) {
+                    JOptionPane.showMessageDialog(this, "De foto is niet gevonden " + ex.getMessage());
+                }
+                BoekService.BoekenUpdate(selectBoek.getId(), selectBoek);
+
             }
-            BoekService.BoekenUpdate(selectBoek.getId(), selectBoek);
 
         }
-        BoekListOpvullen();
     }//GEN-LAST:event_btnUpdateBoekActionPerformed
 
     private void btnUpdateKlerenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateKlerenActionPerformed
@@ -1321,7 +1354,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
 
     private void EmailVerplicht(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_EmailVerplicht
         if ("Verplicht veld".equals(txtEmail.getText())) {
-            txtFamilieNaam.setText("");
+            txtEmail.setText("");
         }
     }//GEN-LAST:event_EmailVerplicht
 
@@ -1444,6 +1477,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
     private javax.swing.JLabel lblSter4;
     private javax.swing.JLabel lblSter5;
     private javax.swing.JLabel lblSter6;
+    private javax.swing.JLabel lblSter7;
     private javax.swing.JLabel lblTitel;
     private javax.swing.JLabel lblUserName;
     private javax.swing.JLabel lblUserName2;
