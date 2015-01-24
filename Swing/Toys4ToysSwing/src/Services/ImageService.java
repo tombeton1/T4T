@@ -47,7 +47,7 @@ public class ImageService {
         return conn;
     }
 
-    public Image getFotoBoek(int id) {
+    public Image getFotoBoek(int id) throws SQLException {
         try {
             conn = Verbinding();
             sql = "select b.boekenFoto from Boeken b where b.id =" + id + "";
@@ -62,10 +62,12 @@ public class ImageService {
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
         }
+        conn.close();
         return image;
+        
     }
 
-    public Image getFotoBaby(int id) {
+    public Image getFotoBaby(int id) throws SQLException {
         try {
             conn = Verbinding();
             sql = "select ba.babyspullenFoto from BabySpullen ba where ba.id =" + id + "";
@@ -80,10 +82,11 @@ public class ImageService {
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
         }
+         conn.close();
         return image;
     }
 
-    public Image getFotoKleren(int id) {
+    public Image getFotoKleren(int id) throws SQLException {
         try {
             conn = Verbinding();
             sql = "select k.klerenFoto from Kleren k where k.id =" + id + "";
@@ -98,11 +101,12 @@ public class ImageService {
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
         }
+         conn.close();
         return image;
 
     }
 
-    public Image getFotoSpeel(int id) {
+    public Image getFotoSpeel(int id) throws SQLException {
         try {
             conn = Verbinding();
             sql = "select s.speelgoedFoto from Speelgoed s where s.id =" + id + "";
@@ -117,6 +121,7 @@ public class ImageService {
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
         }
+         conn.close();
         return image;
     }
 
@@ -134,6 +139,7 @@ public class ImageService {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
         }
+         conn.close();
         return file;
     }
     public String FotoBabyToDB(String file, int id) throws SQLException, FileNotFoundException {
@@ -150,6 +156,7 @@ public class ImageService {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
         }
+         conn.close();
         return file;
     }
      public String FotoKlerenToDB(String file, int id) throws SQLException, FileNotFoundException {
@@ -166,6 +173,7 @@ public class ImageService {
          } catch (SQLException ex) {
              JOptionPane.showMessageDialog(null, ex.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
          }
+          conn.close();
         return file;
     }
      public String FotoSpeelToDB(String file, int id) throws SQLException, FileNotFoundException {
@@ -182,6 +190,7 @@ public class ImageService {
          } catch (SQLException ex) {
              JOptionPane.showMessageDialog(null, ex.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
          }
+          conn.close();
         return file;
     }
 }
