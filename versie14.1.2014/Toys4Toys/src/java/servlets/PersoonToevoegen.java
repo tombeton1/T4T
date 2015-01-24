@@ -45,9 +45,9 @@ public class PersoonToevoegen extends HttpServlet {
         
         PersoonService.PersoonAdd(p);
         
-        List<PersoonService> personen = PersoonService.AllePersonenOphalen();
+        List<Persoon> personen = PersoonService.AllePersonenOphalen();
         
-        request.getSession().setAttribute("vm", personen);
+        request.getSession().setAttribute("vm5", personen);
         
         RequestDispatcher dispatcher = request.getRequestDispatcher("PersonenOverzicht.jsp");
         dispatcher.forward(request, response);

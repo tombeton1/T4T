@@ -3,53 +3,33 @@
     Created on : 11-jan-2015, 11:41:27
     Author     : Eric
 --%>
-
+<%@include file="/Header.jsp" %>
 <html>
     <head>
-        <link href="Styles.css" rel="stylesheet" type="text/css"/>
-        <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Crafty+Girls' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+      
     </head>
     <body>
-
-        <div id="logo"><h1>Toys4Toys</h1>
-            <h4>Makkelijk ruilen van speelgoed, kleren, boeken voor kinderen </h4></div>
-
-
-            <nav>
-                <ul>
-                    <li><a href="Index.jsp">Home</a></li>
-                    <li><a href="CatBoekSelecteren">Boeken</a></li>
-                    <li><a href="CatBabySelecteren">Baby Spullen</a></li>
-                    <li><a href="CatKlerenSelecteren">Kleren</a></li>
-                    <li><a href="CatSpeelgoedSelecteren">Speelgoed</a></li>  
-                    <li><a href="Login.jsp">Advertentie toevoegen</a></li>   
-                    <li><a href="Login.jsp">Log in</a></li>                   
-                </ul>
-            </nav>  
-        
 
         <div id="wrapper">
             <h1>Kledij toevoegen</h1>
             <form action="KlerenToevoegen" method="POST">
-                <table>
+                <table style="width: auto">
                     <tbody>
                         <tr>
                             <td>Maat:</td>
-                            <td><input type="text"  name="Maat" ></td>
+                            <td><input required="true" type="text"  name="Maat" ></td>
                         </tr>
                         <tr>
                             <td>Geslacht: </td>
-                            <td><select>
-                                    <option value='1' name="Geslacht">M</option>
-                                    <option value='0' name="Geslacht">V</option>
+                            <td><select name="Geslacht">
+                                    <option value='true' name="Geslacht">M</option>
+                                    <option value='false' name="Geslacht">V</option>
                                 </select>
                             </td>
                         </tr>
                         <tr>
                             <td>Soort kledij: </td>
-                            <td><input type="text"  name="Soort" ></td>
+                            <td><input required="true" type="text"  name="Soort" ></td>
                         </tr>
                         <tr>
                             <td>Seizoen:</td>
@@ -66,11 +46,11 @@
                         </tr>
                         <tr>
                             <td>Omschrijving:</td>
-                            <td><input type="text"  name="Omschrijving" ></td>
+                            <td><input required="true" type="text"  name="Omschrijving" ></td>
                         </tr>
                         <tr>
                             <td>Foto toevoegen:</td>
-                            <td><input type="file"  name="KlerenFoto" ></td>
+                            <td><input type="file"  name="upfileKleren" ></td>
                         </tr>
                         <tr>
                             <td></td>

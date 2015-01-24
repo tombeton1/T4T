@@ -3,35 +3,14 @@
     Created on : 9-jan-2015, 20:07:56
     Author     : Tom
 --%>
-
+<%@include file="/Header.jsp" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <link href="Styles.css" rel="stylesheet" type="text/css"/>
-        <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Crafty+Girls' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+       
     </head>
     <body>
-
-
-        <div id="logo"><h1>Toys4Toys</h1>
-            <h4>Makkelijk ruilen van speelgoed, kleren, boeken voor kinderen </h4></div>
-
-
-            <nav>
-                <ul>
-                    <li><a href="Index.jsp">Home</a></li>
-                    <li><a href="CatBoekSelecteren">Boeken</a></li>
-                    <li><a href="CatBabySelecteren">Baby Spullen</a></li>
-                    <li><a href="CatKlerenSelecteren">Kleren</a></li>
-                    <li><a href="CatSpeelgoedSelecteren">Speelgoed</a></li>  
-                    <li><a href="Login.jsp">Log in</a></li>                   
-                </ul>
-            </nav>  
-        </div>
-
         <div id="wrapper">
             <h1>Login</h1>
             <form action="LoginRequest" method="POST">
@@ -55,7 +34,7 @@
              <h1>Of nieuwe gebruiker</h1>
             <form action="PersoonToevoegen" method="POST" role="form">
 
-                <table border="0">               
+                <table>               
                     <tbody>
                         <tr>
                             <td>Aanhef</td>

@@ -4,64 +4,64 @@
     Author     : Eric
 --%>
 
+<%@include file="/Header.jsp" %>
 <%@page import="dal.Persoon"%>
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
-    ArrayList<Persoon> persoon = (ArrayList<Persoon>)session.getAttribute("vm");
-    
+    ArrayList<Persoon> persoon = (ArrayList<Persoon>)session.getAttribute("vm");   
     %>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-        <title>Persoon - Update</title>
     </head>
-    <body style="margin: 15px">
-        <h1>Detail</h1>
-        <<form method="POST" action="PersoonUpdaten" role="form">
-        <table style="width: 66%" rules="groups" class="table">
-            <tr>
-                <th>Aanhef</th>
-                <th>Voornaam</th>
-                <th>Familienaam</th>
-                <th>Woonplaats</th>
-                <th>Email</th>
-                <th>Username</th>
-                <th>Wachtwoord</th>
-            </tr>
+    <body>
+        <div id="wrapper">
+        <h1>Pas uw persoonlijke informatie aan</h1>
+        <form method="POST" action="PersoonUpdaten">
+            <table style="width: auto;">
             <%                
     for (Persoon p : persoon) {
 
             %>
             <tr>
-                <td> <input type="text" value="<%= p.getAanspreekTitel()%>" name="Aanspreektitel" ></td>
-                <td><input type="text" value="<%= p.getVoornaam() %>" name="Voornaam"></td>
-                <td><input type="text" value="<%= p.getFamilienaam() %>" name="Familienaam"></td>
-                <td><input type="text" value="<%= p.getWoonPlaats() %>" name="Woonplaats"></td>
-                <td><input type="text" value="<%= p.getEmail() %>" name="Email"></td>
-                <td><input type="text" value="<%= p.getUserName() %>" name="Username"></td>
-                <td><input type="text" value="<%= p.getPassWord() %>" name="Wachtwoord"></td>
-                <td><input type="submit" value="Updaten" name="Updaten"></td>
+                <td>Aanhef:</td>
+                <td> <input required="true" type="text" name="Aanspreektitel" value="<%=p.getAanspreekTitel()%>" ></td>
+            </tr>
+            <tr>
+                <td>Voornaam:</td>
+                <td><input type="text"  name="Voornaam" value="<%=p.getVoornaam() %>"></td>
+            </tr>
+            <tr>
+                <td>Familienaam:</td>
+                <td><input required="true" type="text"  name="Familienaam" value="<%=p.getFamilienaam() %>"></td>
+            </tr>
+            <tr>
+                <td>Woonplaats:</td>
+                <td><input type="text"  name="Woonplaats" value="<%=p.getWoonPlaats() %>"></td>
+            </tr>
+            <tr>
+                <td>E-mailadres:</td>
+                <td><input required="true" type="text"  name="Email" value="<%=p.getEmail() %>"></td>
+            </tr>
+            <tr>
+                <td>Username:</td>
+                <td><input required="true" type="text"  name="Username" value="<%=p.getUserName() %>"></td>
+            </tr>
+            <tr>
+                <td>Wachtwoord:</td>
+                <td><input required="true" type="text"  name="Wachtwoord" value="<%=p.getPassWord() %>"></td>
+            </tr>
+            <tr> 
+                <td><input type="submit" value="Updaten" name="Aanpassen"></td>
+                <td><input type="hidden" name="id" value="<%= p.getId() %>"></td>
             </tr>
 
             <%  }%>
         </table>
         <br/>
         </form>
-        
-        <a href="PersonenOverzicht.jsp" class="btn btn-primary btn-sm">Terug naar overzicht</a>
-    </body>
+        </div>
     </body>
 </html>

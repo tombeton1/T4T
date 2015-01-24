@@ -6,6 +6,7 @@
 package servlets;
 
 import Services.PersoonService;
+import dal.Persoon;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -33,7 +34,7 @@ public class PersoonUpdating extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        List<PersoonService> pers = PersoonService.SelecteerPersoon(Integer.parseInt(request.getParameter("id")));
+        List<Persoon> pers = PersoonService.SelecteerPersoon(Integer.parseInt(request.getParameter("id")));
         
         request.getSession().setAttribute("vm", pers);
         RequestDispatcher dispatcher = request.getRequestDispatcher("PersoonDetails.jsp");

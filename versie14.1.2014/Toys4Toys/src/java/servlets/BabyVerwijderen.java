@@ -7,6 +7,7 @@ package servlets;
 
 
 import Services.BabyService;
+import dal.Babyspullen;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -38,11 +39,11 @@ public class BabyVerwijderen extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         BabyService.BabyDelete(Integer.parseInt(request.getParameter("id")));
         
-        List<BabyService> baby = BabyService.AlleBabyspullenOphalen();
+        List<Babyspullen> baby = BabyService.AlleBabyspullenOphalen();
         
-        request.getSession().setAttribute("vm", baby);
+        request.getSession().setAttribute("vm2", baby);
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("BabyspullenOverzicht.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("PersoonDetailOverzicht.jsp");
         dispatcher.forward(request, response);
         }
     

@@ -6,8 +6,8 @@
 package servlets;
 
 import Services.BoekService;
+import dal.Boeken;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -33,7 +33,7 @@ public class CatBoekSelecteren extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        List<BoekService> boeken = BoekService.AlleBoekenOphalen();
+        List<Boeken> boeken = BoekService.AlleBoekenOphalen();
         
         
         request.getSession().setAttribute("vm", boeken);

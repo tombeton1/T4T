@@ -9,7 +9,6 @@ import dal.HibernateUtil;
 import dal.Persoon;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 /**
  *

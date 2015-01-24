@@ -6,8 +6,6 @@
 package servlets;
 
 import Services.LoginService;
-import Services.PersoonService;
-import dal.Persoon;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -42,13 +40,13 @@ public class LoginRequest extends HttpServlet {
      
         // Id van de gebruiker opslaan in cookie >> zie LoginService.VindID
         
-        Cookie c = new Cookie("user",request.getParameter("username"));
+        Cookie c = new Cookie("userT4T",request.getParameter("username"));
         c.setMaxAge(-1);
         response.addCookie(c);
             
          
         request.getSession().setAttribute("vm", verify);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("BeheerProfiel.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("Index.jsp");
         dispatcher.forward(request, response);
   
         }

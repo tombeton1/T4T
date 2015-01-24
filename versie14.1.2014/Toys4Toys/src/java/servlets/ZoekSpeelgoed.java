@@ -6,6 +6,7 @@
 package servlets;
 
 import Services.SpeelgoedService;
+import dal.Speelgoed;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -32,7 +33,7 @@ public class ZoekSpeelgoed extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        List<SpeelgoedService> speelgoed = SpeelgoedService.ZoekSpeelgoed(request.getParameter("zoekTerm"));
+        List<Speelgoed> speelgoed = SpeelgoedService.ZoekSpeelgoed(request.getParameter("zoekTerm"));
         
         request.getSession().setAttribute("vm", speelgoed);
         RequestDispatcher dispatcher = request.getRequestDispatcher("SpeelgoedOverzicht.jsp");

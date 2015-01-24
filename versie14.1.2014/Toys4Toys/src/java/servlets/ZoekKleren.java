@@ -6,6 +6,7 @@
 package servlets;
 
 import Services.KlerenService;
+import dal.Kleren;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -32,7 +33,7 @@ public class ZoekKleren extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        List<KlerenService> kleren = KlerenService.ZoekKleren(request.getParameter("zoekTerm"));
+        List<Kleren> kleren = KlerenService.ZoekKleren(request.getParameter("zoekTerm"));
         
         request.getSession().setAttribute("vm", kleren);
         RequestDispatcher dispatcher = request.getRequestDispatcher("KlerenOverzicht.jsp");

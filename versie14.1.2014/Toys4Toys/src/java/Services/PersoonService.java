@@ -18,11 +18,11 @@ import org.hibernate.*;
  */
 public class PersoonService {
     
-    public static ArrayList<PersoonService> SelecteerPersoon(int id)
+    public static ArrayList<Persoon> SelecteerPersoon(int id)
     {
         Session s = HibernateUtil.getSessionFactory().openSession();
-        Query q = s.createQuery("from Persoon where id ='" +id+ "'");
-        return (ArrayList<PersoonService>)q.list();
+        Query q = s.createQuery("from Persoon p where p.id ='" +id+ "'");
+        return (ArrayList<Persoon>)q.list();
     }
     
     public static Persoon PersoonAdd(Persoon p)
@@ -34,45 +34,44 @@ public class PersoonService {
         
         return p;
     }
-    
+
     public static Persoon VindPersoon(String username)
     {
         Session s = HibernateUtil.getSessionFactory().openSession();
-        Query q = s.createQuery("from Persoon where username ='" +username+ "'");
+        Query q = s.createQuery("from Persoon p where p.userName ='" +username+ "'");
         Persoon p =  (Persoon)q.uniqueResult();
         
         return p ;
     }
     
     
-    public static Persoon PersoonUpdate(int id)
+    public static Persoon PersoonUpdate(int id,Persoon persoon)
     {
         Session s = HibernateUtil.getSessionFactory().openSession();
-        Query q = s.createQuery("update Persoon where id ='" +id+ "'");
-        Persoon p =  (Persoon)q.uniqueResult();
+        persoon.setId(id);
         s.beginTransaction();
-        s.saveOrUpdate(p);
+        s.merge(persoon);
         s.getTransaction().commit();
         
-        return p;
+        return persoon;
     }
     
     public static void PersoonDelete(int id)
     {
         Session session = 
               HibernateUtil.getSessionFactory().openSession();
-         Query q = session.createQuery("from Persoon where id ='" +id+ "'");
+         Query q = session.createQuery("from Persoon p where p.id ='" +id+ "'");
          Persoon p =  (Persoon)q.uniqueResult();
          session.beginTransaction();
          session.delete(p);
          session.getTransaction().commit();
     }
     
-    public static  ArrayList<PersoonService> AllePersonenOphalen()
+    public static  ArrayList<Persoon> AllePersonenOphalen()
     {
         Session s = HibernateUtil.getSessionFactory().openSession();
        Query q = s.createQuery("from Persoon");
-       return (ArrayList<PersoonService>)q.list();
+       return (ArrayList<Persoon>)q.list();
     }  
     
     public static ArrayList<Persoon> ListPersonen(){
@@ -80,6 +79,4 @@ public class PersoonService {
        Query q = s.createQuery("from Persoon");
        return (ArrayList<Persoon>)q.list();
     }
-    
-    
 }

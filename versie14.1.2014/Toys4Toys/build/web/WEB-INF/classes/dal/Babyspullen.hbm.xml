@@ -17,7 +17,7 @@
         <property name="leeftijd" type="java.lang.Integer">
             <column name="Leeftijd" />
         </property>
-         <property name="titel" type="string">
+        <property name="titel" type="string">
             <column name="Titel" />
         </property>
         <property name="categorie" type="string">

@@ -6,8 +6,8 @@
 package servlets;
 
 import Services.SpeelgoedService;
+import dal.Speelgoed;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -35,13 +35,14 @@ public class SpeelgoedVerwijderen extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
         SpeelgoedService.SpeelgoedDelete(Integer.parseInt(request.getParameter("id")));
         
-        List<SpeelgoedService> speelgoed = SpeelgoedService.AlleSpeelgoedOphalen();
+        List<Speelgoed> speelgoed = SpeelgoedService.AlleSpeelgoedOphalen();
         
-        request.getSession().setAttribute("vm", speelgoed);
+        request.getSession().setAttribute("vm4", speelgoed);
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("SpeelgoedOverzicht.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("PersoonDetailOverzicht.jsp");
         dispatcher.forward(request, response);
     }
 

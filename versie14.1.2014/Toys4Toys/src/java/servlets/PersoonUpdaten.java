@@ -8,7 +8,6 @@ package servlets;
 import Services.PersoonService;
 import dal.Persoon;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -37,6 +36,7 @@ public class PersoonUpdaten extends HttpServlet {
         
         Persoon p = new Persoon();
         
+        p.setId(Integer.parseInt(request.getParameter("id")));
         p.setAanspreekTitel(request.getParameter("Aanspreektitel"));
         p.setVoornaam(request.getParameter("Voornaam"));
         p.setFamilienaam(request.getParameter("Familienaam"));
@@ -45,13 +45,13 @@ public class PersoonUpdaten extends HttpServlet {
         p.setUserName(request.getParameter("Username"));
         p.setPassWord(request.getParameter("Wachtwoord"));
         
-       // PersoonService.PersoonUpdate(p.getId(Integer.parseInt(request.getParameter("id"))));
+        PersoonService.PersoonUpdate(Integer.parseInt(request.getParameter("id")),p);
         
-        List<PersoonService> personen = PersoonService.AllePersonenOphalen();
+        List<Persoon> personen = PersoonService.AllePersonenOphalen();
         
-        request.getSession().setAttribute("vm", personen);
+        request.getSession().setAttribute("vm5", personen);
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("PersonenOverzicht.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("PersoonDetailOverzicht.jsp");
         dispatcher.forward(request, response);
     }
 

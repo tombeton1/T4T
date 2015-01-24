@@ -6,6 +6,7 @@
 package servlets;
 
 import Services.BoekService;
+import dal.Boeken;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -32,7 +33,7 @@ public class BoekDetail extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        List<BoekService> boek = BoekService.SelecteerBoek(Integer.parseInt(request.getParameter("id")));
+        List<Boeken> boek = BoekService.SelecteerBoek(Integer.parseInt(request.getParameter("id")));
         
         request.getSession().setAttribute("vm", boek);
         RequestDispatcher dispatcher = request.getRequestDispatcher("BoekDetails.jsp");

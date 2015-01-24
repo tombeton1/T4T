@@ -6,6 +6,7 @@
 package servlets;
 
 import Services.KlerenService;
+import dal.Kleren;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -31,7 +32,7 @@ public class CatKlerenSelecteren extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<KlerenService> kleren = KlerenService.AlleKlerenOphalen();
+        List<Kleren> kleren = KlerenService.AlleKlerenOphalen();
         
         request.getSession().setAttribute("vm", kleren);
         RequestDispatcher dispatcher = request.getRequestDispatcher("KlerenOverzicht.jsp");

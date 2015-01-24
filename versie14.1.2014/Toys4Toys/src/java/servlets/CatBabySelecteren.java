@@ -6,6 +6,7 @@
 package servlets;
 
 import Services.BabyService;
+import dal.Babyspullen;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -32,7 +33,7 @@ public class CatBabySelecteren extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        List<BabyService> baby = BabyService.AlleBabyspullenOphalen();
+        List<Babyspullen> baby = BabyService.AlleBabyspullenOphalen();
         
         request.getSession().setAttribute("vm", baby);
         RequestDispatcher dispatcher = request.getRequestDispatcher("BabyspullenOverzicht.jsp");

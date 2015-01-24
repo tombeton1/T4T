@@ -6,8 +6,8 @@
 package servlets;
 
 import Services.PersoonService;
+import dal.Persoon;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -35,7 +35,7 @@ public class PersoonVerwijderen extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PersoonService.PersoonDelete(Integer.parseInt(request.getParameter("id")));
         
-        List<PersoonService> personen = PersoonService.AllePersonenOphalen();
+        List<Persoon> personen = PersoonService.AllePersonenOphalen();
         
         request.getSession().setAttribute("vm", personen);
         

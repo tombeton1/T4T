@@ -1,3 +1,4 @@
+<%@include file="/Header.jsp" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@page import="dal.Speelgoed"%>
@@ -17,26 +18,23 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+       
         <title>Overzicht - zoekopgave</title>
     </head>
-    <body style="margin: 15px">
-                <h1>Overzicht</h1>
+    <body>
+        <div id="wrapper">
+            <h1>Gevonden items</h1>
+            <form method="POST" action="ZoekAlles" style="float:right" >
+                <div>
+                    <input type="text" name="zoekTerm" style="opacity: 0.8">
+                    <input type="submit" value="Zoek" name="zoek">
+                </div>
+                    </form>
                 
                 
-        <table style="width: 66%" rules="groups" class="table">
+        <table >
             <tr>
-                <td>Afbeelding</td>
+                <th>Afbeelding</th>
                 <th>Omschrijving</th>
             </tr>
             <%                
@@ -47,10 +45,10 @@
                 else{
                     %>
                     <tr>
-                    <td><%= ba.getBabyspullenFoto() %></td>
+                    <td><img height="150" width="150" src="${pageContext.request.contextPath}/DisplayImage?id=<%=ba.getId()%>"></td>
                     <td><%= ba.getOmschrijving() %></td>
                     <td>
-                    <a class="btn btn-primary btn-sm" href="BabyDetail?id=<%=ba.getId()%>"> Selecteer </a>
+                    <a class="btn btn-primary btn-sm" href="BabyDetail?id=<%=ba.getId()%>"><input type="submit" value="Meer info"> </a>
                      </td>
                     </tr>
                     <%
@@ -66,10 +64,10 @@
                 else{
                     %>
                     <tr>
-                    <td><%= b.getBoekenFoto()%></td>
+                    <td><img height="150" width="150" src="${pageContext.request.contextPath}/DisplayImage?id=<%=b.getId()%>"></td>
                     <td><%= b.getOmschrijving() %></td>
                     <td>
-                    <a class="btn btn-primary btn-sm" href="BoekDetail?id=<%=b.getId()%>"> Selecteer </a>
+                    <a class="btn btn-primary btn-sm" href="BoekDetail?id=<%=b.getId()%>"><input type="submit" value="Meer info"> </a>
                 </td>
                     </tr>
                     <%
@@ -85,10 +83,10 @@
                 else{
                     %>
                     <tr>
-                    <td><%= k.getKlerenFoto() %></td>
+                    <td><img height="150" width="150" src="${pageContext.request.contextPath}/DisplayImage?id=<%=k.getId()%>"></td>
                     <td><%= k.getOmschrijving() %></td>
                     <td>
-                    <a class="btn btn-primary btn-sm" href="KlerenDetail?id=<%= k.getId()%>"> Selecteer </a>
+                    <a class="btn btn-primary btn-sm" href="KlerenDetail?id=<%=k.getId()%>"><input type="submit" value="Meer info"> </a>
                 </td>
                     </tr>
                     <%
@@ -104,10 +102,10 @@
                 else{
                     %>
                     <tr>
-                    <td><%= s.getSpeelgoedFoto() %></td>
+                    <td><img height="150" width="150" src="${pageContext.request.contextPath}/DisplayImage?id=<%=s.getId()%>"></td>
                     <td><%= s.getOmschrijving() %></td>
                     <td>
-                    <a class="btn btn-primary btn-sm" href="SpeelgoedDetail?id=<%= s.getId()%>"> Selecteer </a>
+                    <a class="btn btn-primary btn-sm" href="SpeelgoedDetail?id=<%=s.getId()%>"><input type="submit" value="Meer info"> </a>
                 </td>
                     </tr>
                     <%
@@ -116,7 +114,6 @@
             %>
         </table>
         <br/>
-        
-        <a href="OverzichtCat.jsp" class="btn btn-primary btn-sm">HOME</a>
+        </div>
     </body>
 </html>

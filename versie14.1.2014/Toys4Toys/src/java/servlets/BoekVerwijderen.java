@@ -5,8 +5,8 @@
  */
 package servlets;
 
-import Services.BabyService;
 import Services.BoekService;
+import dal.Boeken;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -34,11 +34,11 @@ public class BoekVerwijderen extends HttpServlet {
             throws ServletException, IOException {
          BoekService.BoekDelete(Integer.parseInt(request.getParameter("id")));
         
-        List<BoekService> boek = BoekService.AlleBoekenOphalen();
+        List<Boeken> boek = BoekService.AlleBoekenOphalen();
         
-        request.getSession().setAttribute("vm", boek);
+        request.getSession().setAttribute("vm1", boek);
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("BoekOverzicht.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("PersoonDetailOverzicht.jsp");
         dispatcher.forward(request, response);
         
     }

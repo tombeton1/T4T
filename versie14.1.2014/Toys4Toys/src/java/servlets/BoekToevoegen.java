@@ -10,18 +10,23 @@ import Services.PersoonService;
 import dal.Boeken;
 import dal.Persoon;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+import org.apache.commons.io.IOUtils;
 
 /**
  *
  * @author Véronique
  */
+@MultipartConfig
 public class BoekToevoegen extends HttpServlet {
 
     /**
@@ -36,41 +41,8 @@ public class BoekToevoegen extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        Cookie[] cookies = request.getCookies();
-
-        boolean foundCookie;
-
-        for (Cookie c : cookies) {
-            if (c.getName().equals("user")) {
-
-                String s = c.getValue();
-                foundCookie = true;
-                if (foundCookie) {
-
-                    Persoon p = PersoonService.VindPersoon(s);
-                    Boeken b = new Boeken();
-
-                    b.setAuteur(request.getParameter("Auteur"));
-                    b.setBoekenFoto(request.getParameter("BoekenFoto").getBytes());
-                    b.setCategorie(request.getParameter("Categorie"));
-                    b.setOmschrijving(request.getParameter("Omschrijving"));
-                    b.setPersoon(p);
-                    b.setTitel(request.getParameter("Titel"));
-                    b.setUitgeverij(request.getParameter("Uitgeverij"));
-
-                    BoekService.BoekAdd(b);
-                    List<BoekService> boeken = BoekService.AlleBoekenOphalen();
-
-                    request.getSession().setAttribute("vm", boeken);
-
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("BoekOverzicht.jsp");
-                    dispatcher.forward(request, response);
-                }
-            }
-
         }
-    }
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -99,6 +71,46 @@ public class BoekToevoegen extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+        Cookie[] cookies = request.getCookies();
+
+        for (Cookie c : cookies) {
+            if (c.getName().equals("userT4T") && c.getValue() != null) {
+                
+
+        Persoon p = PersoonService.VindPersoon(c.getValue());
+        Boeken b = new Boeken();
+        
+        b.setAuteur(request.getParameter("Auteur"));
+        b.setUitgeverij(request.getParameter("Uitgeverij"));
+        b.setOmschrijving(request.getParameter("Omschrijving"));
+        b.setCategorie(request.getParameter("Categorie"));
+        b.setTitel(request.getParameter("Titel"));
+        b.setPersoon(p);
+        
+        Part filePart = request.getPart("upfileBoek"); 
+        String fileName = filePart.getSubmittedFileName();
+        InputStream fileContent = filePart.getInputStream();
+        byte[] bytes = IOUtils.toByteArray(fileContent);
+        
+        b.setBoekenFoto(bytes);
+        
+        BoekService.BoekAdd(b);
+        
+        
+        List<Boeken> boek = BoekService.AlleBoekenOphalen();
+
+        request.getSession().setAttribute("vm1", boek);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("PersoonDetailOverzicht.jsp");
+        dispatcher.forward(request, response);
+    }
+            else{
+                    request.getSession();                                        
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("Login.jsp");
+                    dispatcher.forward(request, response);
+                }
+    }
     }
 
     /**

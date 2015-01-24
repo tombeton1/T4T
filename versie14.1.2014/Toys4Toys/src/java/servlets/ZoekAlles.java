@@ -10,6 +10,10 @@ import Services.BabyService;
 import Services.BoekService;
 import Services.KlerenService;
 import Services.SpeelgoedService;
+import dal.Babyspullen;
+import dal.Boeken;
+import dal.Kleren;
+import dal.Speelgoed;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -37,10 +41,10 @@ public class ZoekAlles extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        List<BabyService> alleszoeken1 = BabyService.ZoekBaby(request.getParameter("zoekTerm"));
-        List<BoekService> alleszoeken2 = BoekService.ZoekBoek(request.getParameter("zoekTerm"));
-        List<KlerenService> alleszoeken3 = KlerenService.ZoekKleren(request.getParameter("zoekTerm"));      
-        List<SpeelgoedService> alleszoeken4 = SpeelgoedService.ZoekSpeelgoed(request.getParameter("zoekTerm"));
+        List<Babyspullen> alleszoeken1 = BabyService.ZoekBaby(request.getParameter("zoekTerm"));
+        List<Boeken> alleszoeken2 = BoekService.ZoekBoek(request.getParameter("zoekTerm"));
+        List<Kleren> alleszoeken3 = KlerenService.ZoekKleren(request.getParameter("zoekTerm"));      
+        List<Speelgoed> alleszoeken4 = SpeelgoedService.ZoekSpeelgoed(request.getParameter("zoekTerm"));
         
         request.getSession().setAttribute("vm1", alleszoeken1);
         request.getSession().setAttribute("vm2", alleszoeken2);

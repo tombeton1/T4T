@@ -9,19 +9,26 @@ import Services.BabyService;
 import Services.PersoonService;
 import dal.Babyspullen;
 import dal.Persoon;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+import org.apache.commons.io.IOUtils;
 
 /**
  *
  * @author Véronique
  */
+@MultipartConfig
 public class BabyToevoegen extends HttpServlet {
 
     /**
@@ -36,42 +43,9 @@ public class BabyToevoegen extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        Cookie[] cookies = request.getCookies();
-
-        boolean foundCookie;
-
-        for (Cookie c : cookies) {
-            if (c.getName().equals("user")) {
-
-                String s = c.getValue();
-                foundCookie = true;
-                if (foundCookie) {
-
-                    Persoon p = PersoonService.VindPersoon(s);
-
-                    Babyspullen ba = new Babyspullen();
-
-                    ba.setPersoon(p);
-                    ba.setTitel(request.getParameter("Titel"));
-                    ba.setGeslacht(Boolean.parseBoolean(request.getParameter("Geslacht")));
-                    ba.setLeeftijd(Integer.parseInt(request.getParameter("Leeftijd")));
-                    ba.setCategorie(request.getParameter("Categorie"));
-                    ba.setOmschrijving(request.getParameter("Omschrijving"));
-                    ba.setBabyspullenFoto(request.getParameter("BabyFoto").getBytes());
-
-                    BabyService.BabyspullenAdd(ba);
-
-                    List<BabyService> baby = BabyService.AlleBabyspullenOphalen();
-
-                    request.getSession().setAttribute("vm", baby);
-
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("BabyspullenOverzicht.jsp");
-                    dispatcher.forward(request, response);
-                }
             }
-        }
-    }
+        
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -100,6 +74,46 @@ public class BabyToevoegen extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+        Cookie[] cookies = request.getCookies();
+
+        for (Cookie c : cookies) {
+            if (c.getName().equals("userT4T") && c.getValue() != null) {
+                
+
+        Persoon p = PersoonService.VindPersoon(c.getValue());
+        Babyspullen ba = new Babyspullen();
+        
+        ba.setGeslacht(Boolean.parseBoolean(request.getParameter("Geslacht")));
+        ba.setLeeftijd(Integer.parseInt(request.getParameter("Leeftijd")));
+        ba.setOmschrijving(request.getParameter("Omschrijving"));
+        ba.setCategorie(request.getParameter("Categorie"));
+        ba.setTitel(request.getParameter("Titel"));
+        ba.setPersoon(p);
+        
+        Part filePart = request.getPart("upfileBaby"); 
+        String fileName = filePart.getSubmittedFileName();
+        InputStream fileContent = filePart.getInputStream();
+        byte[] bytes = IOUtils.toByteArray(fileContent);
+        
+        ba.setBabyspullenFoto(bytes);
+        
+        BabyService.BabyspullenAdd(ba);
+        
+        
+        List<Babyspullen> baby = BabyService.AlleBabyspullenOphalen();
+
+        request.getSession().setAttribute("vm2", baby);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("PersoonDetailOverzicht.jsp");
+        dispatcher.forward(request, response);
+    }
+            else{
+                    request.getSession();                                        
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("Login.jsp");
+                    dispatcher.forward(request, response);
+                }
+    }
     }
 
     /**

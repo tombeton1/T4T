@@ -10,18 +10,23 @@ import Services.SpeelgoedService;
 import dal.Persoon;
 import dal.Speelgoed;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
+import org.apache.commons.io.IOUtils;
 
 /**
  *
  * @author Véronique
  */
+@MultipartConfig
 public class SpeelgoedToevoegen extends HttpServlet {
 
     /**
@@ -36,46 +41,8 @@ public class SpeelgoedToevoegen extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        Cookie[] cookies = request.getCookies();
-                                                    
-        boolean foundCookie;
-
-        for (Cookie c : cookies) {
-            if (c.getName().equals("user"))
-            {
-                
-                String st = c.getValue();
-                foundCookie = true;
-                if (foundCookie) 
-                {
-   
-                    Persoon p = PersoonService.VindPersoon(st);
-        Speelgoed s = new Speelgoed();
-        
-        
-        s.setGeslacht(Boolean.parseBoolean(request.getParameter("Geslacht")));
-        s.setSpeelgoedFoto(request.getParameter("SpeelgoedFoto").getBytes());
-        s.setTitel(request.getParameter("Titel"));
-        s.setOmschrijving(request.getParameter("Omschrijving"));
-        s.setPersoon(p);
-        s.setLeeftijd(Integer.parseInt(request.getParameter("Leeftijd")));
-        s.setCategorie(request.getParameter("Categorie"));
-        
-        
-        
-        SpeelgoedService.SpeelgoedAdd(s);
-        
-        List<SpeelgoedService> speelgoed = SpeelgoedService.AlleSpeelgoedOphalen();
-        
-        request.getSession().setAttribute("vm", speelgoed);
-        
-        RequestDispatcher dispatcher = request.getRequestDispatcher("SpeelgoedOverzicht.jsp");
-        dispatcher.forward(request, response);
-    }
-            }
         }
-    }
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -104,6 +71,46 @@ public class SpeelgoedToevoegen extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+        Cookie[] cookies = request.getCookies();
+
+        for (Cookie c : cookies) {
+            if (c.getName().equals("userT4T") && c.getValue() != null) {
+                
+
+        Persoon p = PersoonService.VindPersoon(c.getValue());
+        Speelgoed s = new Speelgoed();
+        
+        s.setLeeftijd(Integer.parseInt(request.getParameter("Leeftijd")));
+        s.setGeslacht(Boolean.parseBoolean(request.getParameter("Geslacht")));
+        s.setOmschrijving(request.getParameter("Omschrijving"));
+        s.setCategorie(request.getParameter("Categorie"));
+        s.setTitel(request.getParameter("Titel"));
+        s.setPersoon(p);
+        
+        Part filePart = request.getPart("upfileSpeelgoed"); 
+        String fileName = filePart.getSubmittedFileName();
+        InputStream fileContent = filePart.getInputStream();
+        byte[] bytes = IOUtils.toByteArray(fileContent);
+        
+        s.setSpeelgoedFoto(bytes);
+        
+        SpeelgoedService.SpeelgoedAdd(s);
+        
+        
+        List<Speelgoed> speelgoed = SpeelgoedService.AlleSpeelgoedOphalen();
+
+        request.getSession().setAttribute("vm5", speelgoed);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("PersoonDetailOverzicht.jsp");
+        dispatcher.forward(request, response);
+    }
+            else{
+                    request.getSession();                                        
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("Login.jsp");
+                    dispatcher.forward(request, response);
+                }
+    }
     }
 
     /**

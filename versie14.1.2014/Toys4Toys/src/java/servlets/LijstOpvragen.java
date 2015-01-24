@@ -7,6 +7,7 @@
 package servlets;
 
 import Services.PersoonService;
+import dal.Persoon;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -33,7 +34,7 @@ public class LijstOpvragen extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        List<PersoonService> personen = PersoonService.AllePersonenOphalen();
+        List<Persoon> personen = PersoonService.AllePersonenOphalen();
         
         request.getSession().setAttribute("vm", personen);
         

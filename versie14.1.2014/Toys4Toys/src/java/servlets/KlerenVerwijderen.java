@@ -6,8 +6,8 @@
 package servlets;
 
 import Services.KlerenService;
+import dal.Kleren;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -37,11 +37,11 @@ public class KlerenVerwijderen extends HttpServlet {
     response.setContentType("text/html;charset=UTF-8");
     KlerenService.KlerenDelete(Integer.parseInt(request.getParameter("id")));
 
-    List<KlerenService> kleren = KlerenService.AlleKlerenOphalen();
+    List<Kleren> kleren = KlerenService.AlleKlerenOphalen();
 
-    request.getSession().setAttribute("vm", kleren);
+    request.getSession().setAttribute("vm3", kleren);
 
-    RequestDispatcher dispatcher = request.getRequestDispatcher("KlerenOverzicht.jsp");
+    RequestDispatcher dispatcher = request.getRequestDispatcher("PersoonDetailOverzicht.jsp");
     dispatcher.forward(request, response);
     }
 

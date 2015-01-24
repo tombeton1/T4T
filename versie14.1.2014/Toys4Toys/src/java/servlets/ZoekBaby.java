@@ -6,6 +6,7 @@
 package servlets;
 
 import Services.BabyService;
+import dal.Babyspullen;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -32,7 +33,7 @@ public class ZoekBaby extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        List<BabyService> baby = BabyService.ZoekBaby(request.getParameter("zoekTerm"));
+        List<Babyspullen> baby = BabyService.ZoekBaby(request.getParameter("zoekTerm"));
         
         request.getSession().setAttribute("vm", baby);
         RequestDispatcher dispatcher = request.getRequestDispatcher("BabyspullenOverzicht.jsp");

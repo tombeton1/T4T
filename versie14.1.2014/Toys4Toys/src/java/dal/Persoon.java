@@ -24,7 +24,6 @@ public class Persoon  implements java.io.Serializable {
      private Set boekens = new HashSet(0);
      private Set speelgoeds = new HashSet(0);
      private Set babyspullens = new HashSet(0);
-     private Boolean isIngelogd;
 
     public Persoon() {
     }
@@ -140,24 +139,6 @@ public class Persoon  implements java.io.Serializable {
     public void setBabyspullens(Set babyspullens) {
         this.babyspullens = babyspullens;
     }
-
-    /**
-     * @return the isIngelogd
-     */
-    public Boolean getIsIngelogd() {
-        return isIngelogd;
-    }
-
-    /**
-     * @param isIngelogd the isIngelogd to set
-     */
-    public void setIsIngelogd(Boolean isIngelogd) {
-        this.isIngelogd = isIngelogd;
-    }
-
-
-
-
 
 }
 
