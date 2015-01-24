@@ -1215,6 +1215,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             Persoon Persoon = persoon;
             PersoonService.PersoonDelete(persoon.getId());
             ListboxOpvullen();
+            ClearPersoon();
 
         }
     }//GEN-LAST:event_btnDeletePersoonActionPerformed
