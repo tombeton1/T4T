@@ -12,6 +12,8 @@ import javax.swing.*;
 import Services.ImageService;
 import java.io.FileNotFoundException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -816,7 +818,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
 
     }
 
-    private void DetailsVullen(String select) {
+    private void DetailsVullen(String select) throws SQLException {
         if ("selectBoek".equals(select)) {
             lblAdvertentieAuteur.setText("Auteur");
             lblAdvertentieCategorie.setText("Categorie");
@@ -1007,7 +1009,11 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         ClearAdvertentie();
         selectBaby = (Babyspullen) lstBabySpullen.getSelectedValue();
         CBXVullen("selectBaby");
-        DetailsVullen("selectBaby");
+        try {
+            DetailsVullen("selectBaby");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
+        }
 
     }//GEN-LAST:event_btnSelectBabyActionPerformed
 
@@ -1123,7 +1129,11 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         ClearAdvertentie();
         selectSpeelgoed = (Speelgoed) lstSpeelgoed.getSelectedValue();
         CBXVullen("selectSpeelgoed");
-        DetailsVullen("selectSpeelgoed");
+        try {
+            DetailsVullen("selectSpeelgoed");
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, ex.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
+        }
 
 
     }//GEN-LAST:event_btnSelectSpeelgoedActionPerformed
@@ -1132,7 +1142,11 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         ClearAdvertentie();
         selectBoek = (Boeken) lstBoeken.getSelectedValue();
         CBXVullen("selectBoek");
-        DetailsVullen("selectBoek");
+        try {
+            DetailsVullen("selectBoek");
+        } catch (SQLException ex) {
+           JOptionPane.showMessageDialog(null, ex.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
+        }
 
 
     }//GEN-LAST:event_btnSelectBoekActionPerformed
@@ -1141,7 +1155,11 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         ClearAdvertentie();
         selectKleren = (Kleren) lstKleren.getSelectedValue();
         CBXVullen("selectKleren");
-        DetailsVullen("selectKleren");
+        try {
+            DetailsVullen("selectKleren");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
+        }
         if (selectKleren != null) {
 
 
