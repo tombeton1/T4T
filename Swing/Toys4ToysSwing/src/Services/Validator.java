@@ -55,7 +55,7 @@ public class Validator {
             result = true;
         } else {
             result = false;
-             JOptionPane.showMessageDialog(null, "wachtwoord moet tussen 6-20 letters of cijfers hebben met 1 hoofdletter, andere tekens zijn niet toegelaten", "Foutje", JOptionPane.INFORMATION_MESSAGE);
+             JOptionPane.showMessageDialog(null, "wachtwoord moet tussen 6-20 tekens hebben met 1 hoofdletter en cijfer, andere tekens zijn niet toegelaten", "Foutje", JOptionPane.INFORMATION_MESSAGE);
         }
        
         return result;

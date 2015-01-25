@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Machine: localhost
--- Genereertijd: 21 jan 2015 om 15:51
+-- Genereertijd: 25 jan 2015 om 15:05
 -- Serverversie: 5.6.13
 -- PHP-versie: 5.4.17
 
@@ -150,9 +150,8 @@ CREATE TABLE IF NOT EXISTS `persoon` (
   UNIQUE KEY `Id` (`Id`),
   UNIQUE KEY `Id_2` (`Id`),
   UNIQUE KEY `Id_3` (`Id`),
-  UNIQUE KEY `Id_4` (`Id`),
-  UNIQUE KEY `Familienaam` (`Familienaam`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  UNIQUE KEY `Id_4` (`Id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Gegevens worden uitgevoerd voor tabel `persoon`
@@ -161,8 +160,9 @@ CREATE TABLE IF NOT EXISTS `persoon` (
 INSERT INTO `persoon` (`Id`, `Voornaam`, `Familienaam`, `AanspreekTitel`, `Email`, `WoonPlaats`, `UserName`, `PassWord`) VALUES
 (1, 'Tom', 'Adriaens', 'Mijnheer', 'adriaenstom@gamil.com', 'Halen', 'admin1', 'admin'),
 (2, 'Eric', 'Michiels', 'Mijnheer', 'e_michiels@yahoo.com', 'Antwerpen', 'admin', 'admin'),
-(3, 'Bill', 'Gates', 'Mister', 'bill@apple.com', 'Thuis', 'Bill', 'adminadmin'),
-(4, 'Dirk', 'aaa', 'Mr', 'tome@you.com', 'Belgie', 'tom', 'tom');
+(3, 'Bill', 'Gates', 'Mister', 'bill@apple.com', 'Thuis', 'Bill123', 'Adminadmi1'),
+(4, 'Dirk', 'Verdaan', 'Mijnheer', 'Drik@you.com', 'Belgie', 'tom12345', 'Tom12345'),
+(5, 'Tom', 'Adriaens', '', 'adr@gmail.com', '', 'Adriaens', 'Adriaens1');
 
 -- --------------------------------------------------------
 

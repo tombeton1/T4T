@@ -35,7 +35,7 @@ public class PersoonService {
             s.saveOrUpdate(p);
             s.getTransaction().commit();
         } catch (HibernateException hi) {
-            JOptionPane.showMessageDialog(null, hi.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, hi.getMessage()+"  Bestaat deze gebruiker al?", "Foutje", JOptionPane.INFORMATION_MESSAGE);
         }
 
         return p;
