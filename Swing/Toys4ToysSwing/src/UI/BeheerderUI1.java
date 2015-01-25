@@ -1100,7 +1100,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             file = dialog.getSelectedFile().toString();
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e.getMessage() + " foto geslecteerd ");
+            JOptionPane.showMessageDialog(this, "Geen foto geselcteerd?", "Foutje", JOptionPane.INFORMATION_MESSAGE);
         }
         if (file != null) {
             ImageIcon icon = null;
