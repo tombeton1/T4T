@@ -6,7 +6,7 @@
 package Services;
 
 import java.awt.Image;
-import java.io.File;
+import java.io.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;

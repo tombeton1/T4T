@@ -64,6 +64,7 @@ public class StartUp extends javax.swing.JFrame {
         jLabel2.setBounds(34, 192, 149, 29);
 
         txtPassWord.setBackground(new java.awt.Color(255, 255, 204));
+        txtPassWord.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(txtPassWord);
         txtPassWord.setBounds(225, 183, 316, 38);
 

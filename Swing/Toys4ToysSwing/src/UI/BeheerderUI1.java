@@ -222,7 +222,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         txtTitel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtTitel.setName("txtTitel"); // NOI18N
         getContentPane().add(txtTitel);
-        txtTitel.setBounds(150, 440, 210, 28);
+        txtTitel.setBounds(150, 440, 210, 30);
 
         lblVoornaam.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblVoornaam.setText("Voornaam:");
@@ -237,7 +237,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtVoornaam);
-        txtVoornaam.setBounds(150, 480, 210, 28);
+        txtVoornaam.setBounds(150, 480, 210, 30);
 
         lblFamilieNaam.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblFamilieNaam.setText("Familienaam:");
@@ -252,7 +252,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtFamilieNaam);
-        txtFamilieNaam.setBounds(150, 520, 210, 28);
+        txtFamilieNaam.setBounds(150, 520, 210, 30);
 
         lblEmail.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblEmail.setText("E-mail:");
@@ -267,7 +267,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtEmail);
-        txtEmail.setBounds(150, 560, 210, 28);
+        txtEmail.setBounds(150, 560, 210, 30);
 
         lblWoonplaats.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblWoonplaats.setText("WoonPlaats:");
@@ -277,7 +277,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         txtWoonplaats.setBackground(new java.awt.Color(255, 255, 204));
         txtWoonplaats.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(txtWoonplaats);
-        txtWoonplaats.setBounds(150, 600, 210, 28);
+        txtWoonplaats.setBounds(150, 600, 210, 30);
 
         lblUserName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblUserName.setText("Gebruikersnaam:");
@@ -292,7 +292,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtUserName);
-        txtUserName.setBounds(150, 640, 210, 28);
+        txtUserName.setBounds(150, 640, 210, 30);
 
         lblPassWord.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblPassWord.setText("Wachtwoord:");
@@ -307,7 +307,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtPassWord);
-        txtPassWord.setBounds(150, 680, 210, 28);
+        txtPassWord.setBounds(150, 680, 210, 30);
 
         btnDeleteKleren.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnDeleteKleren.setText("Delete");
@@ -640,7 +640,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnEditSpeelgoed);
-        btnEditSpeelgoed.setBounds(1370, 380, 90, 30);
+        btnEditSpeelgoed.setBounds(1380, 380, 90, 30);
 
         lblSter.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblSter.setText("*");
