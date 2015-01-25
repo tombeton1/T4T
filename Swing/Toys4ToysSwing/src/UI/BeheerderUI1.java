@@ -196,7 +196,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1500, 850));
         getContentPane().setLayout(null);
 
-        lstPersonen.setBackground(new java.awt.Color(207, 179, 42));
+        lstPersonen.setBackground(new java.awt.Color(255, 255, 204));
         lstPersonen.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jScrollPane1.setViewportView(lstPersonen);
 
@@ -218,7 +218,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(lblAdvertentieUitgeverij);
         lblAdvertentieUitgeverij.setBounds(460, 590, 100, 30);
 
-        txtTitel.setBackground(new java.awt.Color(207, 179, 42));
+        txtTitel.setBackground(new java.awt.Color(255, 255, 204));
         txtTitel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtTitel.setName("txtTitel"); // NOI18N
         getContentPane().add(txtTitel);
@@ -229,7 +229,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(lblVoornaam);
         lblVoornaam.setBounds(10, 480, 86, 22);
 
-        txtVoornaam.setBackground(new java.awt.Color(207, 179, 42));
+        txtVoornaam.setBackground(new java.awt.Color(255, 255, 204));
         txtVoornaam.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtVoornaam.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -244,7 +244,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(lblFamilieNaam);
         lblFamilieNaam.setBounds(10, 520, 103, 22);
 
-        txtFamilieNaam.setBackground(new java.awt.Color(207, 179, 42));
+        txtFamilieNaam.setBackground(new java.awt.Color(255, 255, 204));
         txtFamilieNaam.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtFamilieNaam.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -259,7 +259,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(lblEmail);
         lblEmail.setBounds(10, 560, 55, 22);
 
-        txtEmail.setBackground(new java.awt.Color(207, 179, 42));
+        txtEmail.setBackground(new java.awt.Color(255, 255, 204));
         txtEmail.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -274,7 +274,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(lblWoonplaats);
         lblWoonplaats.setBounds(10, 600, 98, 22);
 
-        txtWoonplaats.setBackground(new java.awt.Color(207, 179, 42));
+        txtWoonplaats.setBackground(new java.awt.Color(255, 255, 204));
         txtWoonplaats.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(txtWoonplaats);
         txtWoonplaats.setBounds(150, 600, 210, 28);
@@ -284,7 +284,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(lblUserName);
         lblUserName.setBounds(10, 640, 140, 22);
 
-        txtUserName.setBackground(new java.awt.Color(207, 179, 42));
+        txtUserName.setBackground(new java.awt.Color(255, 255, 204));
         txtUserName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtUserName.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -299,7 +299,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(lblPassWord);
         lblPassWord.setBounds(10, 680, 104, 22);
 
-        txtPassWord.setBackground(new java.awt.Color(207, 179, 42));
+        txtPassWord.setBackground(new java.awt.Color(255, 255, 204));
         txtPassWord.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtPassWord.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -354,14 +354,14 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(290, 10, 90, 60);
 
-        lstBoeken.setBackground(new java.awt.Color(207, 179, 42));
+        lstBoeken.setBackground(new java.awt.Color(255, 255, 204));
         lstBoeken.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jScrollPane4.setViewportView(lstBoeken);
 
         getContentPane().add(jScrollPane4);
         jScrollPane4.setBounds(280, 60, 290, 310);
 
-        lstBabySpullen.setBackground(new java.awt.Color(207, 179, 42));
+        lstBabySpullen.setBackground(new java.awt.Color(255, 255, 204));
         lstBabySpullen.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jScrollPane5.setViewportView(lstBabySpullen);
 
@@ -373,7 +373,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(jLabel5);
         jLabel5.setBounds(880, 20, 150, 50);
 
-        lstKleren.setBackground(new java.awt.Color(207, 179, 42));
+        lstKleren.setBackground(new java.awt.Color(255, 255, 204));
         lstKleren.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jScrollPane6.setViewportView(lstKleren);
 
@@ -385,7 +385,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(jLabel6);
         jLabel6.setBounds(1180, 20, 140, 50);
 
-        lstSpeelgoed.setBackground(new java.awt.Color(207, 179, 42));
+        lstSpeelgoed.setBackground(new java.awt.Color(255, 255, 204));
         lstSpeelgoed.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jScrollPane7.setViewportView(lstSpeelgoed);
 
@@ -397,7 +397,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(lblAanspreekTitel1);
         lblAanspreekTitel1.setBounds(10, 440, 127, 22);
 
-        txtAdvertentieUitgeverij.setBackground(new java.awt.Color(207, 179, 42));
+        txtAdvertentieUitgeverij.setBackground(new java.awt.Color(255, 255, 204));
         txtAdvertentieUitgeverij.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         getContentPane().add(txtAdvertentieUitgeverij);
         txtAdvertentieUitgeverij.setBounds(550, 590, 210, 30);
@@ -412,7 +412,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(lblAanspreekTitel4);
         lblAanspreekTitel4.setBounds(1220, 440, 50, 22);
 
-        txtOmschrijving.setBackground(new java.awt.Color(207, 179, 42));
+        txtOmschrijving.setBackground(new java.awt.Color(255, 255, 204));
         txtOmschrijving.setColumns(20);
         txtOmschrijving.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtOmschrijving.setLineWrap(true);
@@ -437,7 +437,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(lblAanspreekTitel5);
         lblAanspreekTitel5.setBounds(830, 470, 130, 22);
 
-        cbxGeslacht.setBackground(new java.awt.Color(207, 179, 42));
+        cbxGeslacht.setBackground(new java.awt.Color(255, 255, 204));
         cbxGeslacht.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cbxGeslacht.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -512,7 +512,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(lblGeslacht);
         lblGeslacht.setBounds(460, 640, 100, 30);
 
-        txtAdvertentieTitel.setBackground(new java.awt.Color(207, 179, 42));
+        txtAdvertentieTitel.setBackground(new java.awt.Color(255, 255, 204));
         txtAdvertentieTitel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtAdvertentieTitel.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -532,7 +532,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(lblAdvertentieAuteur);
         lblAdvertentieAuteur.setBounds(460, 510, 100, 30);
 
-        txtAdvertentieAuteur.setBackground(new java.awt.Color(207, 179, 42));
+        txtAdvertentieAuteur.setBackground(new java.awt.Color(255, 255, 204));
         txtAdvertentieAuteur.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtAdvertentieAuteur.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -547,7 +547,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(txtAdvertentieAuteur);
         txtAdvertentieAuteur.setBounds(550, 510, 210, 30);
 
-        btnFoto.setBackground(new java.awt.Color(207, 179, 42));
+        btnFoto.setBackground(new java.awt.Color(255, 255, 204));
         btnFoto.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnFoto.setText("Geen afbeelding");
         btnFoto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -596,7 +596,7 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(btnDeleteBaby);
         btnDeleteBaby.setBounds(680, 380, 90, 31);
 
-        cbxCategorie.setBackground(new java.awt.Color(207, 179, 42));
+        cbxCategorie.setBackground(new java.awt.Color(255, 255, 204));
         cbxCategorie.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cbxCategorie.setMinimumSize(new java.awt.Dimension(169, 28));
         getContentPane().add(cbxCategorie);
@@ -682,10 +682,11 @@ public class BeheerderUI1 extends javax.swing.JFrame {
         getContentPane().add(lblSter7);
         lblSter7.setBounds(770, 470, 20, 22);
 
-        lblAchtergrond.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/vector1.jpg"))); // NOI18N
+        lblAchtergrond.setBackground(new java.awt.Color(255, 255, 204));
+        lblAchtergrond.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/background.jpg"))); // NOI18N
         lblAchtergrond.setText("jLabel1");
         getContentPane().add(lblAchtergrond);
-        lblAchtergrond.setBounds(0, 0, 1965, 1200);
+        lblAchtergrond.setBounds(0, 0, 3933, 2592);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

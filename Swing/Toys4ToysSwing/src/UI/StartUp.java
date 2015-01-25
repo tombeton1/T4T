@@ -89,10 +89,10 @@ public class StartUp extends javax.swing.JFrame {
         getContentPane().add(btnExit);
         btnExit.setBounds(340, 255, 71, 37);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/vector1.jpg"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/background.jpg"))); // NOI18N
         jLabel4.setText("jLabel4");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 0, 1965, 1200);
+        jLabel4.setBounds(0, 0, 3933, 2592);
 
         setSize(new java.awt.Dimension(604, 376));
         setLocationRelativeTo(null);
