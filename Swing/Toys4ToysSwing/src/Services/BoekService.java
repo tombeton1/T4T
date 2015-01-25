@@ -23,11 +23,15 @@ public class BoekService {
     public static Boeken BoekenUpdate(int id, Boeken boek) {
         Session s = null;
 
-        s = HibernateUtil.getSessionFactory().openSession();
-        boek.setId(id);
-        s.beginTransaction();
-        s.merge(boek);
-        s.getTransaction().commit();
+        try {
+            s = HibernateUtil.getSessionFactory().openSession();
+            boek.setId(id);
+            s.beginTransaction();
+            s.merge(boek);
+            s.getTransaction().commit();
+        } catch (HibernateException hi) {
+             JOptionPane.showMessageDialog(null, hi.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
+        }
 
         return boek;
     }

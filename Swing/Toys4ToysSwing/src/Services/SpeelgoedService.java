@@ -22,12 +22,16 @@ public class SpeelgoedService {
     
     public static Speelgoed SpeelgoedUpdate(int id,Speelgoed speelgoed)
     {
-        
+        try {
+            
             Session s = HibernateUtil.getSessionFactory().openSession();
             speelgoed.setId(id);            
             s.beginTransaction();
             s.merge(speelgoed);
             s.getTransaction().commit();
+        } catch (HibernateException hi) {
+             JOptionPane.showMessageDialog(null, hi.getMessage(), "Foutje", JOptionPane.INFORMATION_MESSAGE);
+        }
        
         
         return speelgoed;
