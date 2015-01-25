@@ -180,6 +180,10 @@
         <servlet-name>PersoonDetails</servlet-name>
         <servlet-class>servlets.PersoonDetails</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Mail</servlet-name>
+        <servlet-class>servlets.Mail</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LijstOpvragen</servlet-name>
         <url-pattern>/LijstOpvragen</url-pattern>
@@ -359,6 +363,10 @@
     <servlet-mapping>
         <servlet-name>PersoonDetails</servlet-name>
         <url-pattern>/PersoonDetails</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Mail</servlet-name>
+        <url-pattern>/Mail</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

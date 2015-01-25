@@ -53,20 +53,19 @@ public class PersoonDetails extends HttpServlet {
         int pId = p.getId();
         
         
-         List<Boeken> b = BoekService.AlleAdsOphalenperUser(pId);
-         List<Babyspullen> ba = BabyService.AlleAdsOphalenPerUser(pId);
-         List<Kleren> k = KlerenService.AlleAdsOphalenPerUser(pId);
-         List<Speelgoed> s = SpeelgoedService.AlleAdsOphalenPerUser(pId);
+         List<Boeken> bUser = BoekService.AlleAdsOphalenperUser(pId);
+         List<Babyspullen> baUser = BabyService.AlleAdsOphalenPerUser(pId);
+         List<Kleren> kUser = KlerenService.AlleAdsOphalenPerUser(pId);
+         List<Speelgoed> sUser = SpeelgoedService.AlleAdsOphalenPerUser(pId);
         
          List<Persoon> pers = PersoonService.SelecteerPersoon(pId);
 
          request.getSession().setAttribute("vm5", pers);
         
-         request.getSession().setAttribute("vm1", b);
-         request.getSession().setAttribute("vm2", ba);
-         request.getSession().setAttribute("vm3", k);
-         request.getSession().setAttribute("vm4", s);
-        
+         request.getSession().setAttribute("vm1", bUser);
+         request.getSession().setAttribute("vm2", baUser);
+         request.getSession().setAttribute("vm3", kUser);
+         request.getSession().setAttribute("vm4", sUser);
         
         
         RequestDispatcher dispatcher = request.getRequestDispatcher("PersoonDetailOverzicht.jsp");

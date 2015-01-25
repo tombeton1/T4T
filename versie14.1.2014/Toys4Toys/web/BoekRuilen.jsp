@@ -20,17 +20,19 @@
     </head>
     <body>           
         <div id="wrapper">
-            <h1>De door u geselecteerde advertentie</h1>
-            <table>
+            <h2>De door u geselecteerde advertentie</h2>
+            <table style="width: auto;">
                 <tr>
-                <th>Afbeelding van de aangeboden advertentie</th>
-                <th>Omschrijving van de aangeboden advertentie</th>
+                <th>Afbeelding</th>
+                <th>Categorie</th>
+                <th>Omschrijving</th>
                 </tr>
                 <%                
     for (Boeken ruil : trb) {
                 %>
                 <tr>
                     <td><img height="150" width="150" src="${pageContext.request.contextPath}/DisplayImage?id=<%=ruil.getId()%>"></td>
+                    <td><%= ruil.getCategorie() %></td>
                     <td><%= ruil.getOmschrijving() %></td>
                     </tr>
         
@@ -38,12 +40,13 @@
                     %>
             </table>
                 
-        <h1>Maak een keuze uit uw advertenties om te ruilen met de door u geselecteerde advertentie</h1>      
-        <table>
+        <h2>Maak een keuze uit uw advertenties om te ruilen met de door u geselecteerde advertentie</h2>      
+        <table style="width: auto;">
             
             <tr>
                 <th>Afbeelding</th>
                 <th>Omschrijving</th>
+                <th></th>
             </tr>
             <%                
     for (Babyspullen ba : baby) {

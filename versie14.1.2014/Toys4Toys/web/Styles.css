@@ -14,7 +14,7 @@ html{height:98%;}
 body {
     height: 98%;
 
-    background-image: url(Images/vector1.jpg);
+    background-image: url(Images/background.jpg);
     background-attachment:fixed;
     background-position:center;
 
@@ -28,32 +28,32 @@ body {
 }
 
 #logo{
-    font-family: 'Crafty Girls', cursive;
-    font-size: 1.5em;
-    color: white;
+    font-family: 'Great Vibes';
+    font-size: 2em;
+    color: #404040;
     text-align: center;
     text-shadow: 0 1px 1px #622323;
     
 }
 
 #user{
-    font-family: 'Crafty Girls', cursive;
-    font-size: 1em;
-    color: white;
+    font-family: 'Great Vibes';
+    font-size: 1.5em;
+    color: #404040;
     text-align: center;
     text-shadow: 0 1px 1px #622323;
     
 }
 nav ul {
     float: left;
-    //position: fixed;
+    // position: fixed;
     //text-align: center;
 }
 
 nav ul li {
 
     margin: 15px 0px;
-    padding: 0px 40px;
+    padding: 0px 30px;
     list-style-type: none;
 
 }
@@ -62,7 +62,7 @@ nav ul li a {
     font-family: 'Josefin Sans', sans-serif;
     font-size: 1.5em;
     font-weight: bold;
-    color: #150101;
+    color: #404040;
     padding: 5px;
     text-decoration: none;
     text-shadow: 0 1px 1px #622323;
@@ -73,8 +73,8 @@ nav ul li a {
 
 nav ul li a:hover,
 nav ul li a:focus {
-    color: #fff;
-    background: #6FCA23;
+    color: #527881;
+    background: #cde5ef;
     //#622323;
 }
 
@@ -83,8 +83,8 @@ nav ul li a:focus {
     //float: left;
     font-family: 'Josefin Sans', sans-serif;
     font-size: 1.3em;
-    color: #150101;
-    width: 60%;
+    color: #404040;
+    width: 55%;
     margin: 0%;
     padding-top: 0px;
     padding-left: 5px;

@@ -41,11 +41,11 @@
                             <td>Categorie:</td>
                             <td>
                                 <select name="Categorie">
-                                    <option value="PrentenBoeken" name="Categorie">Prentenboeken</option>
-                                    <option value="VoorleesBoeken" name="Categorie">Voorleesboeken</option>
+                                    <option value="Prentenboeken" name="Categorie">Prentenboeken</option>
+                                    <option value="Voorleesboeken" name="Categorie">Voorleesboeken</option>
                                     <option value="Baby_peuterboekjes" name="Categorie">Baby & peuterboekjes</option>
-                                    <option value="EducatieveBoeken" name="Categorie">Educatieve boeken</option>
-                                    <option value="VoorNieuweOuders" name="Categorie">Voor nieuwe ouders</option>
+                                    <option value="Educatieveboeken" name="Categorie">Educatieve boeken</option>
+                                    <option value="Voor nieuwe ouders" name="Categorie">Voor nieuwe ouders</option>
 
                                 </select>
 

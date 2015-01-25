@@ -71,102 +71,65 @@
                 if (baby.size() <= 0) {
                      // doe niets                    
                     }
-                else{
-                    %>
-                    <tr>
-                    <td><img height="100" width="100" src="${pageContext.request.contextPath}/DisplayImage?id=<%=ba.getId()%>"></td>
-                    <td><%= ba.getOmschrijving() %></td>
-                   
-                        <%
+                else{                    
                         if (ingelogd && username.equals(ba.getPersoon().getUserName())) {%>
-                        <td><a class="btn btn-primary btn-sm" href="BabyVerwijderen?id=<%=ba.getId()%>"> <input type="submit" value="Verwijderen"> </a>
-                            <br/>
-                           <a class="btn btn-primary btn-sm" href="BabyUpdating?id=<%=ba.getId()%>"> <input type="submit" value="Aanpassen"> </a>
+                        <tr>
+                        <td><img height="100" width="100" src="${pageContext.request.contextPath}/DisplayImage?id=<%=ba.getId()%>"></td>
+                        <td><%= ba.getOmschrijving() %></td>
+                        <td><a class="btn btn-primary btn-sm" href="BabyVerwijderen?id=<%=ba.getId()%>"> <input type="submit" value="Verwijderen"> </a></td>
+                        <td><a class="btn btn-primary btn-sm" href="BabyUpdating?id=<%=ba.getId()%>"> <input type="submit" value="Aanpassen"> </a></td>
                         </td>
-                        <%} else{%>
-                            <td><a href="BabyDetail?id=<%=ba.getId()%>"> Meer info </a></td>
-                            <td></td>
-                                <%}%>
                     </tr>
-                    <%
-                }
-    }                
-            %>
-     <%
+                   <%}
+    }
+    }
      for (Boeken b : boeken)
      {
          if (boeken.size() <= 0) {
                      // doe niets                    
                     }
                 else{
-                    %>
-                    <tr>
-                    <td><img height="100" width="100" src="${pageContext.request.contextPath}/DisplayImage?id=<%=b.getId()%>"></td>
-                    <td><%= b.getOmschrijving() %></td>
-                    <%
                         if (ingelogd && username.equals(b.getPersoon().getUserName())) {%>
-                        <td><a class="btn btn-primary btn-sm" href="BoekVerwijderen?id=<%=b.getId()%>"> <input type="submit" value="Verwijderen"> </a>
-                            <br/>
-                           <a class="btn btn-primary btn-sm" href="BoekUpdating?id=<%=b.getId()%>"> <input type="submit" value="Aanpassen"> </a>
+                        <tr>
+                        <td><img height="100" width="100" src="${pageContext.request.contextPath}/DisplayImage?id=<%=b.getId()%>"></td>
+                        <td><%= b.getOmschrijving() %></td>
+                        <td><a class="btn btn-primary btn-sm" href="BoekVerwijderen?id=<%=b.getId()%>"> <input type="submit" value="Verwijderen"> </a></td>
+                        <td>   <a class="btn btn-primary btn-sm" href="BoekUpdating?id=<%=b.getId()%>"> <input type="submit" value="Aanpassen"> </a></td>
                         </td>
-                        <%} else{%>
-                            <td><a href="BoekDetail?id=<%=b.getId()%>"> Meer info </a></td>
-                            <td></td>
-                                <%}%>
-                    </tr>
-                    <%
+                        </tr>
+                        <%}
                 }
      }
-            %>
-            <%
             for (Kleren k : kleren)
      {
          if (kleren.size() <= 0) {
                      // doe niets                    
                     }
                 else{
-                    %>
-                    <tr>
-                    <td><img height="100" width="100" src="${pageContext.request.contextPath}/DisplayImage?id=<%=k.getId()%>"></td>
-                    <td><%= k.getOmschrijving() %></td>
-                   <%
                         if (ingelogd && username.equals(k.getPersoon().getUserName())) {%>
-                        <td><a class="btn btn-primary btn-sm" href="KlerenVerwijderen?id=<%=k.getId()%>"> <input type="submit" value="Verwijderen"> </a>
-                            <br/>
-                           <a class="btn btn-primary btn-sm" href="KlerenUpdating?id=<%=k.getId()%>"> <input type="submit" value="Aanpassen"> </a>
-                        </td>
-                        <%} else{%>
-                            <td><a href="BabyDetail?id=<%=k.getId()%>"> Meer info </a></td>
-                            <td></td>
-                                <%}%>
-                    </tr>
-                    <%
+                        <tr>
+                        <td><img height="100" width="100" src="${pageContext.request.contextPath}/DisplayImage?id=<%=k.getId()%>"></td>
+                        <td><%= k.getOmschrijving() %></td>
+                        <td><a class="btn btn-primary btn-sm" href="KlerenVerwijderen?id=<%=k.getId()%>"> <input type="submit" value="Verwijderen"> </a></td>
+                        <td><a class="btn btn-primary btn-sm" href="KlerenUpdating?id=<%=k.getId()%>"> <input type="submit" value="Aanpassen"> </a></td>
+                        </tr>
+                        <%}
                 }
      }
-            %>
-            <%
             for (Speelgoed s : speelgoed)
      {
          if (speelgoed.size() <= 0 ) {  
                     // doe niets
                     }
                 else{
-                    %>
-                    <tr>
-                    <td><img height="100" width="100" src="${pageContext.request.contextPath}/DisplayImage?id=<%=s.getId()%>"></td>
-                    <td><%= s.getOmschrijving() %></td>
-                    <%
                         if (ingelogd && username.equals(s.getPersoon().getUserName())) {%>
-                        <td><a class="btn btn-primary btn-sm" href="SpeelgoedVerwijderen?id=<%=s.getId()%>"> <input type="submit" value="Verwijderen"> </a>
-                            <br/>
-                           <a class="btn btn-primary btn-sm" href="SpeelgoedUpdating?id=<%=s.getId()%>"> <input type="submit" value="Aanpassen"> </a>
-                        </td>
-                        <%} else{%>
-                            <td><a href="SpeelgoedDetail?id=<%=s.getId()%>"> Meer info </a></td>
-                            <td></td>
-                                <%}%>
-                    </tr>
-                    <%
+                        <tr>
+                        <td><img height="100" width="100" src="${pageContext.request.contextPath}/DisplayImage?id=<%=s.getId()%>"></td>
+                        <td><%= s.getOmschrijving() %></td>
+                        <td><a class="btn btn-primary btn-sm" href="SpeelgoedVerwijderen?id=<%=s.getId()%>"> <input type="submit" value="Verwijderen"> </a></td>
+                        <td><a class="btn btn-primary btn-sm" href="SpeelgoedUpdating?id=<%=s.getId()%>"> <input type="submit" value="Aanpassen"> </a></td>
+                        </tr>
+                        <%}
                 }
      }
             %>

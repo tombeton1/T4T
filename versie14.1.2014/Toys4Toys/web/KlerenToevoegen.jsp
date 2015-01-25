@@ -12,7 +12,7 @@
 
         <div id="wrapper">
             <h1>Kledij toevoegen</h1>
-            <form action="KlerenToevoegen" method="POST">
+            <form action="KlerenToevoegen" method="POST" enctype="multipart/form-data">
                 <table style="width: auto">
                     <tbody>
                         <tr>

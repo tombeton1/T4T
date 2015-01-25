@@ -24,19 +24,19 @@
 
 
         <div id="wrapper">
-            <h1>De door u geselecteerde advertentie</h1>
-            <table>
+            <h2>De door u geselecteerde advertentie</h2>
+            <table style="width: auto;">
                 <tr>
-                <th>Afbeelding van de aangeboden advertentie</th>
-                <th></th>
-                <th>Omschrijving van de aangeboden advertentie</th>
+                <th>Afbeelding</th>
+                <th>Leeftijd (vanaf)</th>
+                <th>Omschrijving</th>
                 </tr>
                 <%                
     for (Babyspullen ruil : trba) {
                 %>
                 <tr>
                     <td><img height="150" width="150" src="${pageContext.request.contextPath}/DisplayImage?id=<%=ruil.getId()%>"></td>
-                    <td></td>
+                    <td><%= ruil.getLeeftijd() %></td>
                     <td><%= ruil.getOmschrijving() %></td>
                     </tr>
         
@@ -44,8 +44,8 @@
                     %>
             </table>
                 
-        <h1>Maak een keuze uit uw advertenties om te ruilen met de door u geselecteerde advertentie</h1>      
-        <table>
+        <h2>Maak een keuze uit uw advertenties om te ruilen met de door u geselecteerde advertentie</h2>      
+        <table style="width: auto;">
             
             <tr>
                 <th>Afbeelding</th>

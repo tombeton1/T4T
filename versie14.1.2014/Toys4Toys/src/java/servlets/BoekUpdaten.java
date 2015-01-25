@@ -5,10 +5,16 @@
  */
 package servlets;
 
+import Services.BabyService;
 import Services.BoekService;
+import Services.KlerenService;
 import Services.PersoonService;
+import Services.SpeelgoedService;
+import dal.Babyspullen;
 import dal.Boeken;
+import dal.Kleren;
 import dal.Persoon;
+import dal.Speelgoed;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -93,14 +99,33 @@ public class BoekUpdaten extends HttpServlet {
         InputStream fileContent = filePart.getInputStream();
         byte[] bytes = IOUtils.toByteArray(fileContent);
         
-        b.setBoekenFoto(bytes);
+        if (bytes.length == 0) {
+                   byte[] imgBoek = BoekService.SelectFoto(Integer.parseInt(request.getParameter("id")));
+                   b.setBoekenFoto(imgBoek);
+                }
+                else{
+                    b.setBoekenFoto(bytes);
+                }
         
         BoekService.BoekAdd(b);
         
         
-        List<Boeken> boek = BoekService.AlleBoekenOphalen();
+       int pId = p.getId();
+        
+        
+         List<Boeken> bUser = BoekService.AlleAdsOphalenperUser(pId);
+         List<Babyspullen> baUser = BabyService.AlleAdsOphalenPerUser(pId);
+         List<Kleren> kUser = KlerenService.AlleAdsOphalenPerUser(pId);
+         List<Speelgoed> sUser = SpeelgoedService.AlleAdsOphalenPerUser(pId);
+        
+         List<Persoon> pers = PersoonService.SelecteerPersoon(pId);
 
-        request.getSession().setAttribute("vm1", boek);
+         request.getSession().setAttribute("vm5", pers);
+        
+         request.getSession().setAttribute("vm1", bUser);
+         request.getSession().setAttribute("vm2", baUser);
+         request.getSession().setAttribute("vm3", kUser);
+         request.getSession().setAttribute("vm4", sUser);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("PersoonDetailOverzicht.jsp");
         dispatcher.forward(request, response);

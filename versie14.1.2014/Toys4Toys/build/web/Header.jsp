@@ -24,8 +24,9 @@
     <head>
         <link href="Styles.css" rel="stylesheet" type="text/css"/>
         <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
-        <link href='http://fonts.googleapis.com/css?family=Crafty+Girls' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+        
     </head>
     <body>
 
@@ -36,15 +37,15 @@
         else{%>
         <a style="float: right;" id="user" href="PersoonDetails?id=<%=id %>">Welkom <%=username %>!</a>
         <%}%>
-        <div id="logo"><h1>Toys4Toys</h1>
-            <h4>Makkelijk ruilen van speelgoed, kleren, boeken voor kinderen </h4></div>
+        <div id="logo"><h1>Toys 4 Toys</h1></div>
+        <div style="width: 25%; float: right">
         <form method="POST" action="ZoekAlles" style="float:right" >
                 <div>
-                    <label></label>
-                    <input placeholder="Zoek in het volledige aanbod" onclick="" type="text" name="zoekTerm" style="opacity: 0.8">
+                    <input placeholder="Zoek in het volledige aanbod" onclick="" type="text" name="zoekTerm" style="opacity: 0.8; width: 200px">
                     <input type="submit" value="Zoek" name="zoek">
                 </div>
                     </form>
+            </div>
         <div style="width: 25%">
             <nav>
                 <ul>
