@@ -35,7 +35,7 @@
             <a style="float: right;" id="user" href="Login.jsp">Inloggen</a>
         <%}
         else{%>
-        <a style="float: right;" id="user" href="PersoonDetails?id=<%=id %>">Welkom <%=username %>!</a>
+        <a style="float: right;" id="user" href="PersoonDetails?id=<%=id %>">Welkom  <%=username %>!</a>
         <%}%>
         <div id="logo"><h1>Toys 4 Toys</h1></div>
         <div style="width: 25%; float: right">

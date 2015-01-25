@@ -27,21 +27,23 @@
     <body>
         <div id="wrapper">
         <h1>Pas uw persoonlijke informatie aan</h1>
+        <a class="btn btn-primary btn-sm" href="LogOutRequest">Uitloggen!</a>
         <table>
             <tr>
                 <th>Voornaam</th>                
                 <th>Familienaam</th>
                 <th>Username</th>
+                <th></th>
+                <th></th>
             </tr>
             <%                
     for (Persoon p : persoon) {
 
             %>
             <tr>
-                <td><%= p.getVoornaam() %></td>
-                <td><%= p.getFamilienaam() %></td>
-                <td><%= p.getUserName() %></td>
-                
+                <td><%= p.getVoornaam()%></td>
+                <td><%= p.getFamilienaam()%></td>
+                <td><%= p.getUserName()%></td>              
                 <td><a class="btn btn-primary btn-sm" href="PersoonUpdating?id=<%=p.getId()%>"> Aanpassen </a></td>
             </tr>
 
