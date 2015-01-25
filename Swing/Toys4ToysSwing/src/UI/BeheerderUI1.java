@@ -748,13 +748,13 @@ public class BeheerderUI1 extends javax.swing.JFrame {
             cbxCategorie.addItem("Nieuwe ouder");
             if ("PrentenBoeken".equals(selectBoek.getCategorie().toString())) {
                 cbxCategorie.setSelectedIndex(0);
-            } else if ("VoorleesBoeken".equals(selectBoek.getCategorie().toString())) {
+            } else if ("Voorlees Boeken".equals(selectBoek.getCategorie().toString())) {
                 cbxCategorie.setSelectedIndex(1);
-            } else if ("Baby_peuterboekjes".equals(selectBoek.getCategorie().toString())) {
+            } else if ("Baby peuterboekjes".equals(selectBoek.getCategorie().toString())) {
                 cbxCategorie.setSelectedIndex(2);
-            } else if ("EducatieveBoeken".equals(selectBoek.getCategorie().toString())) {
+            } else if ("Educatieve boeken".equals(selectBoek.getCategorie().toString())) {
                 cbxCategorie.setSelectedIndex(3);
-            } else if ("VoorNieuweOuders".equals(selectBoek.getCategorie().toString())) {
+            } else if ("Nieuwe ouder".equals(selectBoek.getCategorie().toString())) {
                 cbxCategorie.setSelectedIndex(4);
             }
 
