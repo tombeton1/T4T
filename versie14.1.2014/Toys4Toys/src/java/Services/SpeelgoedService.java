@@ -64,6 +64,7 @@ public class SpeelgoedService {
     {
        Session s = HibernateUtil.getSessionFactory().openSession();
        Query q = s.createQuery("from Speelgoed s where s.omschrijving like '%" + zoekTerm + "%' OR s.titel like '%" + zoekTerm + "%'");
+       
        return (ArrayList<Speelgoed>)q.list();
     }
     

@@ -29,7 +29,7 @@ body {
 
 #logo{
     font-family: 'Great Vibes';
-    font-size: 2em;
+    font-size: 3em;
     color: #404040;
     text-align: center;
     text-shadow: 0 1px 1px #622323;
@@ -46,7 +46,7 @@ body {
 }
 nav ul {
     float: left;
-    // position: fixed;
+    position: fixed;
     //text-align: center;
 }
 
@@ -60,7 +60,7 @@ nav ul li {
 
 nav ul li a {
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 1.5em;
+    font-size: 1.6em;
     font-weight: bold;
     color: #404040;
     padding: 5px;
@@ -81,11 +81,13 @@ nav ul li a:focus {
 #wrapper{
     opacity: 2;
     //float: left;
+    margin-left: 240px ;
+    margin-right: auto ;
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 1.3em;
+    font-size: 1.4em;
     color: #404040;
     width: 55%;
-    margin: 0%;
+    //margin: 0%;
     padding-top: 0px;
     padding-left: 5px;
     padding-right: 15px;

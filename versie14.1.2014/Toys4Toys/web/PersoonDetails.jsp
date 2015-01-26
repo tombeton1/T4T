@@ -26,8 +26,13 @@
 
             %>
             <tr>
-                <td>Aanhef:</td>
-                <td> <input required="true" type="text" name="Aanspreektitel" value="<%=p.getAanspreekTitel()%>" ></td>
+                <td>Aanhef: </td>
+                            <td><select name="Aanspreektitel">
+                                    <option value='Dhr.' name="Aanspreektitel">Dhr.</option>
+                                    <option value='Mevr.' name="Aanspreektitel">Mvr.</option>
+                                    <option value='Mej.' name="Aanspreektitel">Mej.</option>
+                                </select>
+                            </td>
             </tr>
             <tr>
                 <td>Voornaam:</td>

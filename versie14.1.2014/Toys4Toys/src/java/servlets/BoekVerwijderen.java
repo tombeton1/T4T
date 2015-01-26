@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,6 +33,12 @@ public class BoekVerwijderen extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        Cookie[] cookies = request.getCookies();
+
+        for (Cookie c : cookies) {
+            if (c.getName().equals("userT4T") && c.getValue() != null) {
+                
          BoekService.BoekDelete(Integer.parseInt(request.getParameter("id")));
         
         List<Boeken> boek = BoekService.AlleBoekenOphalen();
@@ -40,7 +47,14 @@ public class BoekVerwijderen extends HttpServlet {
         
         RequestDispatcher dispatcher = request.getRequestDispatcher("PersoonDetailOverzicht.jsp");
         dispatcher.forward(request, response);
+            }
         
+        else{
+                    request.getSession();                                        
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("Login.jsp");
+                    dispatcher.forward(request, response);
+                }
+    }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

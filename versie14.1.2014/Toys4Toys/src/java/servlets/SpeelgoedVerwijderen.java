@@ -12,6 +12,7 @@ import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,6 +37,11 @@ public class SpeelgoedVerwijderen extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
+        Cookie[] cookies = request.getCookies();
+
+        for (Cookie c : cookies) {
+            if (c.getName().equals("userT4T") && c.getValue() != null) {
+        
         SpeelgoedService.SpeelgoedDelete(Integer.parseInt(request.getParameter("id")));
         
         List<Speelgoed> speelgoed = SpeelgoedService.AlleSpeelgoedOphalen();
@@ -44,6 +50,14 @@ public class SpeelgoedVerwijderen extends HttpServlet {
         
         RequestDispatcher dispatcher = request.getRequestDispatcher("PersoonDetailOverzicht.jsp");
         dispatcher.forward(request, response);
+            }
+        
+        else{
+                    request.getSession();                                        
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("Login.jsp");
+                    dispatcher.forward(request, response);
+                }
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

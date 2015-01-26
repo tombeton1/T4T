@@ -14,7 +14,7 @@
         <div id="wrapper">
             <h1>Login</h1>
             <form action="LoginRequest" method="POST">
-                <table>
+                <table style="width: auto">
                     <tr>
                         <td>Username:</td>
                         <td><input type="text" name="username"></td>
@@ -34,11 +34,16 @@
              <h1>Of nieuwe gebruiker</h1>
             <form action="PersoonToevoegen" method="POST" role="form">
 
-                <table>               
+                <table style="width: auto">               
                     <tbody>
                         <tr>
-                            <td>Aanhef</td>
-                            <td><input type="text"  name="Aanspreektitel" ></td>
+                            <td>Aanhef: </td>
+                            <td><select name="Aanspreektitel">
+                                    <option value='Dhr.' name="Aanspreektitel">Dhr.</option>
+                                    <option value='Mevr.' name="Aanspreektitel">Mvr.</option>
+                                    <option value='Mej.' name="Aanspreektitel">Mej.</option>
+                                </select>
+                            </td>
                         </tr>
                         <tr>
                             <td>Voornaam</td>

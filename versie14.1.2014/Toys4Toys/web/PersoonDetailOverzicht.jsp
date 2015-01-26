@@ -27,7 +27,6 @@
     <body>
         <div id="wrapper">
         <h1>Pas uw persoonlijke informatie aan</h1>
-        <a class="btn btn-primary btn-sm" href="LogOutRequest">Uitloggen!</a>
         <table>
             <tr>
                 <th>Voornaam</th>                
@@ -44,7 +43,7 @@
                 <td><%= p.getVoornaam()%></td>
                 <td><%= p.getFamilienaam()%></td>
                 <td><%= p.getUserName()%></td>              
-                <td><a class="btn btn-primary btn-sm" href="PersoonUpdating?id=<%=p.getId()%>"> Aanpassen </a></td>
+                <td><a class="btn btn-primary btn-sm" href="PersoonUpdating?id=<%=p.getId()%>"><input type="submit" value="Aanpassen"> </a></td>
             </tr>
 
             <%  }%>
@@ -61,6 +60,23 @@
             </tr>
         </table>
         <h2>Uw advertenties</h2>
+        <% if (baby.size() <= 0 && boeken.size() <= 0 && kleren.size()<= 0 && speelgoed.size() <= 0) {%>
+                <table style="width: auto;" >
+            
+            <tr>
+                <th>Afbeelding</th>
+                <th>Omschrijving</th>
+            </tr>
+            <tr>
+                <td>U heeft nog geen advertenties</td>
+                <td>Kies hierboven een categorie om er een toe te voegen</td>
+            </tr>
+                </table>
+            
+           <% }
+        else{
+    
+        %>
         <table>
             
             <tr>
@@ -136,7 +152,7 @@
      }
             %>
         </table>
-        <br/>
+        <%}%>
         </div>
     </body>
 </html>

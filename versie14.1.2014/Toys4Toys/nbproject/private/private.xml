@@ -2,14 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="3">
         <file>
-            <url>web/SpeelgoedUpdaten.jsp</url>
-            <bookmark id="3">
-                <name/>
-                <line>73</line>
-                <key/>
-            </bookmark>
-        </file>
-        <file>
             <url>web/GezochtOverzicht.jsp</url>
             <bookmark id="1">
                 <name/>
@@ -17,11 +9,22 @@
                 <key/>
             </bookmark>
         </file>
+        <file>
+            <url>web/SpeelgoedUpdaten.jsp</url>
+            <bookmark id="3">
+                <name/>
+                <line>73</line>
+                <key/>
+            </bookmark>
+        </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Tom/Documents/GitHub/T4T/versie14.1.2014/Toys4Toys/src/java/servlets/BabyUpdaten.java</file>
-            <file>file:/C:/Users/Tom/Documents/GitHub/T4T/versie14.1.2014/Toys4Toys/src/java/servlets/BabyVerwijderen.java</file>
+            <file>file:/F:/T4T/Toys4Toys/web/SpeelgoedOverzicht.jsp</file>
+            <file>file:/F:/T4T/Toys4Toys/web/BoekOverzicht.jsp</file>
+            <file>file:/F:/T4T/Toys4Toys/web/GezochtOverzicht.jsp</file>
+            <file>file:/F:/T4T/Toys4Toys/web/KlerenOverzicht.jsp</file>
+            <file>file:/F:/T4T/Toys4Toys/web/BabyspullenOverzicht.jsp</file>
         </group>
     </open-files>
 </project-private>

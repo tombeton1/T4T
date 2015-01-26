@@ -24,15 +24,24 @@
     <body>
         <div id="wrapper">
             <h1>Gevonden items</h1>
-            <form method="POST" action="ZoekAlles" style="float:right" >
-                <div>
-                    <input type="text" name="zoekTerm" style="opacity: 0.8">
-                    <input type="submit" value="Zoek" name="zoek">
-                </div>
-                    </form>
-                
-                
-        <table >
+            <% if (baby.size() <= 0 && boeken.size() <= 0 && kleren.size()<= 0 && speelgoed.size() <= 0) {%>
+                <table style="width: auto;" >
+            
+            <tr>
+                <th>Afbeelding</th>
+                <th>Omschrijving</th>
+            </tr>
+            <tr>
+                <td>Geen resultaten</td>
+                <td></td>
+            </tr>
+                </table>
+            
+           <% }
+        else{
+    
+        %>              
+        <table style="width: auto;" >
             <tr>
                 <th>Afbeelding</th>
                 <th>Omschrijving</th>
@@ -113,7 +122,7 @@
      }
             %>
         </table>
-        <br/>
+        <%}%>
         </div>
     </body>
 </html>

@@ -23,7 +23,6 @@
 <html>
     <head>
         <link href="Styles.css" rel="stylesheet" type="text/css"/>
-        <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
         
@@ -57,7 +56,8 @@
                     <li><a href="Login.jsp">Log in</a></li>                   
                 </ul>
             </nav>
-        </div>
+        </div>      
     </body>
+     
 </html>
         

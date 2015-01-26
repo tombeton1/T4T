@@ -13,23 +13,24 @@
         
         <div id="wrapper">
 
-            <h1>Waarom altijd nieuw kopen?</h1>
-            <p>Kinderen groeien snel en hebben een onvermoeibare nieuwsgierigheid, hun job is spelen, ontdekken en leren.  Consumptie producten voor kinderen zijn gemaakt uit duurzaam, veilige en ecologisch niet-giftige materialen. Dit lijdt tot een berg van wel gebruikt maar niet versleten speelgoed, kinderkledij , boeken enz. . </p>
-            <h2>We willen een website aanbieden voor zowel ouders als kinderen om deze gebruikte maar niet versleten producten te ruilen.  </h2>
+            <h1>Waarom altijd nieuwe spullen kopen?</h1>
+            <p>Heeft u ook nog bergen gebruikte kleren, boeken, speelgoed of andere kinderspullen op zolder liggen?<br/>
+            Voelt het ook voor u soms aan alsof u op eierschalen loopt tijdens het opmaken van het budget voor deze maand?<br/>
+            Wilt ook u uw kind niets ontzeggen, zonder uw bankrekening te plunderen?<br/>
+            Staat u wel eens stil bij uw ecologische voetafdruk?<br/>
+            Of bent u gewoon op zoek naar dat unieke vintage kledingstuk voor uw hippe zoon of dochter?<br/>
+            Dan bent u op de juiste plek!<br/>
+            </p>
+            <h2>Hier bieden wij een platform aan waarbij ouders elkaar kunnen treffen en kinderbenodigdheden kunnen ruilen.</h2>
             <img width="100%" src="Images/easy-foto-collage-masking-tape.jpg" alt="collage"/>
-
-            <h1>Voordelen</h1>
-            <p>Milieu, de ecologische voetafdruk verkleinen.<br/>
-            Sociaal, kinderen en ouders kunnen in contact komen met andere uit de buurt.<br/>
-            Kinderen leren na te denken over de waarde van het speelgoed dat ze hebben, b.v. is het slim om een fiets te ruilen voor een blokkendoos?<br/>          
-            Sociaal, kinderen en ouders kunnen in contact komen met andere uit de buurt.<br/>
-            Sociaal, kinderen en ouders kunnen in contact komen met andere uit de buurt.<br/>
-            Kinderen leren dat wat zij zelf niet meer leuk vinden voor andere kinderen nog wel leuk kan zijn.<br/>            
-            Sociaal, kinderen en ouders kunnen in contact komen met andere uit de buurt.<br/>
-            Er is in het huis minder ruimte nodig om al het speelgoed op te slaan.</p><br/>
+            
+            <h2>Hoe?</h2>
+            <p>Klik rechts bovenaan op inloggen, en log in of maak een nieuw profiel aan.<br/>
+            Voeg je eigen spullen toe waar je afscheid van wilt nemen en neem een kijkje in het aanbod van onze andere gebruikers.<br/>
+            Veel ruilplezier toegewenst en laten we er samen een mooiere planeet van maken! </p>
         </div>
         <footer>
-
+              <div style="bottom: 10px; position: relative; text-align: center">Belangrijk: Deze website maakt gebruik van cookies. Door je bezoek ga je akkoord met het plaatsen van deze cookies.</div>
         </footer>
     </body>
         

@@ -60,6 +60,7 @@ public class BabyService {
             
         Session s = HibernateUtil.getSessionFactory().openSession();
        Query q = s.createQuery("from Babyspullen b where b.omschrijving like '%" + zoekTerm + "%' OR b.categorie like '%" + zoekTerm + "%'");
+      
        return (ArrayList<Babyspullen>)q.list();
     }
     

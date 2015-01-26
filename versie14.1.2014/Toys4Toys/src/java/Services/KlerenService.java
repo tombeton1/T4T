@@ -65,7 +65,8 @@ public class KlerenService {
     {
         Session s  = HibernateUtil.getSessionFactory().openSession();
         Query q = s.createQuery("from Kleren k where k.omschrijving like '%" + zoekTerm + "%' OR k.seizoen like '%" + zoekTerm + "%' OR k.soortKleding like '%" + zoekTerm + "%'");
-       return (ArrayList<Kleren>)q.list();
+       
+        return (ArrayList<Kleren>)q.list();
     
     }
     

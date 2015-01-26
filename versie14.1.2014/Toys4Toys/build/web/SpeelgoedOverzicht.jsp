@@ -21,6 +21,26 @@
                     </form>
                     <br/>
                     <br/>
+                     <% if (speelgoed.size() <= 0) {%>
+                <table style="width: auto;" >
+            
+            <tr>
+                <th>Afbeelding</th>
+                <th>Omschrijving</th>
+                <th>Leeftijd (vanaf)</th>
+            </tr>
+            <tr>
+                <td>Geen resultaten</td>
+                <td></td>
+                <td></td>
+                
+            </tr>
+                </table>
+            
+           <% }
+        else{
+    
+        %>              
                 
                 <table>
                     <tr>
@@ -47,6 +67,7 @@
 
                     <%  }%>
                 </table>
+                <%}%>
         </div>
                 </body>
                 </html>

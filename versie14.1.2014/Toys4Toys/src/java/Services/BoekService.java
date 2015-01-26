@@ -26,8 +26,7 @@ public class BoekService {
         s.beginTransaction();
         s.merge(boek);
         s.getTransaction().commit();
-        
-        return boek;
+        return boek;        
     }
     
     public static Boeken BoekAdd(Boeken b)

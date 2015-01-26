@@ -30,6 +30,26 @@
                     <br/>
                     <br/>
                 </div>
+             <% if (baby.size() <= 0) {%>
+                <table style="width: auto;" >
+            
+            <tr>
+                <th>Afbeelding</th>
+                <th>Omschrijving</th>
+                <th>Voor jongens of meisjes?</th>
+            </tr>
+            <tr>
+                <td>Geen resultaten</td>
+                <td></td>
+                <td></td>
+                
+            </tr>
+                </table>
+            
+           <% }
+        else{
+    
+        %>              
                 <table>
                     <tr>
                         <th>Afbeelding</th>
@@ -62,7 +82,7 @@
 
                     <%  }%>
                 </table>
-                <br/>
+<% }%>
         </div>
                 </body>
                 </html>

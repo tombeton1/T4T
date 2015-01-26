@@ -11,9 +11,9 @@
 
     </head>
     <body>
-        <div id="wrapper">
-            <h1>Detail</h1>
-
+  <div id="wrapper" style="overflow: hidden">
+            <h1>Reageer op deze advertentie</h1>
+            <div style="float: left">
             <table style="width: auto;">
                 <%for (Kleren k : kleren) {
                 %>
@@ -53,15 +53,12 @@
                         <td>Omschrijving</td>
                         <td><%= k.getOmschrijving()%></td>
                     </tr>
-
-                    <%
-                            if (ingelogd && !username.equals(k.getPersoon().getUserName())) {%>
-                    <tr> <td><a href="KlerenRuilen?id=<%=k.getId()%>"> Stel een ruil voor! </a></td>
-                        <td></td></tr>
-                        <%}%>
-
                 </tbody>
             </table>
+            </div>
+                        <%
+                            if (ingelogd && !username.equals(k.getPersoon().getUserName())) {%>
+                        <div style="float: left; margin-left: 20px">
             <form action="MAILTO:<%= k.getPersoon().getEmail()%>?subject=Reactie op uw advertentie in Toys4Toys &nbsp; &nbsp;<%=k.getSoortKleding()%> " method="POST" enctype="text/plain">
                 <table style="width:auto">
                     <tr>
@@ -73,7 +70,6 @@
                         <td><input type="text" name="Het email adres is"><br></td>
                     </tr>
                     <tr>
-                        Reageer:<br>
                     <td> Uw tekst</td>
                     <td><input type="text" name="comment" size="150"><br><br></td>
                     </tr>
@@ -85,8 +81,8 @@
                 </table>
             </form>
             <%  }%>
-            <br/>
-
+                        </div>
+               <%}%>
         </div>
     </body>
 </html>

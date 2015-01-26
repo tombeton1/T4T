@@ -25,7 +25,26 @@
                     </form>
                     <br/>
                     <br/>
+                 <% if (boeken.size() <= 0) {%>
+                <table style="width: auto;" >
+            
+            <tr>
+                <th>Afbeelding</th>
+                <th>Titel</th>
+                <th>Categorie</th>
+            </tr>
+            <tr>
+                <td>Geen resultaten</td>
+                <td></td>
+                <td></td>
                 
+            </tr>
+                </table>
+            
+           <% }
+        else{
+    
+        %>              
                 <table>
                     <tr>
                         <th>Afbeelding</th>
@@ -34,8 +53,6 @@
                         <th></th>
 
                     </tr>
-
-
                     <%                for (Boeken b : boeken) {
                     %>
 
@@ -53,7 +70,7 @@
 
                     <%  }%>
                 </table>
-                <br/>
+<%}%>
         </div>
                 </body>
                 </html>
